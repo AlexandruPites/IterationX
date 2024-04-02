@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dv5v7x871fmkq"]
 
-[ext_resource type="Texture2D" uid="uid://bo6b0jyfsaqli" path="res://space_station_tiles.jpg" id="1_ce38y"]
+[ext_resource type="Texture2D" uid="uid://bo6b0jyfsaqli" path="res://images/space_station_tiles.jpg" id="1_ce38y"]
 [ext_resource type="PackedScene" uid="uid://ca3p3id8imxb" path="res://scenes/main_character.tscn" id="2_rbl60"]
 
 [node name="Game" type="Node"]
