@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv5v7x871fmkq"]
+
+[ext_resource type="Texture2D" uid="uid://bo6b0jyfsaqli" path="res://space_station_tiles.jpg" id="1_ce38y"]
+[ext_resource type="PackedScene" uid="uid://ca3p3id8imxb" path="res://scenes/main_character.tscn" id="2_rbl60"]
+
+[node name="Game" type="Node"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -49.0
+offset_right = 2.0
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ce38y")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_rbl60")]
+position = Vector2(601, 334)
