@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ca3p3id8imxb"]
 
 [ext_resource type="Script" path="res://scripts/main_character.gd" id="1_atlu0"]
-[ext_resource type="Texture2D" uid="uid://1jv1kyirwto5" path="res://images/Jump (32x32).png" id="1_tbfcs"]
+[ext_resource type="Texture2D" uid="uid://wr1idb6via0d" path="res://images/Player.png" id="2_64cvx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dcjg"]
 size = Vector2(30, 42)
@@ -13,7 +13,7 @@ script = ExtResource("1_atlu0")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(1.351, 1.5)
-texture = ExtResource("1_tbfcs")
+texture = ExtResource("2_64cvx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)

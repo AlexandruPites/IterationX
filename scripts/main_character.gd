@@ -23,5 +23,3 @@ func _process(delta):
 	
 	if vertical_direction:
 		position.y += vertical_direction * SPEED * delta
-	
-	move_and_slide()
