@@ -22,9 +22,8 @@ func _process(delta):
 	elif direction.x > 0:
 		sprite_2d.flip_h = false
 	
-	var collision_info = move_and_collide(velocity * delta)
+	var collision_info = move_and_slide()
 	if collision_info:
-		velocity = velocity.bounce(collision_info.get_normal())
 		if timer.is_stopped():
 			timer.start() # timer is set to 0.3
 			health -= 1
