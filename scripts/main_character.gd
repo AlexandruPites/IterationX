@@ -11,7 +11,7 @@ var health : float = 100.0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
-func _process(delta):
+func _process(_delta):
 	
 	var direction : Vector2 = Input.get_vector("left", "right", "up", "down")
 
