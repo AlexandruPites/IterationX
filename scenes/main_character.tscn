@@ -41,9 +41,6 @@ texture = ExtResource("2_64cvx")
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_0dcjg")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_enabled = true
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dv5v7x871fmkq"]
+[gd_scene load_steps=6 format=3 uid="uid://dv5v7x871fmkq"]
 
 [ext_resource type="Texture2D" uid="uid://bo6b0jyfsaqli" path="res://images/space_station_tiles.jpg" id="1_ce38y"]
 [ext_resource type="PackedScene" uid="uid://ca3p3id8imxb" path="res://scenes/main_character.tscn" id="2_rbl60"]
 [ext_resource type="PackedScene" uid="uid://bhiih1q0mttpg" path="res://scenes/enemy.tscn" id="3_muqjo"]
+[ext_resource type="PackedScene" uid="uid://cpjafs71x7bqv" path="res://scenes/camera.tscn" id="4_r5wui"]
+[ext_resource type="Script" path="res://scripts/Camera.gd" id="5_bk68d"]
 
 [node name="Game" type="Node"]
 
@@ -11,10 +13,10 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = -49.0
-offset_right = 2.0
-offset_bottom = 103.0
+offset_left = -576.0
+offset_top = -400.0
+offset_right = -576.0
+offset_bottom = -248.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_ce38y")
@@ -22,19 +24,22 @@ expand_mode = 1
 stretch_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("2_rbl60")]
-position = Vector2(601, 334)
+position = Vector2(0, 0)
 
 [node name="Enemy" parent="." instance=ExtResource("3_muqjo")]
-position = Vector2(700, 340)
+position = Vector2(151, -102)
 
 [node name="Enemy2" parent="." instance=ExtResource("3_muqjo")]
-position = Vector2(669, 412)
+position = Vector2(120, -30)
 
 [node name="Enemy3" parent="." instance=ExtResource("3_muqjo")]
-position = Vector2(323, 159)
+position = Vector2(-226, -283)
 
 [node name="Enemy4" parent="." instance=ExtResource("3_muqjo")]
-position = Vector2(825, 623)
+position = Vector2(276, 181)
 
 [node name="Enemy5" parent="." instance=ExtResource("3_muqjo")]
-position = Vector2(303, 629)
+position = Vector2(-246, 187)
+
+[node name="Camera2D" parent="." instance=ExtResource("4_r5wui")]
+script = ExtResource("5_bk68d")

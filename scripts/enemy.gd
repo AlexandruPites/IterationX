@@ -14,7 +14,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	
 	var diff : Vector2 = player.position - position
 	
@@ -24,4 +24,4 @@ func _process(delta):
 		sprite_2d.flip_h = false
 	
 	velocity = diff.normalized() * SPEED
-	var collision_info = move_and_slide()
+	move_and_slide()
