@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bhiih1q0mttpg"]
 
-[ext_resource type="Texture2D" uid="uid://cn66jef3ceuf4" path="res://images/Enemy.png" id="1_6syu3"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_y50n4"]
+[ext_resource type="Texture2D" uid="uid://2stigmatny7c" path="res://images/space-robot-64.png" id="2_w3pw4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nsktk"]
 radius = 10.7081
@@ -36,7 +36,7 @@ script = ExtResource("1_y50n4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_6syu3")
+texture = ExtResource("2_w3pw4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.333333, 2)
