@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://fx4wdtrlkclp" path="res://images/Sprite-0001.png" id="2_8g8h7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jc1uu"]
-
 radius = 21.0
 
 [node name="4-way" type="Area2D"]
