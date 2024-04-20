@@ -22,3 +22,7 @@ func _process(_delta: float) -> void:
 		display_seconds = str(seconds)
 	
 	text = display_minutes + ":" + display_seconds
+
+
+func _on_timer_timeout() -> void:
+	get_tree().reload_current_scene()

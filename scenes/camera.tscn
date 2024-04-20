@@ -20,3 +20,5 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxEmpty_66e2w")
 alignment = 1
 script = ExtResource("1_3nk1p")
+
+[connection signal="timeout" from="Timer" to="LineEdit" method="_on_timer_timeout"]

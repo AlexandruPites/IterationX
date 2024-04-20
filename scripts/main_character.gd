@@ -38,6 +38,8 @@ func take_damage(damage : int) -> void:
 	if timer.is_stopped():
 		timer.start() # timer is set to 0.3
 		health -= damage
+		if health <= 0:
+			get_tree().reload_current_scene()
 		animation_player.play("take_damage")
 		print(health)
 
