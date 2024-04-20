@@ -9,7 +9,6 @@ var inventory : Array[Resource] = [PROJECTILE]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	print(player)
 	if Input.is_action_just_pressed("accept"):
 		print("shoot")
 		shoot()
