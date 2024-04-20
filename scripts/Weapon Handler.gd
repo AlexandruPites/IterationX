@@ -29,21 +29,13 @@ func shoot() -> void:
 		var weapon : Resource = inventory[i]
 		match names[i]:
 			"4-way":
-				var instance1 : Projectile = weapon.instantiate()
-				var instance2 : Projectile = weapon.instantiate()
-				var instance3 : Projectile = weapon.instantiate()
-				var instance4 : Projectile = weapon.instantiate()
-				instance1.position = parent_pos
-				instance2.position = parent_pos
-				instance3.position = parent_pos
-				instance4.position = parent_pos
-				instance1.velocity *= Vector2(1, 0)
-				instance2.velocity *= Vector2(-1, 0)
-				instance3.velocity *= Vector2(0, 1)
-				instance4.velocity *= Vector2(0, -1)
-				game.add_child(instance1)
-				game.add_child(instance2)
-				game.add_child(instance3)
-				game.add_child(instance4)
+				var instances : Array[Projectile]
+				var mult : Array[Vector2] = [Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1), Vector2(0, -1)]
+				
+				for j in range(4):
+					var instance : Projectile = weapon.instantiate()
+					instance.position = parent_pos
+					instance.velocity *= mult[j]
+					game.add_child(instance)
 				
 				
