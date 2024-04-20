@@ -38,10 +38,10 @@ func shoot() -> void:
 				instance2.position = parent_pos
 				instance3.position = parent_pos
 				instance4.position = parent_pos
-				instance1.velocity = Vector2(1000, 0)
-				instance2.velocity = Vector2(-1000, 0)
-				instance3.velocity = Vector2(0, 1000)
-				instance4.velocity = Vector2(0, -1000)
+				instance1.velocity *= Vector2(1, 0)
+				instance2.velocity *= Vector2(-1, 0)
+				instance3.velocity *= Vector2(0, 1)
+				instance4.velocity *= Vector2(0, -1)
 				game.add_child(instance1)
 				game.add_child(instance2)
 				game.add_child(instance3)

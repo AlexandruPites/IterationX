@@ -1,6 +1,7 @@
 extends Projectile
 
-var velocity : Vector2
+var projectile_speed : float = 1000
+var velocity : Vector2 = Vector2(projectile_speed, projectile_speed)
 var damage : float = 10.0
 
 func _process(delta: float) -> void:
