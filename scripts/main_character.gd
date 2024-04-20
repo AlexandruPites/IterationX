@@ -12,6 +12,7 @@ var direction : Vector2
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var timer: Timer = $Timer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var area_2d : Area2D = $Area2D
 
 func _process(_delta : float) -> void:
 	
@@ -26,11 +27,20 @@ func _process(_delta : float) -> void:
 	
 	var collision_info : bool = move_and_slide()
 	if collision_info:
-		if timer.is_stopped():
-			timer.start() # timer is set to 0.3
-			health -= 1
-			animation_player.play("take_damage")
-			print(health)
+		take_damage(1)
 
 func is_left() -> bool:
 	return sprite_2d.flip_h
+
+func take_damage(damage : int) -> void:
+	if timer.is_stopped():
+		timer.start() # timer is set to 0.3
+		health -= damage
+		animation_player.play("take_damage")
+		print(health)
+
+func _on_area_2d_body_entered(body : Node2D) -> void:
+	if body.is_in_group("damageable"):
+		body.take_damage(20, global_position.direction_to(body.global_position).normalized())
+		take_damage(1)
+	pass # Replace with function body.
