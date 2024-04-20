@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://scripts/main_character.gd" id="1_atlu0"]
 [ext_resource type="Texture2D" uid="uid://wr1idb6via0d" path="res://images/Player.png" id="2_64cvx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0dcjg"]
-size = Vector2(30, 42)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kwon2"]
+radius = 14.0
+height = 44.0
 
 [sub_resource type="Animation" id="Animation_h4wie"]
 resource_name = "take_damage"
@@ -30,6 +31,8 @@ _data = {
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(333, 113)
+platform_on_leave = 2
+platform_floor_layers = 4294901760
 script = ExtResource("1_atlu0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -38,8 +41,8 @@ scale = Vector2(1.351, 1.5)
 texture = ExtResource("2_64cvx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
-shape = SubResource("RectangleShape2D_0dcjg")
+position = Vector2(1, 4)
+shape = SubResource("CapsuleShape2D_kwon2")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3

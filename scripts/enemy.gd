@@ -3,18 +3,14 @@ extends CharacterBody2D
 const SPEED : float = 50
 var health : float = 100
 
-@onready var player = $"../Player"
+@onready var player : CharacterBody2D = $"../Player"
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 var player_pos : Vector2 = Vector2.ZERO
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(_delta : float) -> void:
 	
 	var diff : Vector2 = player.position - position
 	
