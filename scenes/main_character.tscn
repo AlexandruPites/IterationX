@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca3p3id8imxb"]
+[gd_scene load_steps=8 format=3 uid="uid://ca3p3id8imxb"]
 
 [ext_resource type="Script" path="res://scripts/main_character.gd" id="1_atlu0"]
 [ext_resource type="Texture2D" uid="uid://wr1idb6via0d" path="res://images/Player.png" id="2_64cvx"]
@@ -29,8 +29,13 @@ _data = {
 "take_damage": SubResource("Animation_h4wie")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_assxx"]
+radius = 14.0
+height = 44.0
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
-position = Vector2(333, 113)
+position = Vector2(-3, 0)
+collision_mask = 0
 platform_on_leave = 2
 platform_floor_layers = 4294901760
 script = ExtResource("1_atlu0")
@@ -55,3 +60,13 @@ libraries = {
 
 [node name="Weapon Handler" type="Node2D" parent="."]
 script = ExtResource("3_amu8f")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 4)
+shape = SubResource("CapsuleShape2D_assxx")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

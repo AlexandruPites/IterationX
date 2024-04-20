@@ -4,8 +4,11 @@
 [ext_resource type="Script" path="res://scripts/projectile.gd" id="1_y10wq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jc1uu"]
+radius = 9.0
 
 [node name="Projectile" type="Area2D"]
+collision_layer = 2
+collision_mask = 6
 script = ExtResource("1_y10wq")
 
 [node name="TextureRect" type="TextureRect" parent="."]
