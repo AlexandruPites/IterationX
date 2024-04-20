@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Enemy
 
-const SPEED : float = 0
+const SPEED : float = 50
 var health : float = 100
 
 @onready var player : CharacterBody2D = $"../../Player"
