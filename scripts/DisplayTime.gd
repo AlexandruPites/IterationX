@@ -4,7 +4,7 @@ extends LineEdit
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	var tm : float = timer.wait_time - timer.time_left
+	var tm : int = timer.wait_time - timer.time_left
 	var minutes : int = tm / 60
 	var seconds : int = tm - minutes * 60
 	
