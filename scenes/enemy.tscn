@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://2stigmatny7c" path="res://images/space-robot-64.png" id="2_w3pw4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nsktk"]
-radius = 10.7081
-height = 30.3972
+radius = 13.4715
+height = 46.9775
 
 [sub_resource type="Animation" id="Animation_h4wie"]
 resource_name = "take_damage"
@@ -28,10 +28,10 @@ _data = {
 "take_damage": SubResource("Animation_h4wie")
 }
 
-[node name="Enemy" type="CharacterBody2D" groups=["damageable"]]
+[node name="Enemy" type="CharacterBody2D" groups=["damageable", "despawnable"]]
 scale = Vector2(1.5, 1.5)
 collision_layer = 2
-collision_mask = 2
+collision_mask = 3
 platform_on_leave = 2
 platform_floor_layers = 4294901760
 script = ExtResource("1_y50n4")

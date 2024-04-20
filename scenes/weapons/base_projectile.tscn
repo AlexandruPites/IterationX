@@ -4,7 +4,7 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mhngp"]
 
-[node name="Area2D" type="Area2D"]
+[node name="Area2D" type="Area2D" groups=["despawnable"]]
 script = ExtResource("1_0obfs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

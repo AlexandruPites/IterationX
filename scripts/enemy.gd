@@ -40,4 +40,7 @@ func take_damage(damage : float) -> void:
 		var direction : Vector2 = player.global_position.direction_to(self.global_position).normalized()
 		knockback = direction * knockback_strength
 		if health <= 0:
-			death.emit(self)
+			despawn()
+
+func despawn() -> void:
+	death.emit(self)

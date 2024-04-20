@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_jc1uu"]
 radius = 21.0
 
-[node name="4-way" type="Area2D"]
+[node name="4-way" type="Area2D" groups=["despawnable"]]
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_3byp6")
