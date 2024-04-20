@@ -27,3 +27,8 @@ func _process(_delta : float) -> void:
 		for i in range(get_slide_collision_count()):
 			if get_slide_collision(i).get_collider_id() == player.get_instance_id():
 				is_alive = false
+
+
+func take_damage(damage : float ) -> void:
+	health -= damage
+	print("Enemy" + str(health))
