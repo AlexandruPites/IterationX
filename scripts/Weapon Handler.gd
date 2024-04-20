@@ -2,21 +2,49 @@ extends Node2D
 class_name WeaponHandler
 
 
-const PROJECTILE = preload("res://scenes/projectile.tscn")
-var inventory : Array[Resource] = [PROJECTILE]
+var inventory : Array[Resource] = []
+var names : Array[String] = []
 @onready var player: Player = $".."
+var parent_pos : Vector2
+var game : Node
 
+func _ready() -> void:
+	game = get_node("/root/Game")
+	add_weapon("4-way")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("accept"):
+	if Input.is_action_just_pressed("accept") or true:
 		print("shoot")
 		shoot()
 	
+func add_weapon(name : String) -> void:
+	var format_string : String = "res://scenes/weapons/%s.tscn"
+	inventory.append(load(format_string % name))
+	names.append(name)
+	
 func shoot() -> void:
-	for weapon in inventory:
-		var instance : Projectile = PROJECTILE.instantiate()
-		instance.position = get_parent().position
-		if player.is_left():
-			instance.velocity = -instance.velocity
-		get_node("/root/Game").add_child(instance)
+	parent_pos = get_parent().position
+	for i in range(inventory.size()):
+		var weapon : Resource = inventory[i]
+		match names[i]:
+			"4-way":
+				var instance1 : Projectile = weapon.instantiate()
+				var instance2 : Projectile = weapon.instantiate()
+				var instance3 : Projectile = weapon.instantiate()
+				var instance4 : Projectile = weapon.instantiate()
+				instance1.position = parent_pos
+				instance2.position = parent_pos
+				instance3.position = parent_pos
+				instance4.position = parent_pos
+				instance1.velocity = Vector2(1000, 0)
+				instance2.velocity = Vector2(-1000, 0)
+				instance3.velocity = Vector2(0, 1000)
+				instance4.velocity = Vector2(0, -1000)
+				game.add_child(instance1)
+				game.add_child(instance2)
+				game.add_child(instance3)
+				game.add_child(instance4)
+				
+				

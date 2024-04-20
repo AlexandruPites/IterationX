@@ -1,12 +1,10 @@
-extends Area2D
-class_name Projectile
+extends Projectile
 
-var velocity : Vector2 = Vector2(1000, 0)
+var velocity : Vector2
 var damage : float = 10.0
 
 func _process(delta: float) -> void:
 	position += velocity * delta
-
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("damageable"):
