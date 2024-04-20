@@ -10,6 +10,9 @@ const spawn_distance : float = 700
 #func _ready():
 	#pass # Replace with function body.
 
+func _on_death(source : CharacterBody2D) -> void:
+	enemy_array.erase(source)
+	source.queue_free()
 
 func get_spawn_coord(player_pos : Vector2) -> Vector2:
 	var result_position : Vector2 = Vector2.ZERO
@@ -19,17 +22,12 @@ func get_spawn_coord(player_pos : Vector2) -> Vector2:
 	return result_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta : float) -> void:
+func _process(_delta : float) -> void:
 	var new_enemy_number : int = max_enemies - enemy_array.size()
-	
-	for i in enemy_array:
-		if not i.is_alive:
-			enemy_array.erase(i)
-			i.queue_free()
-	
 	
 	for i in range(new_enemy_number):
 		var new_enemy : CharacterBody2D = enemy_scene.instantiate()
+		new_enemy.death.connect(_on_death)
 		new_enemy.position = get_spawn_coord(player.position)
 		enemy_array.append(new_enemy)
 		add_child(new_enemy)

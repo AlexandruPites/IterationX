@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ca3p3id8imxb" path="res://scenes/main_character.tscn" id="2_rbl60"]
 [ext_resource type="PackedScene" uid="uid://cpjafs71x7bqv" path="res://scenes/camera.tscn" id="4_r5wui"]
 [ext_resource type="Script" path="res://scripts/Camera.gd" id="5_bk68d"]
-[ext_resource type="Script" path="res://EnemySpawner.gd" id="6_pk4xv"]
+[ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="6_pk4xv"]
 
 [node name="Game" type="Node"]
 
