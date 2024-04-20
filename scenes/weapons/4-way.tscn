@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://fx4wdtrlkclp" path="res://images/Sprite-0001.png" id="2_8g8h7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jc1uu"]
+radius = 21.0
 
 [node name="4-way" type="Area2D"]
 script = ExtResource("1_3byp6")
@@ -17,6 +18,7 @@ offset_bottom = 18.0
 texture = ExtResource("2_8g8h7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
 shape = SubResource("CircleShape2D_jc1uu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
