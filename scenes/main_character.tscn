@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ca3p3id8imxb"]
 
 [ext_resource type="Script" path="res://scripts/main_character.gd" id="1_atlu0"]
-[ext_resource type="Texture2D" uid="uid://wr1idb6via0d" path="res://images/Player.png" id="2_64cvx"]
+[ext_resource type="Texture2D" uid="uid://cjb3fpdjmw2q7" path="res://images/astronaut.png" id="2_uvg75"]
 [ext_resource type="Script" path="res://scripts/Weapon Handler.gd" id="3_amu8f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kwon2"]
@@ -46,7 +46,7 @@ script = ExtResource("1_atlu0")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(1.351, 1.5)
-texture = ExtResource("2_64cvx")
+texture = ExtResource("2_uvg75")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 4)
