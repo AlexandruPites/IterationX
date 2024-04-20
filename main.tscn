@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dv5v7x871fmkq"]
+[gd_scene load_steps=9 format=3 uid="uid://dv5v7x871fmkq"]
 
 [ext_resource type="Texture2D" uid="uid://rvtj6d8uhegu" path="res://images/mars-tiles.png" id="1_s6454"]
 [ext_resource type="PackedScene" uid="uid://ca3p3id8imxb" path="res://scenes/main_character.tscn" id="2_rbl60"]
 [ext_resource type="PackedScene" uid="uid://cpjafs71x7bqv" path="res://scenes/camera.tscn" id="4_r5wui"]
 [ext_resource type="Script" path="res://scripts/Camera.gd" id="5_bk68d"]
+[ext_resource type="AudioStream" uid="uid://db4h37ul2plip" path="res://music/Doppelganger%20Assault.mp3" id="6_hs82m"]
 [ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="6_pk4xv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfd6c"]
@@ -77,3 +78,8 @@ script = ExtResource("5_bk68d")
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("6_pk4xv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_hs82m")
+volume_db = -20.0
+autoplay = true
