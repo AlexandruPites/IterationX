@@ -28,8 +28,8 @@ func _process(_delta : float) -> void:
 			timer.start() # timer is set to 0.3
 			health -= 1
 			animation_player.play("take_damage")
-			#collision_shape_2d.disabled = true
+			collision_shape_2d.disabled = true
 			print(health)
-	if timer.is_stopped(): #and collision_shape_2d.disabled:
-		#collision_shape_2d.disabled = false
+	if timer.is_stopped() and collision_shape_2d.disabled:
+		collision_shape_2d.disabled = false
 		animation_player.stop()
