@@ -10,7 +10,6 @@ height = 44.0
 [sub_resource type="Animation" id="Animation_h4wie"]
 resource_name = "take_damage"
 length = 0.3
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

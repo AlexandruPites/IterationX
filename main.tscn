@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bo6b0jyfsaqli" path="res://images/space_station_tiles.jpg" id="1_ce38y"]
 [ext_resource type="PackedScene" uid="uid://ca3p3id8imxb" path="res://scenes/main_character.tscn" id="2_rbl60"]
-[ext_resource type="PackedScene" uid="uid://bhiih1q0mttpg" path="res://scenes/enemy.tscn" id="3_muqjo"]
 [ext_resource type="PackedScene" uid="uid://cpjafs71x7bqv" path="res://scenes/camera.tscn" id="4_r5wui"]
 [ext_resource type="Script" path="res://scripts/Camera.gd" id="5_bk68d"]
+[ext_resource type="Script" path="res://EnemySpawner.gd" id="6_pk4xv"]
 
 [node name="Game" type="Node"]
 
@@ -26,20 +26,8 @@ stretch_mode = 1
 [node name="Player" parent="." instance=ExtResource("2_rbl60")]
 position = Vector2(0, 0)
 
-[node name="Enemy" parent="." instance=ExtResource("3_muqjo")]
-position = Vector2(151, -102)
-
-[node name="Enemy2" parent="." instance=ExtResource("3_muqjo")]
-position = Vector2(120, -30)
-
-[node name="Enemy3" parent="." instance=ExtResource("3_muqjo")]
-position = Vector2(-226, -283)
-
-[node name="Enemy4" parent="." instance=ExtResource("3_muqjo")]
-position = Vector2(276, 181)
-
-[node name="Enemy5" parent="." instance=ExtResource("3_muqjo")]
-position = Vector2(-246, 187)
-
 [node name="Camera2D" parent="." instance=ExtResource("4_r5wui")]
 script = ExtResource("5_bk68d")
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+script = ExtResource("6_pk4xv")
