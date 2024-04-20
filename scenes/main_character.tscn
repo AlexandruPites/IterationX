@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ca3p3id8imxb"]
+[gd_scene load_steps=7 format=3 uid="uid://ca3p3id8imxb"]
 
 [ext_resource type="Script" path="res://scripts/main_character.gd" id="1_atlu0"]
 [ext_resource type="Texture2D" uid="uid://wr1idb6via0d" path="res://images/Player.png" id="2_64cvx"]
+[ext_resource type="Script" path="res://scripts/Weapon Handler.gd" id="3_amu8f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kwon2"]
 radius = 14.0
@@ -51,3 +52,6 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_ssdlj")
 }
+
+[node name="Weapon Handler" type="Node2D" parent="."]
+script = ExtResource("3_amu8f")
