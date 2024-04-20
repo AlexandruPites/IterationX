@@ -9,6 +9,5 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("damageable"):
-		var direction : Vector2 = global_position.direction_to(body.global_position).normalized()
-		body.take_damage(damage, direction)
+		body.take_damage(damage)
 		queue_free()

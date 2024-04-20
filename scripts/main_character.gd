@@ -14,6 +14,8 @@ var direction : Vector2
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var area_2d : Area2D = $Area2D
 
+var enemies_collided_list : Array[Node2D] = []
+
 func _process(_delta : float) -> void:
 	
 	direction = Input.get_vector("left", "right", "up", "down")
@@ -39,8 +41,18 @@ func take_damage(damage : int) -> void:
 		animation_player.play("take_damage")
 		print(health)
 
+func collide_enemy(body : Node2D) -> void:
+	body.take_damage(20)
+	take_damage(1)
+
 func _on_area_2d_body_entered(body : Node2D) -> void:
 	if body.is_in_group("damageable"):
-		body.take_damage(20, global_position.direction_to(body.global_position).normalized())
-		take_damage(1)
-	pass # Replace with function body.
+		enemies_collided_list.append(body)
+		collide_enemy(body)
+
+func _on_area_2d_body_exited(body : Node2D) -> void:
+	enemies_collided_list.erase(body)
+
+func _on_timer_timeout() -> void:
+	for body in enemies_collided_list:
+		collide_enemy(body)
