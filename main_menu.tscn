@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bm3hvuynnjll4"]
 
-[ext_resource type="Texture2D" uid="uid://b4gp0s4d7p5mx" path="res://Untitled design.png" id="1_8dc4l"]
+[ext_resource type="Texture2D" uid="uid://cctsfl71n878m" path="res://images/main-menu-background.png" id="1_8dc4l"]
 [ext_resource type="Script" path="res://CanvasLayer.gd" id="2_x64re"]
 
 [node name="MainMenu" type="Node"]
