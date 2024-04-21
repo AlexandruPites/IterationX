@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 #player attributes
-var health : float = 3.0
+var health : float = 30.0
 var speed : float = 300.0
 var direction : Vector2
 var xp : float = 0
@@ -16,6 +16,8 @@ var level : int = 0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var area_2d : Area2D = $Area2D
 @onready var camera_2d: Camera2D = $"../Camera2D"
+@onready var xp_pickup_sound : AudioStreamPlayer = $XP_pickup_sound
+@onready var hurt_sound : AudioStreamPlayer = $Hurt_sound
 
 var enemies_collided_list : Array[Node2D] = []
 
@@ -47,6 +49,7 @@ func take_damage(damage : int) -> void:
 			get_tree().change_scene_to_file.call_deferred("res://game_over_screen.tscn")
 		animation_player.play("take_damage")
 		print(health)
+		hurt_sound.play()
 
 func collide_enemy(body : Node2D) -> void:
 	body.take_damage(20)
@@ -78,6 +81,7 @@ func _on_pickup_radius_area_entered(area: Area2D) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("pickupable"):
+		xp_pickup_sound.play()
 		print(xp, " ", level)
 		xp += area.value
 		if xp >= xp_to_level:
