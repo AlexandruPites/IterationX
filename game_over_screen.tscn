@@ -1,0 +1,110 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2qui0ahetuyy"]
+
+[ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_4utlk"]
+[ext_resource type="FontFile" uid="uid://ch4eyovb85f2h" path="res://VCR_OSD_MONO_1.001.ttf" id="2_4v8wo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sur0g"]
+bg_color = Color(0.635294, 0.211765, 0.211765, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_g2m61"]
+font = ExtResource("2_4v8wo")
+font_size = 56
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4utlk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0156863, 0.0156863, 0.00784314, 0.490196)
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -362.0
+offset_top = -233.0
+offset_right = 378.0
+offset_bottom = 253.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sur0g")
+
+[node name="GameOverLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -112.0
+offset_right = 112.0
+offset_bottom = 43.0
+grow_horizontal = 2
+text = "Run over"
+label_settings = SubResource("LabelSettings_g2m61")
+
+[node name="ReturnToMainMenu" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 155.0
+offset_right = 647.0
+offset_bottom = 206.0
+theme_override_fonts/font = ExtResource("2_4v8wo")
+theme_override_font_sizes/font_size = 48
+text = "Return to main menu"
+
+[node name="Quit" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -73.0
+offset_top = -117.0
+offset_right = 47.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_4v8wo")
+theme_override_font_sizes/font_size = 48
+text = "Quit
+"
+
+[node name="Retry" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = 21.0
+offset_right = 61.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_4v8wo")
+theme_override_font_sizes/font_size = 48
+text = "Retry"
+
+[connection signal="pressed" from="Panel/ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]
+[connection signal="pressed" from="Panel/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Panel/Retry" to="." method="_on_retry_pressed"]

@@ -3,7 +3,7 @@ class_name Player
 
 
 #player attributes
-var health : float = 100.0
+var health : float = 3.0
 var speed : float = 300.0
 var direction : Vector2
 var xp : float = 0
@@ -44,7 +44,7 @@ func take_damage(damage : int) -> void:
 		timer.start() # timer is set to 0.3
 		health -= damage
 		if health <= 0:
-			get_tree().reload_current_scene()
+			get_tree().change_scene_to_file.call_deferred("res://game_over_screen.tscn")
 		animation_player.play("take_damage")
 		print(health)
 
