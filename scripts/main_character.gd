@@ -35,9 +35,6 @@ func _process(_delta : float) -> void:
 		take_damage(1)
 	camera_2d.position = position
 	
-	if Input.is_action_just_pressed("pause"):
-		print("pause")
-		pass 
 
 func is_left() -> bool:
 	return sprite_2d.flip_h
