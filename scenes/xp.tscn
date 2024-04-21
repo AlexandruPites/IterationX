@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://cqmic4ctrs30l"]
+
+[ext_resource type="Script" path="res://scripts/xp.gd" id="1_encpb"]
+[ext_resource type="Texture2D" uid="uid://chev0dy52k5r3" path="res://images/xp-animation/xp-3.png" id="2_mb77m"]
+[ext_resource type="Texture2D" uid="uid://cgqpgh32ym3r6" path="res://images/xp-animation/xp-1.png" id="3_dv4vl"]
+[ext_resource type="Texture2D" uid="uid://do0c8tehqvhsk" path="res://images/xp-animation/xp-2.png" id="4_gwmox"]
+[ext_resource type="Texture2D" uid="uid://d12hccbcg7i2c" path="res://images/xp-animation/xp-4.png" id="5_a5xtd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmq4e"]
+size = Vector2(24, 40)
+
+[sub_resource type="Animation" id="Animation_kfibq"]
+resource_name = "float_in_place"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-20, -22), Vector2(-20, -27), Vector2(-20, -22)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_dv4vl"), ExtResource("4_gwmox"), ExtResource("2_mb77m"), ExtResource("5_a5xtd"), ExtResource("3_dv4vl")]
+}
+
+[sub_resource type="Animation" id="Animation_xebs5"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vlcdp"]
+_data = {
+"RESET": SubResource("Animation_xebs5"),
+"float_in_place": SubResource("Animation_kfibq")
+}
+
+[node name="XP" type="Area2D" groups=["pickupable"]]
+scale = Vector2(0.748171, 0.75)
+collision_layer = 512
+collision_mask = 512
+script = ExtResource("1_encpb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_qmq4e")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -20.0
+offset_top = -22.0
+offset_right = 20.0
+offset_bottom = 18.0
+scale = Vector2(1.00118, 0.994428)
+texture = ExtResource("3_dv4vl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vlcdp")
+}
