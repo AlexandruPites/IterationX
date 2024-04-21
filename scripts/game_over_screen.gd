@@ -1,17 +1,36 @@
 extends Control
 
-@onready var quit: Button = $Panel/Quit
-@onready var retry: Button = $Panel/Retry
-@onready var return_to_main_menu: Button = $Panel/ReturnToMainMenu
+@onready var settings: Control = $ColorRect/Settings
+@onready var panel: Panel = $ColorRect/Panel
+
+@onready var settingsButton: Button = $ColorRect/Panel/Settings
+@onready var resume: Button = $ColorRect/Panel/Resume
+@onready var save: Button = $ColorRect/Panel/Save
+
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		_on_resume_pressed()
+	
+
+func _on_settings_pressed() -> void:
+	panel.visible = false
+	settings.visible = true
 
 
-func _on_return_to_main_menu_pressed() -> void:
-	get_tree().change_scene_to_file("res://main_menu.tscn")
+func _on_resume_pressed() -> void:
+	panel.visible = false
+	settings.visible = false
+	get_tree().paused = not get_tree().paused
+	get_parent().delete_instance(self)
 
 
-func _on_quit_pressed() -> void:
-	get_tree().quit()
+func _on_save_pressed() -> void:
+	pass
 
-
-func _on_retry_pressed() -> void:
-	get_tree().change_scene_to_file("res://main.tscn") # Replace with function body.
+func _on_button_back_pressed() -> void:
+	settings.visible = false
+	panel.visible = true
+	
