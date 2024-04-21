@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c4oh0fupwk5ij"]
 
-[ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_6nihj"]
+[ext_resource type="Script" path="res://scripts/pause_screen.gd" id="1_q6wqc"]
 [ext_resource type="FontFile" uid="uid://ch4eyovb85f2h" path="res://VCR_OSD_MONO_1.001.ttf" id="2_ct22q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sur0g"]
@@ -21,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_6nihj")
+script = ExtResource("1_q6wqc")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
