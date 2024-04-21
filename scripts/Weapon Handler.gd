@@ -20,6 +20,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if not Input.is_action_pressed("reject"):
 		shoot()
+	else:
+		if is_instance_valid(sword):
+			sword.queue_free()
 	
 func add_weapon(weapon_name : String) -> void:
 	var format_string : String = "res://scenes/weapons/%s.tscn"
