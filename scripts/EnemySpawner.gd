@@ -2,6 +2,7 @@ extends Node2D
 
 var enemy_array : Array[CharacterBody2D] = []
 var enemy_scene : PackedScene = preload("res://scenes/enemy.tscn")
+var xp_scene : Resource = preload("res://scenes/xp.tscn")
 const max_enemies : int = 50
 const spawn_distance : float = 700
 @onready var player : CharacterBody2D = $"../Player"
@@ -11,6 +12,10 @@ const spawn_distance : float = 700
 	#pass # Replace with function body.
 
 func _on_death(source : CharacterBody2D) -> void:
+	if source.health <= 0:
+		var xp : Area2D = xp_scene.instantiate()
+		xp.position = source.position
+		add_child.call_deferred(xp)
 	enemy_array.erase(source)
 	source.queue_free()
 

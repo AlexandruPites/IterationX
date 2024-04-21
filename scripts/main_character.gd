@@ -6,6 +6,8 @@ class_name Player
 var health : float = 100.0
 var speed : float = 300.0
 var direction : Vector2
+var xp : float = 0
+var level : int = 0
 
 @onready var weapon_handler: WeaponHandler = $"Weapon Handler"
 @onready var sprite_2d : Sprite2D = $Sprite2D
@@ -66,3 +68,12 @@ func _on_active_range_body_exited(body : Node2D) -> void:
 func _on_active_range_area_exited(area : Area2D) -> void:
 	if area.is_in_group("despawnable"):
 		area.despawn()
+
+func _on_pickup_radius_area_entered(area: Area2D) -> void:
+	if area.is_in_group("pickupable"):
+		area.fly_to_player()
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("pickupable"):
+		xp += area.value
+		area.queue_free()
