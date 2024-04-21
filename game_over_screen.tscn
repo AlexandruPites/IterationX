@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2qui0ahetuyy"]
+[gd_scene load_steps=6 format=3 uid="uid://b2qui0ahetuyy"]
 
 [ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_4utlk"]
 [ext_resource type="FontFile" uid="uid://ch4eyovb85f2h" path="res://VCR_OSD_MONO_1.001.ttf" id="2_4v8wo"]
+[ext_resource type="Script" path="res://scripts/ButtonGrab.gd" id="3_j8xcy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sur0g"]
 bg_color = Color(0.635294, 0.211765, 0.211765, 1)
@@ -69,6 +70,7 @@ offset_bottom = 206.0
 theme_override_fonts/font = ExtResource("2_4v8wo")
 theme_override_font_sizes/font_size = 48
 text = "Return to main menu"
+script = ExtResource("3_j8xcy")
 
 [node name="Quit" type="Button" parent="Panel"]
 layout_mode = 1

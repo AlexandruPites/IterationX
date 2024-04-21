@@ -3,6 +3,9 @@ extends Control
 @onready var settings: Control = $ColorRect/Settings
 @onready var panel: Panel = $ColorRect/Panel
 
+@onready var button_back: Button = $ColorRect/Settings/CenterContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/ButtonBack
+@onready var resume: Button = $ColorRect/Panel/Resume
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 
@@ -14,6 +17,7 @@ func _process(delta: float) -> void:
 func _on_settings_pressed() -> void:
 	panel.visible = false
 	settings.visible = true
+	button_back.grab_focus.call_deferred()
 
 
 func _on_resume_pressed() -> void:
@@ -29,4 +33,4 @@ func _on_save_pressed() -> void:
 func _on_button_back_pressed() -> void:
 	settings.visible = false
 	panel.visible = true
-	
+	resume.grab_focus.call_deferred()
