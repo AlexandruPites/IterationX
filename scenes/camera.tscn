@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpjafs71x7bqv"]
+[gd_scene load_steps=7 format=3 uid="uid://cpjafs71x7bqv"]
 
 [ext_resource type="Script" path="res://scripts/DisplayTime.gd" id="1_3nk1p"]
 [ext_resource type="FontFile" uid="uid://ch4eyovb85f2h" path="res://VCR_OSD_MONO_1.001.ttf" id="1_4eoao"]
@@ -7,26 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://chtulqaw4juvq" path="res://images/foreground_xp_bar.png" id="4_geb08"]
 [ext_resource type="Texture2D" uid="uid://cpko65qsl6cm0" path="res://images/progress_xp_bar.png" id="5_qwd32"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_66e2w"]
-
 [node name="Camera2D" type="Camera2D"]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1800.0
 one_shot = true
 autostart = true
-
-[node name="LineEdit" type="LineEdit" parent="."]
-texture_filter = 1
-offset_left = -56.0
-offset_top = -275.0
-offset_right = 56.0
-offset_bottom = -233.0
-theme_override_fonts/font = ExtResource("1_4eoao")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxEmpty_66e2w")
-alignment = 1
-script = ExtResource("1_3nk1p")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 texture_filter = 1
@@ -45,7 +31,16 @@ offset_top = -324.0
 offset_right = 567.0
 offset_bottom = -297.0
 theme_override_fonts/font = ExtResource("1_4eoao")
-horizontal_alignment = 2
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="timeout" from="Timer" to="LineEdit" method="_on_timer_timeout"]
+[node name="Time" type="Label" parent="."]
+offset_left = -56.0
+offset_top = -275.0
+offset_right = 56.0
+offset_bottom = -233.0
+theme_override_fonts/font = ExtResource("1_4eoao")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_3nk1p")

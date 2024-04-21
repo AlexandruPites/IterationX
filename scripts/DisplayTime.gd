@@ -1,4 +1,4 @@
-extends LineEdit
+extends Label
 
 @onready var timer: Timer = $"../Timer"
 
