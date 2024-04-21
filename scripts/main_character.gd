@@ -18,12 +18,19 @@ var level : int = 0
 @onready var camera_2d: Camera2D = $"../Camera2D"
 @onready var xp_pickup_sound : AudioStreamPlayer = $XP_pickup_sound
 @onready var hurt_sound : AudioStreamPlayer = $Hurt_sound
+var player_viewport : Vector2
 
 var enemies_collided_list : Array[Node2D] = []
+
+func _ready() -> void:
+	player_viewport = get_viewport_rect().size / 2
 
 func _process(_delta : float) -> void:
 	
 	direction = Input.get_vector("left", "right", "up", "down")
+	if Input.is_action_pressed("accept"):
+		var pos : Vector2 = get_viewport().get_mouse_position()
+		direction = (pos - player_viewport).normalized()
 
 	velocity = direction * speed
 	
@@ -82,7 +89,6 @@ func _on_pickup_radius_area_entered(area: Area2D) -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("pickupable"):
 		xp_pickup_sound.play()
-		print(xp, " ", level)
 		xp += area.value
 		if xp >= xp_to_level:
 			var diff : float = xp - xp_to_level
