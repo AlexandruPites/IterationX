@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhiih1q0mttpg"]
+[gd_scene load_steps=7 format=3 uid="uid://bhiih1q0mttpg"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_y50n4"]
 [ext_resource type="Texture2D" uid="uid://2stigmatny7c" path="res://images/space-robot-64.png" id="2_w3pw4"]
+[ext_resource type="AudioStream" uid="uid://c8f18qogjnm0k" path="res://sound_effects/Hit_hurt 79.wav" id="3_ni0h4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nsktk"]
 radius = 13.4715
@@ -53,3 +54,7 @@ libraries = {
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="Enemy_hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ni0h4")
+volume_db = -10.0

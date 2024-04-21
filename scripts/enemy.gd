@@ -8,6 +8,7 @@ var health : float = 100
 @onready var sprite_2d : Sprite2D = $Sprite2D
 @onready var timer : Timer = $Timer
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var enemy_hurt : AudioStreamPlayer = $Enemy_hurt
 
 
 var player_pos : Vector2 = Vector2.ZERO
@@ -39,6 +40,7 @@ func take_damage(damage : float) -> void:
 		health -= damage
 		var direction : Vector2 = player.global_position.direction_to(self.global_position).normalized()
 		knockback = direction * knockback_strength
+		enemy_hurt.play()
 		if health <= 0:
 			despawn()
 
