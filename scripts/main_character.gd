@@ -82,7 +82,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		xp += area.value
 		if xp >= xp_to_level:
 			var diff : float = xp - xp_to_level
-			xp_to_level *= 2
+			xp_to_level += 100
 			xp = diff
 			level += 1
 		area.queue_free()
