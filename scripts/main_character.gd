@@ -44,7 +44,7 @@ func take_damage(damage : int) -> void:
 		timer.start() # timer is set to 0.3
 		health -= damage
 		if health <= 0:
-			get_tree().change_scene_to_file("res://game_over_screen.tscn")
+			get_tree().change_scene_to_file.call_deferred("res://game_over_screen.tscn")
 		animation_player.play("take_damage")
 		print(health)
 
