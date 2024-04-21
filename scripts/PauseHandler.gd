@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and pause_instance == null:
 		var pause_instance: Node = pause.instantiate()
 		pause_instance.position = player.position
+		pause_instance.z_index = 2
 		add_child.call_deferred(pause_instance)
 		get_tree().paused = not get_tree().paused
 		

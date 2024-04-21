@@ -85,7 +85,7 @@ autoplay = true
 [node name="XP" parent="." instance=ExtResource("7_x5b6a")]
 position = Vector2(885, -31)
 
-[node name="Control" type="Control" parent="."]
+[node name="PauseHandler" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

@@ -3,10 +3,6 @@ extends Control
 @onready var settings: Control = $ColorRect/Settings
 @onready var panel: Panel = $ColorRect/Panel
 
-@onready var settingsButton: Button = $ColorRect/Panel/Settings
-@onready var resume: Button = $ColorRect/Panel/Resume
-@onready var save: Button = $ColorRect/Panel/Save
-
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 
