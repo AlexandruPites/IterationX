@@ -11,4 +11,4 @@ func _ready() -> void:
 func _process(delta : float) -> void:
 	value = player.xp
 	max_value = player.xp_to_level
-	label.text = "Level " + str(player.level)
+	label.text = "LEVEL " + str(player.level)

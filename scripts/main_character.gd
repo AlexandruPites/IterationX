@@ -16,6 +16,7 @@ var level : int = 0
 @onready var timer: Timer = $Timer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var area_2d : Area2D = $Area2D
+@onready var camera_2d: Camera2D = $"../Camera2D"
 
 var enemies_collided_list : Array[Node2D] = []
 
@@ -33,6 +34,7 @@ func _process(_delta : float) -> void:
 	var collision_info : bool = move_and_slide()
 	if collision_info:
 		take_damage(1)
+	camera_2d.position = position
 
 func is_left() -> bool:
 	return sprite_2d.flip_h
