@@ -14,12 +14,7 @@ func _ready() -> void:
 	player = get_node("/root/Game/Player")
 
 func _process(delta: float) -> void:
-	if player.sprite_2d.flip_h:
-		angle -= delta * speed
-		texture_rect.flip_v = true
-	else:
-		angle += delta * speed
-		texture_rect.flip_v = false
+	angle += delta * speed
 	position.x = player.position.x + 100 * cos(angle)
 	position.y = player.position.y + 100 * sin(angle)
 	rotation = angle

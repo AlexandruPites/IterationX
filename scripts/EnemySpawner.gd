@@ -36,6 +36,3 @@ func _process(_delta : float) -> void:
 		new_enemy.position = get_spawn_coord(player.position)
 		enemy_array.append(new_enemy)
 		add_child(new_enemy)
-		
-		
-	pass
