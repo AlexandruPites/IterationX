@@ -5,6 +5,7 @@ class_name WeaponHandler
 var inventory : Array[Resource] = []
 var names : Array[String] = []
 var timers : Array[Timer] = []
+var sword : Projectile
 
 @onready var player: Player = $".."
 var parent_pos : Vector2
@@ -13,17 +14,17 @@ var game : Node
 func _ready() -> void:
 	game = get_node("/root/Game")
 	add_weapon("4-way")
+	add_weapon("katanatata")
 	
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("accept") or true:
+	if not Input.is_action_pressed("reject"):
 		shoot()
 	
-func add_weapon(name : String) -> void:
+func add_weapon(weapon_name : String) -> void:
 	var format_string : String = "res://scenes/weapons/%s.tscn"
-	inventory.append(load(format_string % name))
-	names.append(name)
+	inventory.append(load(format_string % weapon_name))
+	names.append(weapon_name)
 	var timer : Timer = Timer.new()
 	timer.one_shot = true
 	timer.wait_time = 0.3
@@ -46,5 +47,12 @@ func shoot() -> void:
 						instance.position = parent_pos
 						instance.velocity *= mult[j]
 						game.add_child(instance)
+				"katanatata":
+					if !is_instance_valid(sword):
+						sword = weapon.instantiate()
+						sword.position = parent_pos
+						game.add_child(sword)
+						
+						
 				
 				

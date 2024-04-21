@@ -9,6 +9,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmq4e"]
 size = Vector2(24, 40)
 
+[sub_resource type="Animation" id="Animation_xebs5"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_kfibq"]
 resource_name = "float_in_place"
 length = 2.0
@@ -37,9 +40,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [ExtResource("3_dv4vl"), ExtResource("4_gwmox"), ExtResource("2_mb77m"), ExtResource("5_a5xtd"), ExtResource("3_dv4vl")]
 }
-
-[sub_resource type="Animation" id="Animation_xebs5"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vlcdp"]
 _data = {
