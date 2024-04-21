@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpjafs71x7bqv"]
+[gd_scene load_steps=4 format=3 uid="uid://cpjafs71x7bqv"]
 
 [ext_resource type="Script" path="res://scripts/DisplayTime.gd" id="1_3nk1p"]
+[ext_resource type="FontFile" uid="uid://ch4eyovb85f2h" path="res://VCR_OSD_MONO_1.001.ttf" id="1_4eoao"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_66e2w"]
 
@@ -12,13 +13,24 @@ one_shot = true
 autostart = true
 
 [node name="LineEdit" type="LineEdit" parent="."]
-offset_left = -50.0
-offset_top = -325.0
-offset_right = 17.0625
-offset_bottom = -294.0
+texture_filter = 1
+offset_left = -56.0
+offset_top = -275.0
+offset_right = 56.0
+offset_bottom = -233.0
+theme_override_fonts/font = ExtResource("1_4eoao")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxEmpty_66e2w")
 alignment = 1
 script = ExtResource("1_3nk1p")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+texture_filter = 1
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = -297.0
+theme_override_fonts/font = ExtResource("1_4eoao")
+theme_override_font_sizes/font_size = 25
 
 [connection signal="timeout" from="Timer" to="LineEdit" method="_on_timer_timeout"]
