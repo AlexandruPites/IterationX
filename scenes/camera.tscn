@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpjafs71x7bqv"]
+[gd_scene load_steps=8 format=3 uid="uid://cpjafs71x7bqv"]
 
 [ext_resource type="Script" path="res://scripts/DisplayTime.gd" id="1_3nk1p"]
 [ext_resource type="FontFile" uid="uid://ch4eyovb85f2h" path="res://VCR_OSD_MONO_1.001.ttf" id="1_4eoao"]
+[ext_resource type="Script" path="res://scripts/XPBar.gd" id="3_74lyn"]
+[ext_resource type="Texture2D" uid="uid://cr7bcjpcmhcab" path="res://images/background_xp_bar.png" id="3_pd731"]
+[ext_resource type="Texture2D" uid="uid://chtulqaw4juvq" path="res://images/foreground_xp_bar.png" id="4_geb08"]
+[ext_resource type="Texture2D" uid="uid://cpko65qsl6cm0" path="res://images/progress_xp_bar.png" id="5_qwd32"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_66e2w"]
 
@@ -24,13 +28,24 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_66e2w")
 alignment = 1
 script = ExtResource("1_3nk1p")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="Label" type="Label" parent="."]
+offset_left = -68.0
+offset_top = -324.0
+offset_right = 68.0
+offset_bottom = -298.0
+theme_override_fonts/font = ExtResource("1_4eoao")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 texture_filter = 1
 offset_left = -576.0
 offset_top = -324.0
 offset_right = 576.0
 offset_bottom = -297.0
-theme_override_fonts/font = ExtResource("1_4eoao")
-theme_override_font_sizes/font_size = 25
+texture_under = ExtResource("3_pd731")
+texture_over = ExtResource("4_geb08")
+texture_progress = ExtResource("5_qwd32")
+script = ExtResource("3_74lyn")
 
 [connection signal="timeout" from="Timer" to="LineEdit" method="_on_timer_timeout"]

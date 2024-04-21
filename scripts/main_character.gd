@@ -7,6 +7,7 @@ var health : float = 100.0
 var speed : float = 300.0
 var direction : Vector2
 var xp : float = 0
+var xp_to_level : float = 100
 var level : int = 0
 
 @onready var weapon_handler: WeaponHandler = $"Weapon Handler"
@@ -75,5 +76,11 @@ func _on_pickup_radius_area_entered(area: Area2D) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("pickupable"):
+		print(xp, " ", level)
 		xp += area.value
+		if xp >= xp_to_level:
+			var diff : float = xp - xp_to_level
+			xp_to_level *= 2
+			xp = diff
+			level += 1
 		area.queue_free()
