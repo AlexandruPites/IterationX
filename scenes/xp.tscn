@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqmic4ctrs30l"]
+[gd_scene load_steps=11 format=3 uid="uid://cqmic4ctrs30l"]
 
 [ext_resource type="Script" path="res://scripts/xp.gd" id="1_encpb"]
+[ext_resource type="Texture2D" uid="uid://cdcyw0nkux7qv" path="res://images/xp-animation/capsule.png" id="2_fpwyb"]
 [ext_resource type="Texture2D" uid="uid://chev0dy52k5r3" path="res://images/xp-animation/xp-3.png" id="2_mb77m"]
 [ext_resource type="Texture2D" uid="uid://cgqpgh32ym3r6" path="res://images/xp-animation/xp-1.png" id="3_dv4vl"]
 [ext_resource type="Texture2D" uid="uid://do0c8tehqvhsk" path="res://images/xp-animation/xp-2.png" id="4_gwmox"]
@@ -52,6 +53,22 @@ scale = Vector2(0.748171, 0.75)
 collision_layer = 512
 collision_mask = 512
 script = ExtResource("1_encpb")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.542
+offset_top = -36.525
+offset_right = 221.458
+offset_bottom = 219.475
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.277, 0.277)
+texture = ExtResource("2_fpwyb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
