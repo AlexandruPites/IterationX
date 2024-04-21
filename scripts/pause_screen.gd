@@ -28,7 +28,9 @@ func _on_resume_pressed() -> void:
 
 
 func _on_save_pressed() -> void:
-	pass
+	get_tree().paused = not get_tree().paused
+	get_tree().change_scene_to_file("res://main_menu.tscn")
+
 
 func _on_button_back_pressed() -> void:
 	settings.visible = false
