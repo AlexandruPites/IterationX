@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dv5v7x871fmkq"]
+[gd_scene load_steps=11 format=3 uid="uid://dv5v7x871fmkq"]
 
 [ext_resource type="Texture2D" uid="uid://rvtj6d8uhegu" path="res://images/mars-tiles.png" id="1_s6454"]
 [ext_resource type="PackedScene" uid="uid://ca3p3id8imxb" path="res://scenes/main_character.tscn" id="2_rbl60"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://db4h37ul2plip" path="res://music/Doppelganger%20Assault.mp3" id="6_hs82m"]
 [ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="6_pk4xv"]
 [ext_resource type="Script" path="res://scripts/PauseHandler.gd" id="6_satg3"]
+[ext_resource type="Script" path="res://scripts/LevelUpHandler.gd" id="7_uemc8"]
 [ext_resource type="PackedScene" uid="uid://cqmic4ctrs30l" path="res://scenes/xp.tscn" id="7_x5b6a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfd6c"]
@@ -92,4 +93,13 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("6_satg3")
 
+[node name="LevelUpHandler" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_uemc8")
+
 [node name="Camera2D" parent="." instance=ExtResource("4_r5wui")]
+
+[connection signal="level_up" from="Player" to="LevelUpHandler" method="_on_player_level_up"]

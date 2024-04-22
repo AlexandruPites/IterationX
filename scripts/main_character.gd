@@ -9,6 +9,8 @@ var xp : float = 0
 var xp_to_level : float = 100
 var level : int = 0
 
+signal level_up
+
 @onready var weapon_handler: WeaponHandler = $"Weapon Handler"
 @onready var sprite_2d : Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -95,4 +97,5 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			xp_to_level += 100
 			xp = diff
 			level += 1
+			level_up.emit()
 		area.queue_free()
