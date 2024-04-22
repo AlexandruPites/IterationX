@@ -8,7 +8,7 @@ func _ready() -> void:
 	player = get_node("/root/Game/Player")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta : float) -> void:
+func _process(_delta : float) -> void:
 	value = player.xp
 	max_value = player.xp_to_level
 	label.text = "LEVEL " + str(player.level)
