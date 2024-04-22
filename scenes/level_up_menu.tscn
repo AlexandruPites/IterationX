@@ -94,6 +94,7 @@ offset_left = 43.0
 offset_top = -250.0
 offset_right = 107.0
 offset_bottom = -186.0
+stretch_mode = 4
 
 [node name="Text2" type="TextEdit" parent="Panel/Panel2/Choice2"]
 texture_filter = 1
@@ -134,6 +135,7 @@ offset_left = 43.0
 offset_top = -250.0
 offset_right = 107.0
 offset_bottom = -186.0
+stretch_mode = 4
 
 [node name="Text3" type="TextEdit" parent="Panel/Panel3/Choice3"]
 texture_filter = 1
