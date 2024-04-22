@@ -12,12 +12,15 @@ const spawn_distance : float = 700
 	#pass # Replace with function body.
 
 func _on_death(source : CharacterBody2D) -> void:
+	source.alive = false
+	source.collision_shape_2d.set_deferred("disabled", true)
 	if source.health <= 0:
 		var xp : Area2D = xp_scene.instantiate()
 		xp.position = source.position
 		add_child.call_deferred(xp)
 	enemy_array.erase(source)
-	source.queue_free()
+	source.death_player.play("death")
+	#queue_free() call happens inside animation player
 
 func get_spawn_coord(player_pos : Vector2) -> Vector2:
 	var result_position : Vector2 = Vector2.ZERO

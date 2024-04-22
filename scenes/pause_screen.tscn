@@ -196,9 +196,9 @@ theme_override_font_sizes/font_size = 48
 text = "Save"
 
 [connection signal="pressed" from="ColorRect/Settings/CenterContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
-[connection signal="pressed" from="ColorRect/Panel/SettingsButton" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="ColorRect/Panel/SettingsButton" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="ColorRect/Panel/SettingsButton" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="ColorRect/Panel/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="ColorRect/Panel/Resume" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="ColorRect/Panel/Save" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="ColorRect/Panel/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="ColorRect/Panel/Save" to="." method="_on_quit_pressed"]
