@@ -101,8 +101,6 @@ script = ExtResource("6_satg3")
 [node name="LevelUpHandler" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 script = ExtResource("7_uemc8")
 
 [node name="Camera2D" parent="." instance=ExtResource("4_r5wui")]
