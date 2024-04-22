@@ -7,7 +7,7 @@ var names : Array[String] = []
 var timers : Array[Timer] = []
 var sword : Projectile
 
-@onready var player: Player = $".."
+@onready var player: Player = $"../Player"
 var parent_pos : Vector2
 var game : Node
 
@@ -35,7 +35,7 @@ func add_weapon(weapon_name : String) -> void:
 	add_child(timer)
 	
 func shoot() -> void:
-	parent_pos = get_parent().position
+	parent_pos = player.position
 	for i in range(inventory.size()):
 		var weapon : Resource = inventory[i]
 		if timers[i].is_stopped():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dv5v7x871fmkq"]
+[gd_scene load_steps=12 format=3 uid="uid://dv5v7x871fmkq"]
 
 [ext_resource type="Texture2D" uid="uid://rvtj6d8uhegu" path="res://images/mars-tiles.png" id="1_s6454"]
 [ext_resource type="PackedScene" uid="uid://ca3p3id8imxb" path="res://scenes/main_character.tscn" id="2_rbl60"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/PauseHandler.gd" id="6_satg3"]
 [ext_resource type="Script" path="res://scripts/LevelUpHandler.gd" id="7_uemc8"]
 [ext_resource type="PackedScene" uid="uid://cqmic4ctrs30l" path="res://scenes/xp.tscn" id="7_x5b6a"]
+[ext_resource type="Script" path="res://scripts/Weapon Handler.gd" id="9_sndql"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfd6c"]
 texture = ExtResource("1_s6454")
@@ -74,6 +75,9 @@ layer_0/tile_data = PackedInt32Array(-2949191, 262144, 0, -2883655, 262144, 1, -
 
 [node name="Player" parent="." instance=ExtResource("2_rbl60")]
 position = Vector2(-1, -4)
+
+[node name="Weapon Handler" type="Node2D" parent="."]
+script = ExtResource("9_sndql")
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("6_pk4xv")

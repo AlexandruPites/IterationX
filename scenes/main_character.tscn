@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://ca3p3id8imxb"]
+[gd_scene load_steps=11 format=3 uid="uid://ca3p3id8imxb"]
 
 [ext_resource type="Script" path="res://scripts/main_character.gd" id="1_atlu0"]
 [ext_resource type="Texture2D" uid="uid://cjb3fpdjmw2q7" path="res://images/astronaut.png" id="2_uvg75"]
-[ext_resource type="Script" path="res://scripts/Weapon Handler.gd" id="3_amu8f"]
 [ext_resource type="AudioStream" uid="uid://lg173xgthbqb" path="res://sound_effects/Pickup_coin 1.wav" id="4_lm5oe"]
 [ext_resource type="AudioStream" uid="uid://bry20nujlv2yj" path="res://sound_effects/ugh.wav" id="5_n8d1x"]
 
@@ -64,9 +63,6 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_ssdlj")
 }
-
-[node name="Weapon Handler" type="Node2D" parent="."]
-script = ExtResource("3_amu8f")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
