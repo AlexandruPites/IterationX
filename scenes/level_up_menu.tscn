@@ -75,6 +75,7 @@ virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
 
 [node name="Panel2" type="Panel" parent="Panel"]
+layout_mode = 0
 offset_left = 230.0
 offset_top = 16.0
 offset_right = 400.0
@@ -100,6 +101,7 @@ offset_bottom = -186.0
 
 [node name="TextEdit" type="TextEdit" parent="Panel/Panel2/Choice2"]
 texture_filter = 1
+layout_mode = 0
 offset_top = -181.0
 offset_right = 150.0
 offset_bottom = -6.0
@@ -113,6 +115,7 @@ virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
 
 [node name="Panel3" type="Panel" parent="Panel"]
+layout_mode = 0
 offset_left = 430.0
 offset_top = 16.0
 offset_right = 600.0
@@ -138,6 +141,7 @@ offset_bottom = -186.0
 
 [node name="TextEdit" type="TextEdit" parent="Panel/Panel3/Choice3"]
 texture_filter = 1
+layout_mode = 0
 offset_top = -181.0
 offset_right = 150.0
 offset_bottom = -6.0

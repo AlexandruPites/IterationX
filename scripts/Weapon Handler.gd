@@ -8,7 +8,6 @@ var timers : Array[Timer] = []
 var sword : Projectile
 
 @onready var player: Player = $"../Player"
-var parent_pos : Vector2
 var game : Node
 
 func _ready() -> void:
@@ -35,7 +34,6 @@ func add_weapon(weapon_name : String) -> void:
 	add_child(timer)
 	
 func shoot() -> void:
-	parent_pos = player.position
 	for i in range(inventory.size()):
 		var weapon : Resource = inventory[i]
 		if timers[i].is_stopped():
@@ -47,13 +45,13 @@ func shoot() -> void:
 					
 					for j in range(4):
 						var instance : Projectile = weapon.instantiate()
-						instance.position = parent_pos
+						instance.position = player.position
 						instance.velocity *= mult[j]
 						game.add_child(instance)
 				"katanatata":
 					if !is_instance_valid(sword):
 						sword = weapon.instantiate()
-						sword.position = parent_pos
+						sword.position = player.position
 						game.add_child(sword)
 						
 						
