@@ -16,6 +16,7 @@ font = ExtResource("2_ct22q")
 font_size = 56
 
 [node name="SettingsFromPauseScreen" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -200,5 +201,5 @@ text = "Save"
 [connection signal="pressed" from="ColorRect/Panel/SettingsButton" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="ColorRect/Panel/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="ColorRect/Panel/Resume" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="ColorRect/Panel/Save" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="ColorRect/Panel/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="ColorRect/Panel/Save" to="." method="_on_quit_pressed"]
