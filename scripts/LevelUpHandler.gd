@@ -2,10 +2,10 @@ extends Control
 
 var pause : Resource = preload("res://scenes/level_up_menu.tscn")
 var level_up_instance: Node = null
-@onready var player: Player = $"../Player"
 var dummy : TextureProgressBar
 
-
+@onready var player: Player = $"../Player"
+@onready var weapon_handler: WeaponHandler = $"../Weapon Handler"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

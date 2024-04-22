@@ -55,7 +55,7 @@ offset_right = 107.0
 offset_bottom = -186.0
 stretch_mode = 4
 
-[node name="TextEdit" type="TextEdit" parent="Panel/Panel1/Choice1"]
+[node name="Text1" type="TextEdit" parent="Panel/Panel1/Choice1"]
 texture_filter = 1
 layout_mode = 0
 offset_top = -181.0
@@ -95,7 +95,7 @@ offset_top = -250.0
 offset_right = 107.0
 offset_bottom = -186.0
 
-[node name="TextEdit" type="TextEdit" parent="Panel/Panel2/Choice2"]
+[node name="Text2" type="TextEdit" parent="Panel/Panel2/Choice2"]
 texture_filter = 1
 layout_mode = 0
 offset_top = -181.0
@@ -135,7 +135,7 @@ offset_top = -250.0
 offset_right = 107.0
 offset_bottom = -186.0
 
-[node name="TextEdit" type="TextEdit" parent="Panel/Panel3/Choice3"]
+[node name="Text3" type="TextEdit" parent="Panel/Panel3/Choice3"]
 texture_filter = 1
 layout_mode = 0
 offset_top = -181.0

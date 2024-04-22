@@ -33,6 +33,10 @@ func add_weapon(weapon_name : String) -> void:
 	timers.append(timer)
 	add_child(timer)
 	
+func choose_level_ups() -> Array[RandomItem]:
+	var choices : Array[RandomItem] = []
+	return choices
+	
 func shoot() -> void:
 	for i in range(inventory.size()):
 		var weapon : Resource = inventory[i]
