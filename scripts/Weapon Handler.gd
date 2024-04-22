@@ -1,11 +1,11 @@
 extends Node2D
 class_name WeaponHandler
 
+const MAX_LEVEL : int = 9
 
-var inventory : Array[Resource] = []
-var names : Array[String] = []
-var timers : Array[Timer] = []
+var inventory : Array[ProjectileReference] = []
 var sword : Projectile
+var ref : Dictionary = {}
 
 @onready var player: Player = $"../Player"
 var game : Node
@@ -22,27 +22,52 @@ func _process(_delta: float) -> void:
 	else:
 		if is_instance_valid(sword):
 			sword.queue_free()
+			
+func update_weapon_level(changedItem : RandomItem) -> void:
+	ref[changedItem.item_name] += 1
+	print(ref)
 	
 func add_weapon(weapon_name : String) -> void:
+	ref[weapon_name] = 0
 	var format_string : String = "res://scenes/weapons/%s.tscn"
-	inventory.append(load(format_string % weapon_name))
-	names.append(weapon_name)
+	
+	var resource : Resource = load(format_string % weapon_name)
 	var timer : Timer = Timer.new()
 	timer.one_shot = true
 	timer.wait_time = 0.3
-	timers.append(timer)
-	add_child(timer)
+	
+	var temp : ProjectileReference = ProjectileReference.new()
+	temp.projectile_name = weapon_name
+	temp.timer = timer
+	temp.resource = resource
+	inventory.append(temp)
+	add_child(temp.timer)
 	
 func choose_level_ups() -> Array[RandomItem]:
 	var choices : Array[RandomItem] = []
+	var copy_dict : Dictionary = {}
+	for elem : String in ref.keys():
+		if ref[elem] < MAX_LEVEL:
+			copy_dict[elem] = ref[elem]
+			
+	for i in range(3):
+		if copy_dict.keys().size() > 0:
+			var chosen : String = copy_dict.keys().pick_random()
+			var random : RandomItem = RandomItem.new()
+			random.item_name = chosen
+			random.level_up_text = "+1 level\n" + chosen
+			choices.append(random)
+			copy_dict.erase(chosen)
+		else:
+			choices.append(null)
 	return choices
 	
 func shoot() -> void:
-	for i in range(inventory.size()):
-		var weapon : Resource = inventory[i]
-		if timers[i].is_stopped():
-			timers[i].start()
-			match names[i]:
+	for elem in inventory:
+		var weapon : Resource = elem.resource
+		if elem.timer.is_stopped():
+			elem.timer.start()
+			match elem.projectile_name:
 				"4-way":
 					var instances : Array[Projectile]
 					var mult : Array[Vector2] = [Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1), Vector2(0, -1)]
