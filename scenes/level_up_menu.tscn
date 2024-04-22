@@ -25,19 +25,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -470.0
+offset_left = -305.0
 offset_top = -173.0
-offset_right = 470.0
+offset_right = 325.0
 offset_bottom = 174.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel1" type="Panel" parent="Panel"]
 layout_mode = 0
-offset_left = 200.0
-offset_top = 7.0
-offset_right = 370.0
-offset_bottom = 324.0
+offset_left = 30.0
+offset_top = 16.0
+offset_right = 200.0
+offset_bottom = 333.0
 
 [node name="Choice1" type="Button" parent="Panel/Panel1"]
 texture_filter = 1
@@ -75,10 +75,10 @@ virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
 
 [node name="Panel2" type="Panel" parent="Panel"]
-offset_left = 385.0
-offset_top = 7.0
-offset_right = 555.0
-offset_bottom = 324.0
+offset_left = 230.0
+offset_top = 16.0
+offset_right = 400.0
+offset_bottom = 333.0
 
 [node name="Choice2" type="Button" parent="Panel/Panel2"]
 texture_filter = 1
@@ -113,10 +113,10 @@ virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
 
 [node name="Panel3" type="Panel" parent="Panel"]
-offset_left = 570.0
-offset_top = 7.0
-offset_right = 740.0
-offset_bottom = 324.0
+offset_left = 430.0
+offset_top = 16.0
+offset_right = 600.0
+offset_bottom = 333.0
 
 [node name="Choice3" type="Button" parent="Panel/Panel3"]
 texture_filter = 1

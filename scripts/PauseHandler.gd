@@ -17,7 +17,7 @@ func _ready() -> void:
 	pause_button.pressed.connect(_on_button_pressed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and pause_instance == null:
 		_on_button_pressed()
 
