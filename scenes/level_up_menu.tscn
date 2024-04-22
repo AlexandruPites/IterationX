@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://xiaoc43tp3t2"]
+[gd_scene load_steps=4 format=3 uid="uid://xiaoc43tp3t2"]
 
 [ext_resource type="Script" path="res://scripts/level_up_menu.gd" id="1_vc0vw"]
+[ext_resource type="FontFile" uid="uid://ch4eyovb85f2h" path="res://VCR_OSD_MONO_1.001.ttf" id="2_7anh3"]
 [ext_resource type="Script" path="res://scripts/ButtonGrab.gd" id="2_eetba"]
 
 [node name="LevelUpMenu" type="Control"]
@@ -9,6 +10,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 9.0
+offset_right = 11.0
+offset_bottom = 9.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vc0vw")
@@ -27,26 +32,124 @@ offset_bottom = 174.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Choice1" type="Button" parent="Panel"]
-offset_left = 210.0
-offset_top = 40.0
-offset_right = 360.0
-offset_bottom = 307.0
+[node name="Panel1" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 7.0
+offset_right = 370.0
+offset_bottom = 324.0
+
+[node name="Choice1" type="Button" parent="Panel/Panel1"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 10.0
+offset_top = 255.0
+offset_right = 160.0
+offset_bottom = 300.0
+theme_override_fonts/font = ExtResource("2_7anh3")
+text = "CHOOSE"
 script = ExtResource("2_eetba")
 
-[node name="Choice2" type="Button" parent="Panel"]
+[node name="Texture1" type="TextureRect" parent="Panel/Panel1/Choice1"]
+texture_filter = 1
 layout_mode = 0
-offset_left = 395.0
-offset_top = 40.0
-offset_right = 545.0
-offset_bottom = 307.0
+offset_left = 43.0
+offset_top = -250.0
+offset_right = 107.0
+offset_bottom = -186.0
+stretch_mode = 4
 
-[node name="Choice3" type="Button" parent="Panel"]
-offset_left = 580.0
-offset_top = 40.0
-offset_right = 730.0
-offset_bottom = 307.0
+[node name="TextEdit" type="TextEdit" parent="Panel/Panel1/Choice1"]
+texture_filter = 1
+layout_mode = 0
+offset_top = -181.0
+offset_right = 150.0
+offset_bottom = -6.0
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
 
-[connection signal="pressed" from="Panel/Choice1" to="." method="_on_choice_1_pressed"]
-[connection signal="pressed" from="Panel/Choice2" to="." method="_on_choice_2_pressed"]
-[connection signal="pressed" from="Panel/Choice3" to="." method="_on_choice_3_pressed"]
+[node name="Panel2" type="Panel" parent="Panel"]
+offset_left = 385.0
+offset_top = 7.0
+offset_right = 555.0
+offset_bottom = 324.0
+
+[node name="Choice2" type="Button" parent="Panel/Panel2"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 10.0
+offset_top = 255.0
+offset_right = 160.0
+offset_bottom = 300.0
+theme_override_fonts/font = ExtResource("2_7anh3")
+text = "CHOOSE"
+
+[node name="Texture2" type="TextureRect" parent="Panel/Panel2/Choice2"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 43.0
+offset_top = -250.0
+offset_right = 107.0
+offset_bottom = -186.0
+
+[node name="TextEdit" type="TextEdit" parent="Panel/Panel2/Choice2"]
+texture_filter = 1
+offset_top = -181.0
+offset_right = 150.0
+offset_bottom = -6.0
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="Panel3" type="Panel" parent="Panel"]
+offset_left = 570.0
+offset_top = 7.0
+offset_right = 740.0
+offset_bottom = 324.0
+
+[node name="Choice3" type="Button" parent="Panel/Panel3"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 10.0
+offset_top = 255.0
+offset_right = 160.0
+offset_bottom = 300.0
+theme_override_fonts/font = ExtResource("2_7anh3")
+text = "CHOOSE"
+
+[node name="Texture3" type="TextureRect" parent="Panel/Panel3/Choice3"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 43.0
+offset_top = -250.0
+offset_right = 107.0
+offset_bottom = -186.0
+
+[node name="TextEdit" type="TextEdit" parent="Panel/Panel3/Choice3"]
+texture_filter = 1
+offset_top = -181.0
+offset_right = 150.0
+offset_bottom = -6.0
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[connection signal="pressed" from="Panel/Panel1/Choice1" to="." method="_on_choice_1_pressed"]
+[connection signal="pressed" from="Panel/Panel2/Choice2" to="." method="_on_choice_2_pressed"]
+[connection signal="pressed" from="Panel/Panel3/Choice3" to="." method="_on_choice_3_pressed"]
