@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyfo8cuskkx1g"
-path="res://.godot/imported/katanatata.png-26d90d3955592ee37bff631cfe6e503c.ctex"
+uid="uid://fx4wdtrlkclp"
+path="res://.godot/imported/4-way.png-b5ed6fc23e422202fac074dec352622c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/katanatata.png"
-dest_files=["res://.godot/imported/katanatata.png-26d90d3955592ee37bff631cfe6e503c.ctex"]
+source_file="res://images/weapons/4-way.png"
+dest_files=["res://.godot/imported/4-way.png-b5ed6fc23e422202fac074dec352622c.ctex"]
 
 [params]
 

@@ -7,7 +7,6 @@ var hit_counter : int = 5
 
 func _process(delta: float) -> void:
 	position += velocity * delta
-	print(level)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("damageable"):
