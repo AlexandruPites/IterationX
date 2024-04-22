@@ -19,6 +19,8 @@ signal level_up
 @onready var camera_2d: Camera2D = $"../Camera2D"
 @onready var xp_pickup_sound : AudioStreamPlayer = $XP_pickup_sound
 @onready var hurt_sound : AudioStreamPlayer = $Hurt_sound
+@onready var levelup_sound : AudioStreamPlayer = $Levelup_sound
+
 var player_viewport : Vector2
 
 var enemies_collided_list : Array[Node2D] = []
@@ -96,5 +98,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			xp_to_level += 100
 			xp = diff
 			level += 1
+			levelup_sound.play()
 			level_up.emit()
 		area.queue_free()
