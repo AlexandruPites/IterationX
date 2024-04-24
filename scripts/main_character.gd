@@ -2,7 +2,8 @@ extends CharacterBody2D
 class_name Player
 
 #player attributes
-var health : float = 30.0
+var max_health : float = 30.0
+var health : float
 var speed : float = 300.0
 var direction : Vector2
 var xp : float = 0
@@ -27,6 +28,7 @@ var enemies_collided_list : Array[Node2D] = []
 
 func _ready() -> void:
 	player_viewport = get_viewport_rect().size / 2
+	health = max_health
 
 func _process(_delta : float) -> void:
 	

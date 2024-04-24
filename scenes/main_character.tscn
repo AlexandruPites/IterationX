@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://ca3p3id8imxb"]
+[gd_scene load_steps=15 format=3 uid="uid://ca3p3id8imxb"]
 
 [ext_resource type="Script" path="res://scripts/main_character.gd" id="1_atlu0"]
 [ext_resource type="Texture2D" uid="uid://cjb3fpdjmw2q7" path="res://images/astronaut.png" id="2_uvg75"]
 [ext_resource type="AudioStream" uid="uid://lg173xgthbqb" path="res://sound_effects/Pickup_coin 1.wav" id="4_lm5oe"]
 [ext_resource type="AudioStream" uid="uid://cqkp21jm5gr74" path="res://sound_effects/levelup.mp3" id="5_8rfyj"]
 [ext_resource type="AudioStream" uid="uid://bry20nujlv2yj" path="res://sound_effects/ugh.wav" id="5_n8d1x"]
+[ext_resource type="Texture2D" uid="uid://h7xmdjebgtlg" path="res://images/background_hp_bar.png" id="6_enacg"]
+[ext_resource type="Texture2D" uid="uid://b7uf5ifhcylsi" path="res://images/progress_hp_bar.png" id="7_jxy56"]
+[ext_resource type="Script" path="res://scenes/HpBar.gd" id="8_2alc6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kwon2"]
 radius = 12.0
@@ -41,7 +44,6 @@ height = 48.0
 radius = 104.043
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-position = Vector2(-3, 0)
 collision_mask = 0
 platform_on_leave = 2
 platform_floor_layers = 4294901760
@@ -99,6 +101,15 @@ stream = ExtResource("5_n8d1x")
 process_mode = 3
 stream = ExtResource("5_8rfyj")
 volume_db = -10.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -32.0
+offset_top = -45.0
+offset_right = 32.0
+offset_bottom = -37.0
+texture_under = ExtResource("6_enacg")
+texture_progress = ExtResource("7_jxy56")
+script = ExtResource("8_2alc6")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
