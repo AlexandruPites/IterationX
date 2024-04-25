@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bry20nujlv2yj" path="res://sound_effects/ugh.wav" id="5_n8d1x"]
 [ext_resource type="Texture2D" uid="uid://h7xmdjebgtlg" path="res://images/background_hp_bar.png" id="6_enacg"]
 [ext_resource type="Texture2D" uid="uid://b7uf5ifhcylsi" path="res://images/progress_hp_bar.png" id="7_jxy56"]
-[ext_resource type="Script" path="res://scenes/HpBar.gd" id="8_2alc6"]
+[ext_resource type="Script" path="res://scripts/HpBar.gd" id="8_2alc6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kwon2"]
 radius = 12.0

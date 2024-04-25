@@ -81,6 +81,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.277, 0.277)
 texture = ExtResource("2_fpwyb")
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
@@ -94,6 +95,7 @@ offset_right = 20.0
 offset_bottom = 18.0
 scale = Vector2(1.00118, 0.994428)
 texture = ExtResource("3_dv4vl")
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
