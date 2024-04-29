@@ -27,9 +27,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("damageable"):
 		var direction : Vector2 = global_position.direction_to(body.global_position).normalized()
 		body.take_damage(damage)
-		hit_counter -= 1
-		if hit_counter <= 0:
-			queue_free()
+		queue_free()
 
 func despawn() -> void:
 	queue_free()

@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 		instance.damage = damage
 		instance.hit_counter = hit_counter
 		instance.speed = speed
-		if is_instance_valid(target) and target.health > 0:
+		if is_instance_valid(target) and target.health - damage > 0:
 			instance.target = target
 		else:
 			instance.target = spawner.get_closest_enemy_to_point(player.position)
