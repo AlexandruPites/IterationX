@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bubei04hp5k0y"]
+
+[ext_resource type="Script" path="res://scripts/katanatataHandler.gd" id="1_xe3rj"]
+
+[node name="katanatata" type="Node"]
+script = ExtResource("1_xe3rj")
+
+[node name="Timer" type="Timer" parent="."]
