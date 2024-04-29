@@ -46,12 +46,15 @@ func add_weapon(weapon_name : String) -> void:
 	var resource : Resource = load(format_string % weapon_name)
 	
 	var instance : Projectile = resource.instantiate()
+	
+	var timer : Timer = Timer.new()
+	timer.one_shot = true
+	timer.wait_time = instance.base_fire_rate
+	
 	if instance.single_instance:
 		single_instance_weapons[weapon_name] = null
 	instance.queue_free()
-	var timer : Timer = Timer.new()
-	timer.one_shot = true
-	timer.wait_time = 0.3
+	
 	
 	var temp : ProjectileReference = ProjectileReference.new()
 	temp.projectile_name = weapon_name

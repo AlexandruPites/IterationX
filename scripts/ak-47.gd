@@ -8,6 +8,7 @@ var hit_counter : int = 1
 var damage : float
 var target : Enemy
 var spawner : EnemySpawner
+var base_fire_rate : float = 0.3
 
 func _ready() -> void:
 	calc_stats()

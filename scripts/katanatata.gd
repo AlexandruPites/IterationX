@@ -9,6 +9,7 @@ var player: CharacterBody2D
 var angle: float = 0
 var speed: float
 var damage : float
+var base_fire_rate : float = 0.3
 @onready var texture_rect: TextureRect = $TextureRect
 
 func _init() -> void:

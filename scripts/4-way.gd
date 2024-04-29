@@ -5,6 +5,7 @@ var velocity : Vector2 = Vector2(base_projectile_speed, base_projectile_speed)
 var base_damage : float = 10
 var hit_counter : int = 5
 var damage : float
+var base_fire_rate : float = 0.3
 
 func _ready() -> void:
 	calc_stats()
