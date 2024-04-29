@@ -1,4 +1,5 @@
 extends Node2D
+class_name EnemySpawner
 
 var enemy_array : Array[CharacterBody2D] = []
 var enemy_scene : PackedScene = preload("res://scenes/enemy.tscn")
@@ -28,6 +29,16 @@ func get_spawn_coord(player_pos : Vector2) -> Vector2:
 	result_position.x = player_pos.x + spawn_distance * cos(theta)
 	result_position.y = player_pos.y + spawn_distance * sin(theta)
 	return result_position
+	
+func get_closest_enemy_to_point(source_pos : Vector2) -> Enemy:
+	var min_dist : float = INF
+	var closest_enemy : Enemy = null
+	for enemy in enemy_array:
+		var dist : float = source_pos.distance_squared_to(enemy.position)
+		if dist < min_dist:
+			min_dist = dist
+			closest_enemy = enemy
+	return closest_enemy
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta : float) -> void:

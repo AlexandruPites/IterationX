@@ -2,7 +2,7 @@ extends Area2D
 
 const PICKUPABLE_SPEED: float = 500.0
 var velocity: Vector2 = Vector2.ZERO
-var value: float = 10.0
+var value: float = 100.0
 @onready var player: Player = get_node("/root/Game/Player")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
