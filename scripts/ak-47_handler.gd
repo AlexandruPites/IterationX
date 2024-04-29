@@ -15,6 +15,8 @@ var damage : float
 var speed : float
 var player: Player
 var fire_rate : float
+var target : Enemy
+var spawner : EnemySpawner
 @onready var timer: Timer = $Timer
 
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +24,8 @@ func _ready() -> void:
 	resource = load(format % [weapon_name, weapon_name])
 	calc_stats()
 	timer.one_shot = true
+	spawner = get_node("/root/Game/EnemySpawner")
+	target = spawner.get_closest_enemy_to_point(player.position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -33,6 +37,10 @@ func _process(delta: float) -> void:
 		instance.damage = damage
 		instance.hit_counter = hit_counter
 		instance.speed = speed
+		if is_instance_valid(target) and target.health > 0:
+			instance.target = target
+		else:
+			instance.target = spawner.get_closest_enemy_to_point(player.position)
 		add_child(instance)
 
 func calc_stats() -> void:

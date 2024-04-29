@@ -6,23 +6,22 @@ var velocity : Vector2
 var hit_counter : int
 var damage : float
 var target : Enemy
-var spawner : EnemySpawner
-
-func _ready() -> void:
-	spawner = get_node("/root/Game/EnemySpawner")
-	target = spawner.get_closest_enemy_to_point(position)
 
 func _process(delta: float) -> void:
-	if target == null:
-		target = spawner.get_closest_enemy_to_point(position)
-	if velocity != Vector2.ZERO and target != null:
+	if velocity != Vector2.ZERO and is_instance_valid(target):
 		target_nonbeliever()
-	position += velocity * delta
+		position += velocity * delta
+	else:
+		queue_free()
 
 func target_nonbeliever() -> void:
-	var diff: Vector2 = target.position - position
-	velocity = diff.normalized() * speed
-	rotation = position.angle_to_point(target.position)
+	if is_instance_valid(target):
+		var diff: Vector2 = target.position - position
+		velocity = diff.normalized() * speed
+		rotation = position.angle_to_point(target.position)
+	else:
+		rotation = 0
+		velocity = Vector2.ZERO
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("damageable"):
