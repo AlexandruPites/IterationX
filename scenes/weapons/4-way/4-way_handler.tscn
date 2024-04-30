@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bf2h5y542wpi6"]
 
-[ext_resource type="Script" path="res://4-wayHandler.gd" id="1_0gdqd"]
+[ext_resource type="Script" path="res://scripts/4-wayHandler.gd" id="1_0gdqd"]
 
 [node name="4-wayHandler" type="Node"]
 script = ExtResource("1_0gdqd")

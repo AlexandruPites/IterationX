@@ -60,7 +60,7 @@ _data = {
 "float_in_place": SubResource("Animation_kfibq")
 }
 
-[node name="XP" type="Area2D" groups=["pickupable"]]
+[node name="XP" type="Area2D" groups=["bombable", "pickupable"]]
 scale = Vector2(0.748171, 0.75)
 collision_layer = 512
 collision_mask = 512

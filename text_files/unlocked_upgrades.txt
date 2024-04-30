@@ -1,6 +1,7 @@
 4-way
 katanatata
 ak-47
+bomba
 ::augments::
 health
 damage
