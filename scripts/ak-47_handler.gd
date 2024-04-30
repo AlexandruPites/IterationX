@@ -19,6 +19,8 @@ var target : Enemy
 var spawner : EnemySpawner
 @onready var timer: Timer = $Timer
 
+var modifiers : StatIncrease = StatIncrease.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	resource = load(format % [weapon_name, weapon_name])
@@ -44,10 +46,10 @@ func _process(delta: float) -> void:
 		add_child(instance)
 
 func calc_stats() -> void:
-	damage = base_damage * level
+	damage = base_damage * level * (1 + modifiers.damage_increase)
 	if level < 5:
-		damage = base_damage * 5
-	speed = base_projectile_speed
+		damage = base_damage * 5 * (1 + modifiers.damage_increase)
+	speed = base_projectile_speed * (1 + modifiers.projectile_speed_increase)
 	fire_rate = base_fire_rate / float(level)
 	timer.wait_time = fire_rate
 	

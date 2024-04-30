@@ -5,7 +5,7 @@ var level_up_instance: Node = null
 var dummy : TextureProgressBar
 
 @onready var player: Player = $"../Player"
-@onready var weapon_handler: WeaponHandler = $"../Weapon Handler"
+@onready var weapon_handler: UpgradeHandler = $"../UpgradeHandler"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,7 +33,10 @@ func create_instance() -> void:
 
 func delete_instance(param: Node, upgrade : RandomItem) -> void:
 	if upgrade:
-		weapon_handler.update_weapon_level(upgrade)
+		if upgrade.is_weapon:
+			weapon_handler.update_weapon_level(upgrade)
+		else:
+			weapon_handler.update_augment_level(upgrade)
 	level_up_instance = null
 	dummy.visible = false
 	param.queue_free()

@@ -11,6 +11,8 @@ func _init() -> void:
 
 func _ready() -> void:
 	player = get_node("/root/Game/Player")
+	position.x = player.position.x + 100 * cos(0)
+	position.y = player.position.y + 100 * sin(0)
 
 func _process(delta: float) -> void:
 	if angle >= 40 * PI:

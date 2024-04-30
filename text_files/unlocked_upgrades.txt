@@ -1,3 +1,6 @@
 4-way
 katanatata
 ak-47
+::augments::
+health
+damage
