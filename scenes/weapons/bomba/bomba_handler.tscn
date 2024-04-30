@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk3nw4m2ewklf"]
+
+[ext_resource type="Script" path="res://scripts/bomba_handler.gd" id="1_e2mk5"]
+
+[node name="bombaHandler" type="Node"]
+script = ExtResource("1_e2mk5")
+
+[node name="Timer" type="Timer" parent="."]
