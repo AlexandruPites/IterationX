@@ -1,5 +1,5 @@
 extends Node2D
-class_name WeaponHandler
+class_name UpgradeHandler
 
 const MAX_LEVEL : int = 9
 
@@ -11,7 +11,7 @@ var game : Node
 
 func _ready() -> void:
 	game = get_node("/root/Game")
-	var file : FileAccess = FileAccess.open("res://text_files/weapons.txt", FileAccess.READ)
+	var file : FileAccess = FileAccess.open("res://text_files/unlocked_upgrades.txt", FileAccess.READ)
 	while !file.eof_reached():
 		var line : String = file.get_line()
 		if line != "":
@@ -22,7 +22,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if not Input.is_action_pressed("reject"):
-		shoot()
+		check_if_exists()
 	else:
 		for i : String in inventory:
 			var elm : ProjectileReference = inventory[i]
@@ -72,7 +72,7 @@ func choose_level_ups() -> Array[RandomItem]:
 			choices.append(null)
 	return choices
 	
-func shoot() -> void:
+func check_if_exists() -> void:
 	for i : String in inventory.keys():
 		var elem : ProjectileReference = inventory[i]
 		if not is_instance_valid(elem.handler):
