@@ -37,6 +37,7 @@ func _process(_delta : float) -> void:
 
 
 func take_damage(damage : float) -> void:
+	print(damage)
 	if timer.is_stopped():
 		timer.start()
 		if not animation_player.is_playing():

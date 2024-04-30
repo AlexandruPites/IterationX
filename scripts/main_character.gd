@@ -1,11 +1,17 @@
 extends CharacterBody2D
 class_name Player
 
-#player attributes
-var max_health : float = 30.0
+#player base attributes
+var base_max_health : float = 30.0
+var base_speed : float = 300.0
+
+#player attributes - do not change these
+var max_health : float
 var health : float
-var speed : float = 300.0
+var speed : float
 var direction : Vector2
+
+#player xp attributes
 var xp : float = 0
 var xp_to_level : float = 100
 var level : int = 0
@@ -23,15 +29,15 @@ signal level_up
 @onready var levelup_sound : AudioStreamPlayer = $Levelup_sound
 
 var player_viewport : Vector2
-
+var modifiers : StatIncrease = StatIncrease.new()
 var enemies_collided_list : Array[Node2D] = []
 
 func _ready() -> void:
 	player_viewport = get_viewport_rect().size / 2
+	calc_stats()
 	health = max_health
 
 func _process(_delta : float) -> void:
-	
 	direction = Input.get_vector("left", "right", "up", "down")
 	if Input.is_action_pressed("accept"):
 		var pos : Vector2 = get_viewport().get_mouse_position()
@@ -62,6 +68,10 @@ func take_damage(damage : int) -> void:
 			get_tree().change_scene_to_file.call_deferred("res://game_over_screen.tscn")
 		print(health)
 		hurt_sound.play()
+		
+func calc_stats() -> void:
+	max_health = base_max_health * (1 + modifiers.health_increase)
+	speed = base_speed * (1 + modifiers.speed_increase)
 
 func collide_enemy(body : Node2D) -> void:
 	body.take_damage(20)

@@ -12,6 +12,7 @@ var hit_counter : int = 5
 var damage : float
 var base_fire_rate : float = 0.3
 var player: Player
+var modifiers : StatIncrease = StatIncrease.new()
 @onready var timer: Timer = $Timer
 
 # Called when the node enters the scene tree for the first time.
@@ -38,7 +39,7 @@ func _process(delta: float) -> void:
 			add_child(instance)
 
 func calc_stats() -> void:
-	damage = base_damage * level
+	damage = base_damage * level * (1 + modifiers.damage_increase)
 	
 func update_stats(new_level : int) -> void:
 	level = new_level

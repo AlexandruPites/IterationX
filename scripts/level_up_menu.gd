@@ -16,13 +16,16 @@ var choice3 : RandomItem = null
 @onready var text_3: TextEdit = $Panel/Panel3/Choice3/Text3
 @onready var button_3: Button = $Panel/Panel3/Choice3
 
-var format_string : String = "res://images/weapons/%s.png"
+var format_string_weapon : String = "res://images/weapons/%s.png"
+var format_string_augment : String = "res://images/augments/%s.png"
+var format_string : String
 
 func _ready() -> void:
 	if !choice1 and !choice2 and !choice3:
 		resume(null)
-		
+	
 	if choice1:
+		format_string = format_string_weapon if choice1.is_weapon else format_string_augment
 		texture_1.texture = load(format_string % choice1.item_name)
 		text_1.text = choice1.level_up_text
 	else:
@@ -30,6 +33,7 @@ func _ready() -> void:
 		button_1.visible = false
 		
 	if choice2:
+		format_string = format_string_weapon if choice2.is_weapon else format_string_augment
 		texture_2.texture = load(format_string % choice2.item_name)
 		text_2.text = choice2.level_up_text
 	else:
@@ -37,6 +41,7 @@ func _ready() -> void:
 		button_2.visible = false
 		
 	if choice3:
+		format_string = format_string_weapon if choice3.is_weapon else format_string_augment
 		texture_3.texture = load(format_string % choice3.item_name)
 		text_3.text = choice3.level_up_text
 	else:
