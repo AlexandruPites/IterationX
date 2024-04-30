@@ -1,7 +1,7 @@
 extends Node2D
 class_name EnemySpawner
 
-var enemy_array : Array[CharacterBody2D] = []
+var enemy_array : Array[Enemy] = []
 var enemy_scene : PackedScene = preload("res://scenes/enemy.tscn")
 var xp_scene : Resource = preload("res://scenes/xp.tscn")
 const max_enemies : int = 50
@@ -20,6 +20,7 @@ func _on_death(source : CharacterBody2D) -> void:
 		xp.position = source.position
 		add_child.call_deferred(xp)
 	enemy_array.erase(source)
+	source.alive = false
 	source.death_player.play("death")
 	#queue_free() call happens inside animation player
 
@@ -45,7 +46,7 @@ func _process(_delta : float) -> void:
 	var new_enemy_number : int = max_enemies - enemy_array.size()
 	
 	for i in range(new_enemy_number):
-		var new_enemy : CharacterBody2D = enemy_scene.instantiate()
+		var new_enemy : Enemy = enemy_scene.instantiate()
 		new_enemy.death.connect(_on_death)
 		new_enemy.position = get_spawn_coord(player.position)
 		enemy_array.append(new_enemy)

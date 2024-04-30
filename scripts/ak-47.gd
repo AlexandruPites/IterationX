@@ -8,14 +8,14 @@ var damage : float
 var target : Enemy
 
 func _process(delta: float) -> void:
-	if velocity != Vector2.ZERO and is_instance_valid(target):
+	if velocity != Vector2.ZERO and target.alive:
 		target_nonbeliever()
 		position += velocity * delta
 	else:
 		queue_free()
 
 func target_nonbeliever() -> void:
-	if is_instance_valid(target):
+	if target.alive:
 		var diff: Vector2 = target.position - position
 		velocity = diff.normalized() * speed
 		rotation = position.angle_to_point(target.position)
