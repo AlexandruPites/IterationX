@@ -9,7 +9,7 @@ var target : Enemy
 @onready var spawner : EnemySpawner = get_node("/root/Game/EnemySpawner")
 
 func _process(delta: float) -> void:
-	if velocity != Vector2.ZERO and target.alive:
+	if velocity != Vector2.ZERO and is_instance_valid(target) and target.alive:
 		target_nonbeliever()
 		position += velocity * delta
 	else:
@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 		#queue_free()
 
 func target_nonbeliever() -> void:
-	if target.alive:
+	if is_instance_valid(target) and target.alive:
 		var diff: Vector2 = target.position - position
 		velocity = diff.normalized() * speed
 		rotation = position.angle_to_point(target.position)

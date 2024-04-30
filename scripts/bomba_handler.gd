@@ -27,14 +27,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if timer.is_stopped():
 		timer.start()
-		print("spawn bomba")
 		var instance : Projectile = resource.instantiate()
 		instance.scale = Vector2(5, 5)
 		instance.player = player
 		add_child(instance)
 
 func calc_stats() -> void:
-	fire_rate = base_fire_rate / float(level)
+	fire_rate = base_fire_rate / (float(level) * 0.5)
 	timer.wait_time = fire_rate
 	
 func update_stats(new_level : int) -> void:
