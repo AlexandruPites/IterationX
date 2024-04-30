@@ -6,13 +6,15 @@ var velocity : Vector2
 var hit_counter : int
 var damage : float
 var target : Enemy
+@onready var spawner : EnemySpawner = get_node("/root/Game/EnemySpawner")
 
 func _process(delta: float) -> void:
 	if velocity != Vector2.ZERO and target.alive:
 		target_nonbeliever()
 		position += velocity * delta
 	else:
-		queue_free()
+		target = spawner.get_closest_enemy_to_point(position)
+		#queue_free()
 
 func target_nonbeliever() -> void:
 	if target.alive:
