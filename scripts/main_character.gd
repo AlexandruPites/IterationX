@@ -74,7 +74,7 @@ func calc_stats() -> void:
 	speed = base_speed * (1 + modifiers.speed_increase)
 
 func collide_enemy(body : Node2D) -> void:
-	body.take_damage(20)
+	body.take_damage(20, 500)
 	take_damage(1)
 
 func _on_area_2d_body_entered(body : Node2D) -> void:
