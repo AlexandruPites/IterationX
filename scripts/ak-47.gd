@@ -27,7 +27,7 @@ func target_nonbeliever() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("damageable"):
-		body.take_damage(damage)
+		body.take_damage(damage, 500)
 		queue_free()
 
 func despawn() -> void:
