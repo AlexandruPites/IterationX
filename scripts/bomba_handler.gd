@@ -6,6 +6,7 @@ var resource : Resource
 
 var level : int = 1
 var base_fire_rate : float = 30
+var base_knockback : float = 500
 
 var damage : float
 var speed : float

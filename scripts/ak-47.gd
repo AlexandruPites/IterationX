@@ -2,9 +2,6 @@ extends Projectile
 class_name AK47
 
 var speed : float
-var velocity : Vector2
-var hit_counter : int
-var damage : float
 var target : Enemy
 @onready var spawner : EnemySpawner = get_node("/root/Game/EnemySpawner")
 
@@ -27,7 +24,7 @@ func target_nonbeliever() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("damageable"):
-		body.take_damage(damage, 500)
+		body.take_damage(damage, knockback)
 		queue_free()
 
 func despawn() -> void:

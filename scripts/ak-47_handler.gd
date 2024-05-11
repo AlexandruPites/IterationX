@@ -10,6 +10,7 @@ var velocity : Vector2 = Vector2(base_projectile_speed, base_projectile_speed)
 var base_damage : float = 10
 var hit_counter : int = 1
 var base_fire_rate : float = 0.9
+var base_knockback : float = 250
 
 var damage : float
 var speed : float
@@ -17,6 +18,7 @@ var player: Player
 var fire_rate : float
 var target : Enemy
 var spawner : EnemySpawner
+var knockback : float
 @onready var timer: Timer = $Timer
 
 var modifiers : StatIncrease = StatIncrease.new()
@@ -38,6 +40,7 @@ func _process(delta: float) -> void:
 		instance.damage = damage
 		instance.hit_counter = hit_counter
 		instance.speed = speed
+		instance.knockback = knockback
 		instance.target = spawner.get_closest_enemy_to_point(player.position)
 		add_child(instance)
 
@@ -46,6 +49,7 @@ func calc_stats() -> void:
 	if level < 5:
 		damage = base_damage * 5 * (1 + modifiers.damage_increase)
 	speed = base_projectile_speed * (1 + modifiers.projectile_speed_increase)
+	knockback = base_knockback * (1 + modifiers.knockback_increase)
 	fire_rate = base_fire_rate / float(level)
 	timer.wait_time = fire_rate
 	

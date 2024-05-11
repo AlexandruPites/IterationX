@@ -9,12 +9,14 @@ const FIXED_SCALE : float = 2
 var level : int = 1
 var base_damage : float = 10
 var base_area : float = 2
+var base_knockback : float = 200
 
 var damage : float
 var swing_speed : float
 var player: Player
 var field : Projectile
 var area : float
+var knockback : float
 @onready var timer: Timer = $Timer
 
 var modifiers : StatIncrease = StatIncrease.new()
@@ -38,10 +40,12 @@ func set_stats() -> void:
 	field.damage = damage
 	field.area = area
 	field.scale = Vector2(area, area)
+	field.knockback = knockback
 
 func calc_stats() -> void:
 	damage = base_damage * level * (1 + modifiers.damage_increase)
 	area = FIXED_SCALE * base_area * (1 + float(level) / 9) * (1 + modifiers.area_increase)
+	knockback = base_knockback * (1 + modifiers.knockback_increase)
 	
 func update_stats(new_level : int) -> void:
 	level = new_level

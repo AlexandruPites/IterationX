@@ -4,7 +4,6 @@ class_name Sword
 var player: Player
 var angle: float = 0
 var speed: float
-var damage : float
 
 func _init() -> void:
 	single_instance = true
@@ -24,7 +23,7 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("damageable"):
-		body.take_damage(damage, 500)
+		body.take_damage(damage, knockback)
 
 func _on_timer_timeout() -> void:
 	pass

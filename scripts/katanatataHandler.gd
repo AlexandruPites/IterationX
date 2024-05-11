@@ -8,12 +8,14 @@ var level : int = 1
 var base_damage : float = 10
 var base_swing_speed : float = 5
 var base_fire_rate : float = 0.3
+var base_knockback : float = 750
 var hit_counter : int = 1
 
 var damage : float
 var swing_speed : float
 var player: Player
 var sword : Projectile
+var knockback : float
 @onready var timer: Timer = $Timer
 
 var modifiers : StatIncrease = StatIncrease.new()
@@ -38,10 +40,12 @@ func set_stats() -> void:
 	sword.level = level
 	sword.speed = swing_speed
 	sword.damage = damage
+	sword.knockback = knockback
 
 func calc_stats() -> void:
 	damage = base_damage * level * (1 + modifiers.damage_increase)
 	swing_speed = base_swing_speed * max(1, log(level)) * (1 + modifiers.projectile_speed_increase)
+	knockback = base_knockback * (1 + modifiers.knockback_increase)
 	
 func update_stats(new_level : int) -> void:
 	level = new_level
