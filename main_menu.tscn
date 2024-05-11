@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bm3hvuynnjll4"]
+[gd_scene load_steps=5 format=3 uid="uid://bm3hvuynnjll4"]
 
 [ext_resource type="Texture2D" uid="uid://cctsfl71n878m" path="res://images/main-menu-background.png" id="1_8dc4l"]
 [ext_resource type="Script" path="res://scripts/CanvasLayer.gd" id="2_x64re"]
 [ext_resource type="Script" path="res://scripts/ButtonGrab.gd" id="3_ry2a3"]
+[ext_resource type="FontFile" uid="uid://ch4eyovb85f2h" path="res://VCR_OSD_MONO_1.001.ttf" id="4_hylni"]
 
 [node name="MainMenu" type="Node"]
 
@@ -67,6 +68,11 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Play"
 script = ExtResource("3_ry2a3")
+
+[node name="ButtonInjector" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Injector/Shop"
 
 [node name="ButtonSettings" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -160,7 +166,191 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Back"
 
+[node name="Injector" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Injector"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -248.0
+offset_right = 471.0
+offset_bottom = 299.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.592157, 0.301961, 1)
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/Injector"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -411.0
+offset_top = -175.0
+offset_right = 431.0
+offset_bottom = 264.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PowerUps" type="RichTextLabel" parent="CanvasLayer/Injector/TabContainer"]
+layout_mode = 2
+
+[node name="HScrollBar" type="HScrollBar" parent="CanvasLayer/Injector/TabContainer/PowerUps"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+step = 30.0
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer/Injector/TabContainer/PowerUps"]
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Injector/TabContainer/PowerUps/Node2D"]
+custom_minimum_size = Vector2(150, 100)
+offset_left = 34.0
+offset_top = 29.0
+offset_right = 184.0
+offset_bottom = 129.0
+
+[node name="BuyButton" type="Button" parent="CanvasLayer/Injector/TabContainer/PowerUps/Node2D/Panel"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 64.0
+offset_right = 142.0
+offset_bottom = 95.0
+text = "Buy
+"
+
+[node name="PowerUpName" type="Label" parent="CanvasLayer/Injector/TabContainer/PowerUps/Node2D/Panel"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 9.0
+offset_right = 76.0
+offset_bottom = 32.0
+text = "Max HP"
+
+[node name="Rank" type="Label" parent="CanvasLayer/Injector/TabContainer/PowerUps/Node2D/Panel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 66.0
+offset_right = 52.0
+offset_bottom = 89.0
+text = "Rank 0 / 2"
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/Injector/TabContainer/PowerUps/Node2D"]
+custom_minimum_size = Vector2(150, 100)
+offset_left = 221.0
+offset_top = 29.0
+offset_right = 371.0
+offset_bottom = 129.0
+
+[node name="BuyButton" type="Button" parent="CanvasLayer/Injector/TabContainer/PowerUps/Node2D/Panel2"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 64.0
+offset_right = 142.0
+offset_bottom = 95.0
+text = "Buy
+"
+
+[node name="PowerUpName" type="Label" parent="CanvasLayer/Injector/TabContainer/PowerUps/Node2D/Panel2"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 9.0
+offset_right = 57.0
+offset_bottom = 32.0
+text = "HP regen/sec"
+
+[node name="Rank" type="Label" parent="CanvasLayer/Injector/TabContainer/PowerUps/Node2D/Panel2"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 66.0
+offset_right = 52.0
+offset_bottom = 89.0
+text = "Rank 0 / 2"
+
+[node name="Panel3" type="Panel" parent="CanvasLayer/Injector/TabContainer/PowerUps/Node2D"]
+custom_minimum_size = Vector2(150, 100)
+offset_left = 410.0
+offset_top = 29.0
+offset_right = 560.0
+offset_bottom = 129.0
+
+[node name="BuyButton" type="Button" parent="CanvasLayer/Injector/TabContainer/PowerUps/Node2D/Panel3"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 64.0
+offset_right = 142.0
+offset_bottom = 95.0
+text = "Buy
+"
+
+[node name="PowerUpName" type="Label" parent="CanvasLayer/Injector/TabContainer/PowerUps/Node2D/Panel3"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 9.0
+offset_right = 57.0
+offset_bottom = 32.0
+text = "Movespeed"
+
+[node name="Rank" type="Label" parent="CanvasLayer/Injector/TabContainer/PowerUps/Node2D/Panel3"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 66.0
+offset_right = 88.0
+offset_bottom = 89.0
+text = "Rank 0 / 2"
+
+[node name="Header" type="Label" parent="CanvasLayer/Injector"]
+layout_mode = 0
+offset_left = -119.0
+offset_top = -204.0
+offset_right = 171.0
+offset_bottom = -150.0
+theme_override_fonts/font = ExtResource("4_hylni")
+theme_override_font_sizes/font_size = 30
+text = "Genetic Injector"
+
+[node name="Currency" type="Label" parent="CanvasLayer/Injector"]
+layout_mode = 0
+offset_left = 232.0
+offset_top = -183.0
+offset_right = 370.0
+offset_bottom = -150.0
+text = "Currency : "
+
+[node name="BackFromInjectorToMain" type="Button" parent="CanvasLayer/Injector"]
+layout_mode = 0
+offset_left = 358.0
+offset_top = 286.0
+offset_right = 479.0
+offset_bottom = 317.0
+text = "Back"
+
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonPlay" to="CanvasLayer" method="_on_button_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonInjector" to="CanvasLayer" method="_on_button_injector_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonSettings" to="CanvasLayer" method="_on_button_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonQuit" to="CanvasLayer" method="_on_button_quit_pressed"]
 [connection signal="pressed" from="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/ButtonBack" to="CanvasLayer" method="_on_button_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/Injector/BackFromInjectorToMain" to="CanvasLayer" method="_on_back_from_injector_to_main_pressed"]
