@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cq1vsnl7kp0de"]
 
-[ext_resource type="Script" path="res://scripts/4-way.gd" id="1_l8df4"]
-[ext_resource type="Texture2D" uid="uid://fx4wdtrlkclp" path="res://images/weapons/4-way.png" id="2_g8fq4"]
+[ext_resource type="Script" path="res://scripts/4-way.gd" id="1_rkprc"]
+[ext_resource type="Texture2D" uid="uid://fx4wdtrlkclp" path="res://images/weapons/4-way.png" id="2_klxti"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jc1uu"]
 radius = 21.0
@@ -9,7 +9,7 @@ radius = 21.0
 [node name="4-way" type="Area2D" groups=["despawnable"]]
 collision_layer = 2
 collision_mask = 6
-script = ExtResource("1_l8df4")
+script = ExtResource("1_rkprc")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
@@ -17,7 +17,7 @@ offset_left = -20.0
 offset_top = -22.0
 offset_right = 20.0
 offset_bottom = 18.0
-texture = ExtResource("2_g8fq4")
+texture = ExtResource("2_klxti")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1)
