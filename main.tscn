@@ -53,7 +53,7 @@ script = ExtResource("9_sndql")
 script = ExtResource("6_pk4xv")
 
 [node name="Timer" type="Timer" parent="EnemySpawner"]
-wait_time = 30.0
+wait_time = 120.0
 autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
