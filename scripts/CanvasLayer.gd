@@ -33,6 +33,7 @@ func _on_button_back_pressed() -> void:
 func _on_button_injector_pressed() -> void:
 	main_menu.visible = false
 	injector.visible = true
+	back_from_injector_to_main.grab_focus.call_deferred()
 
 
 func _on_back_from_injector_to_main_pressed() -> void:
