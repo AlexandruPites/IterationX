@@ -2,7 +2,7 @@ extends Node2D
 class_name EnemySpawner
 
 var enemy_array : Array[Enemy] = []
-var enemy_scene : PackedScene = preload("res://scenes/enemy.tscn")
+var enemy_scene : PackedScene = preload("res://scenes/green_robot.tscn")
 var xp_scene : Resource = preload("res://scenes/xp.tscn")
 const max_enemies : int = 50
 const spawn_distance : float = 700

@@ -1,8 +1,8 @@
 extends CharacterBody2D
 class_name Enemy
 
-const SPEED : float = 50
-var health : float = 100
+var speed : float
+var health : float
 var alive : bool = true
 
 @onready var player : CharacterBody2D = $"../../Player"
@@ -31,7 +31,7 @@ func _process(_delta : float) -> void:
 		elif diff.x > 0:
 			sprite_2d.flip_h = false
 
-		velocity = diff.normalized() * SPEED + knockback
+		velocity = diff.normalized() * speed + knockback
 		knockback = lerp(knockback, Vector2.ZERO, 0.07)
 		var has_collided: bool = move_and_slide()
 
