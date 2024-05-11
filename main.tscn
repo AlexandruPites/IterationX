@@ -52,6 +52,10 @@ script = ExtResource("9_sndql")
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("6_pk4xv")
 
+[node name="Timer" type="Timer" parent="EnemySpawner"]
+wait_time = 120.0
+autostart = true
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("6_hs82m")
@@ -76,3 +80,4 @@ script = ExtResource("7_uemc8")
 [node name="Camera2D" parent="." instance=ExtResource("4_r5wui")]
 
 [connection signal="level_up" from="Player" to="LevelUpHandler" method="_on_player_level_up"]
+[connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]

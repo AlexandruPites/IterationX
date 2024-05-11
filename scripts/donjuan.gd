@@ -1,9 +1,9 @@
 extends Enemy
 class_name DonJuan
 
-var robot_speed : float = 100
-var robot_health : float = 100
-var robot_knockback_strength : float = 500
+var robot_speed : float = 150
+var robot_health : float = 700
+var robot_knockback_strength : float = 250
 
 func _ready() -> void:
 	speed = robot_speed

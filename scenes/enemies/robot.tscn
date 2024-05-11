@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://bhiih1q0mttpg"]
 
-[ext_resource type="Script" path="res://scripts/robot.gd" id="1_b1ntw"]
-[ext_resource type="Texture2D" uid="uid://2stigmatny7c" path="res://images/space-robot-64.png" id="2_ry2h3"]
-[ext_resource type="AudioStream" uid="uid://c8f18qogjnm0k" path="res://sound_effects/Hit_hurt 79.wav" id="3_0cnts"]
+[ext_resource type="Script" path="res://scripts/robot.gd" id="1_ubpht"]
+[ext_resource type="Texture2D" uid="uid://2stigmatny7c" path="res://images/space-robot-64.png" id="2_6wrue"]
+[ext_resource type="AudioStream" uid="uid://c8f18qogjnm0k" path="res://sound_effects/Hit_hurt 79.wav" id="3_tyr7j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nsktk"]
 radius = 13.4715
@@ -94,11 +94,11 @@ collision_layer = 2
 collision_mask = 3
 platform_on_leave = 2
 platform_floor_layers = 4294901760
-script = ExtResource("1_b1ntw")
+script = ExtResource("1_ubpht")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_ry2h3")
+texture = ExtResource("2_6wrue")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.333333, 2)
@@ -115,7 +115,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Enemy_hurt" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_0cnts")
+stream = ExtResource("3_tyr7j")
 volume_db = -10.0
 
 [node name="DeathPlayer" type="AnimationPlayer" parent="."]
