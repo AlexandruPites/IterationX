@@ -42,7 +42,7 @@ func take_damage(damage : float, knockback_strength : float) -> void:
 			animation_player.play("take_damage")
 		health -= damage
 		var direction : Vector2 = player.global_position.direction_to(self.global_position).normalized()
-		knockback = direction * knockback_strength * knockback_resist
+		knockback += direction * knockback_strength * knockback_resist
 		enemy_hurt.play()
 		if health <= 0:
 			despawn()

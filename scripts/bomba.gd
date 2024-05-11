@@ -2,9 +2,6 @@ extends Projectile
 class_name Bomba
 
 var speed : float
-var velocity : Vector2
-var hit_counter : int
-var damage : float
 var angle : float = 0
 
 const ROTATION_SPEED : float = 10

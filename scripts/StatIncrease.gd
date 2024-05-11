@@ -7,6 +7,7 @@ var speed_increase : float = 0
 var projectile_speed_increase : float = 0
 var damage_increase : float = 0
 var area_increase : float = 0
+var knockback_increase : float = 0
 
 func calculate_increases(augments : Array) -> void:
 	for aug : Augment in augments:

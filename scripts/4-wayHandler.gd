@@ -4,13 +4,17 @@ var weapon_name : String = "4-way"
 var format : String = "res://scenes/weapons/%s/%s.tscn"
 var resource : Resource
 
-var level : int = 1
 var base_projectile_speed : float = 1000
-var velocity : Vector2 = Vector2(base_projectile_speed, base_projectile_speed)
+var base_fire_rate : float = 0.3
 var base_damage : float = 10
+var base_knockback : float = 250
+
+var level : int = 1
+var velocity : Vector2 = Vector2(base_projectile_speed, base_projectile_speed)
 var hit_counter : int = 5
 var damage : float
-var base_fire_rate : float = 0.3
+var knockback : float
+
 var player: Player
 var modifiers : StatIncrease = StatIncrease.new()
 @onready var timer: Timer = $Timer
@@ -35,11 +39,13 @@ func _process(delta: float) -> void:
 			instance.velocity = mult[j] * velocity 
 			instance.position = player.position
 			instance.damage = damage
+			instance.knockback = knockback
 			instance.hit_counter = hit_counter
 			add_child(instance)
 
 func calc_stats() -> void:
 	damage = base_damage * level * (1 + modifiers.damage_increase)
+	knockback = base_knockback * (1 + modifiers.knockback_increase)
 	
 func update_stats(new_level : int) -> void:
 	level = new_level

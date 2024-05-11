@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/lightning_fieldHandler.gd" id="1_thjjd"]
 
-[node name="lightning_field" type="Node"]
+[node name="lightning_field_handler" type="Node"]
 script = ExtResource("1_thjjd")
 
 [node name="Timer" type="Timer" parent="."]
