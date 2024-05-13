@@ -19,12 +19,13 @@ var powerups_dict: Dictionary = {
 var currency: int = 500
 
 signal save_requested(powerups_dict: Dictionary)
+signal load_requested(powerups_dict: Dictionary)
 
 var offset_x: float = 190
 var offset_y: float = 29
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
+	load_requested.emit(powerups_dict)
 	for powerup: String in powerups_dict:
 		
 		
@@ -68,7 +69,10 @@ func _ready() -> void:
 
 func _on_buy_pressed(powerup: String) -> void:
 	var price: int = powerups_dict[powerup][2]
-	if powerups_dict[powerup][0][0] < powerups_dict[powerup][0][1] and currency > price:
+	if powerups_dict[powerup][0][0] < powerups_dict[powerup][0][1] and currency < price:
+		print("not enough currency")
+	
+	if powerups_dict[powerup][0][0] < powerups_dict[powerup][0][1] and currency >+ price:
 		powerups_dict[powerup][0][0] += 1
 		currency -= price
 		price *= 2
@@ -78,8 +82,7 @@ func _on_buy_pressed(powerup: String) -> void:
 	if powerups_dict[powerup][0][0] == powerups_dict[powerup][0][1]:
 		buy_btns_and_labels[powerup][2].queue_free()
 	
-	if powerups_dict[powerup][0][0] < powerups_dict[powerup][0][1]:
-		print("not enough currency")
+	
 		
 	buy_btns_and_labels[powerup][0].text = "Rank %d / %d" % powerups_dict[powerup][0]
 	buy_btns_and_labels[powerup][2].text =  "Price: %d" % price
