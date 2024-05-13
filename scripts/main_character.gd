@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 #player base attributes
-var base_max_health : float = 30.0
+var base_max_health : float = 100.0
 var base_speed : float = 300.0
 
 #player attributes - do not change these
@@ -70,7 +70,10 @@ func take_damage(damage : float, knockback : float = 0) -> void:
 		hurt_sound.play()
 		
 func calc_stats() -> void:
+	var damage_taken : float = max_health - health
 	max_health = base_max_health * (1 + modifiers.health_increase)
+	health = max_health - damage_taken
+	
 	speed = base_speed * (1 + modifiers.speed_increase)
 
 func collide_enemy(body : Node2D) -> void:
