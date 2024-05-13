@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu607pk62ctva"]
+[gd_scene load_steps=11 format=3 uid="uid://8ro6ook4cw8u"]
 
 [ext_resource type="Script" path="res://scripts/zumzarel.gd" id="1_3oy7j"]
 [ext_resource type="Texture2D" uid="uid://c3dj3x5ffwmeb" path="res://images/zumzarel.png" id="2_aip4v"]
@@ -109,7 +109,7 @@ _data = {
 "rotate": SubResource("Animation_kbx2s")
 }
 
-[node name="Zumzarel" type="CharacterBody2D" groups=["bombable", "damageable", "despawnable"]]
+[node name="Zumzarel" type="CharacterBody2D" groups=["bombable", "damageable", "despawnable", "melee"]]
 collision_layer = 2
 collision_mask = 3
 platform_on_leave = 2

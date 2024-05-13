@@ -88,7 +88,7 @@ _data = {
 "death": SubResource("Animation_06ope")
 }
 
-[node name="Robot" type="CharacterBody2D" groups=["bombable", "damageable", "despawnable"]]
+[node name="Robot" type="CharacterBody2D" groups=["bombable", "damageable", "despawnable", "melee"]]
 scale = Vector2(1.5, 1.5)
 collision_layer = 2
 collision_mask = 3
