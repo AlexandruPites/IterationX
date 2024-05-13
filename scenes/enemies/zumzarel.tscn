@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvrh2usxm2w5a"]
+[gd_scene load_steps=11 format=3 uid="uid://bu607pk62ctva"]
 
-[ext_resource type="Script" path="res://scripts/Torpalod.gd" id="1_q5ne7"]
-[ext_resource type="Texture2D" uid="uid://ccqcahis3abus" path="res://images/torpalod.png" id="2_8wfpy"]
-[ext_resource type="AudioStream" uid="uid://c8f18qogjnm0k" path="res://sound_effects/Hit_hurt 79.wav" id="3_fn0fj"]
+[ext_resource type="Script" path="res://scripts/zumzarel.gd" id="1_3oy7j"]
+[ext_resource type="Texture2D" uid="uid://c3dj3x5ffwmeb" path="res://images/zumzarel.png" id="2_aip4v"]
+[ext_resource type="AudioStream" uid="uid://c8f18qogjnm0k" path="res://sound_effects/Hit_hurt 79.wav" id="3_m3tnj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nsktk"]
 radius = 13.4715
@@ -88,17 +88,37 @@ _data = {
 "death": SubResource("Animation_06ope")
 }
 
-[node name="Torpalod" type="CharacterBody2D" groups=["bombable", "damageable", "despawnable"]]
-scale = Vector2(1.5, 1.5)
+[sub_resource type="Animation" id="Animation_kbx2s"]
+resource_name = "rotate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g0s4d"]
+_data = {
+"rotate": SubResource("Animation_kbx2s")
+}
+
+[node name="Zumzarel" type="CharacterBody2D" groups=["bombable", "damageable", "despawnable"]]
 collision_layer = 2
 collision_mask = 3
 platform_on_leave = 2
 platform_floor_layers = 4294901760
-script = ExtResource("1_q5ne7")
+script = ExtResource("1_3oy7j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_8wfpy")
+texture = ExtResource("2_aip4v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.333333, 2)
@@ -115,10 +135,15 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Enemy_hurt" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_fn0fj")
+stream = ExtResource("3_m3tnj")
 volume_db = -10.0
 
 [node name="DeathPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_4lxt7")
+}
+
+[node name="Rotation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_g0s4d")
 }

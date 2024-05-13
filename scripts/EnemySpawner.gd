@@ -14,6 +14,7 @@ var enemy_index : int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	enemy_scenes.append(preload("res://scenes/enemies/robot.tscn"))
+	enemy_scenes.append(preload("res://scenes/enemies/zumzarel.tscn"))
 	enemy_scenes.append(preload("res://scenes/enemies/torpalod.tscn"))
 	enemy_scenes.append(preload("res://scenes/enemies/green_robot.tscn"))
 	enemy_scenes.append(preload("res://scenes/enemies/don_juan.tscn"))

@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dv5v7x871fmkq"]
 
 [ext_resource type="Texture2D" uid="uid://rvtj6d8uhegu" path="res://images/mars-tiles.png" id="1_s6454"]
-[ext_resource type="Script" path="res://Terrain.gd" id="1_sech5"]
+[ext_resource type="Script" path="res://scripts/Terrain.gd" id="1_sech5"]
 [ext_resource type="PackedScene" uid="uid://ca3p3id8imxb" path="res://scenes/main_character.tscn" id="2_rbl60"]
 [ext_resource type="PackedScene" uid="uid://cpjafs71x7bqv" path="res://scenes/camera.tscn" id="4_r5wui"]
 [ext_resource type="AudioStream" uid="uid://db4h37ul2plip" path="res://music/Doppelganger%20Assault.mp3" id="6_hs82m"]
