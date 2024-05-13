@@ -72,7 +72,7 @@ func _on_buy_pressed(powerup: String) -> void:
 	if powerups_dict[powerup][0][0] < powerups_dict[powerup][0][1] and currency < price:
 		print("not enough currency")
 	
-	if powerups_dict[powerup][0][0] < powerups_dict[powerup][0][1] and currency >+ price:
+	if powerups_dict[powerup][0][0] < powerups_dict[powerup][0][1] and currency >= price:
 		powerups_dict[powerup][0][0] += 1
 		currency -= price
 		price *= 2
