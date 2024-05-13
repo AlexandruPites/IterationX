@@ -16,6 +16,8 @@ func _ready() -> void:
 	enemy_scenes.append(preload("res://scenes/enemies/robot.tscn"))
 	enemy_scenes.append(preload("res://scenes/enemies/green_robot.tscn"))
 	enemy_scenes.append(preload("res://scenes/enemies/don_juan.tscn"))
+	enemy_scenes.append(preload("res://scenes/enemies/white_robot.tscn"))
+	
 	
 func _on_timer_timeout() -> void:
 	if enemy_index + 1 < enemy_scenes.size():

@@ -7,6 +7,7 @@ var angle : float = 0
 const ROTATION_SPEED : float = 10
 var spawner : EnemySpawner
 var player : Player
+@onready var bomba_sound: AudioStreamPlayer = $BombaSound
 
 func _ready() -> void:
 	spawner = get_node("/root/Game/EnemySpawner")
