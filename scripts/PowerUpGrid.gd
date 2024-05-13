@@ -11,7 +11,7 @@ var buy_btns_and_labels: Dictionary = {
 var powerups_dict: Dictionary
 var currency: int = 500
 
-signal save_requested(powerups_dict: Dictionary)
+signal save_requested(powerups_dict: Dictionary, currency: int)
 signal load_requested()
 
 var offset_x: float = 190
@@ -82,7 +82,7 @@ func _on_buy_pressed(powerup: String) -> void:
 	buy_btns_and_labels[powerup][2].text =  "Price: %d" % price
 	
 	
-	save_requested.emit(powerups_dict)
+	save_requested.emit(powerups_dict, currency)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
