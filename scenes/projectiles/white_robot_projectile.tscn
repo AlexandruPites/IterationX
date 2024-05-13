@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_jc1uu"]
 radius = 11.0
 
-[node name="white_robot_projectile" type="Area2D" groups=["despawnable"]]
+[node name="white_robot_projectile" type="Area2D" groups=["bombable", "despawnable"]]
 script = ExtResource("1_j4yaw")
 
 [node name="TextureRect" type="TextureRect" parent="."]
