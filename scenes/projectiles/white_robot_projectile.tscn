@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dapxn76tfmpkj"]
+
+[ext_resource type="Script" path="res://scripts/white_robot_projectile.gd" id="1_j4yaw"]
+[ext_resource type="Texture2D" uid="uid://d1djnrnfy7dhg" path="res://images/projectile.png" id="1_jbofd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jc1uu"]
+radius = 11.0
+
+[node name="white_robot_projectile" type="Area2D" groups=["despawnable"]]
+script = ExtResource("1_j4yaw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -20.0
+offset_top = -22.0
+offset_right = 20.0
+offset_bottom = 18.0
+texture = ExtResource("1_jbofd")
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jc1uu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

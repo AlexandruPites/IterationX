@@ -43,7 +43,7 @@ height = 48.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_m2514"]
 radius = 104.043
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["damageable"]]
 z_index = 1
 collision_mask = 0
 platform_on_leave = 2
