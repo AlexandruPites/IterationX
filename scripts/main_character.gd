@@ -59,7 +59,7 @@ func _process(_delta : float) -> void:
 func is_left() -> bool:
 	return sprite_2d.flip_h
 
-func take_damage(damage : int) -> void:
+func take_damage(damage : float, knockback : float = 0) -> void:
 	if timer.is_stopped():
 		animation_player.play("take_damage")
 		timer.start() # timer is set to 0.3

@@ -122,3 +122,7 @@ volume_db = -10.0
 libraries = {
 "": SubResource("AnimationLibrary_4lxt7")
 }
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
