@@ -80,7 +80,10 @@ func _on_buy_pressed(powerup: String) -> void:
 	
 	# maxed out rank, should not display any price
 	if powerups_dict[powerup][0][0] == powerups_dict[powerup][0][1]:
-		buy_btns_and_labels[powerup][2].queue_free()
+		if buy_btns_and_labels[powerup][2] != null:
+			buy_btns_and_labels[powerup][2].queue_free()
+		else:
+			return
 	
 	
 		
