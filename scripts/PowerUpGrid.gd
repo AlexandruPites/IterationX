@@ -12,14 +12,16 @@ var powerups_dict: Dictionary
 var currency: int
 @onready var currency_label : Label = $"../../../../../Currency"
 
-signal save_requested(powerups_dict: Dictionary, currency: int)
-signal load_requested()
-
 var offset_x: float = 190
 var offset_y: float = 29
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	load_requested.emit()
+	
+	# Load from save
+	var load_dict : Dictionary = save_utils.load_powerups()
+	currency = load_dict["currency"]
+	powerups_dict = load_dict["powerups"]
+	
 	currency_label.text = "Currency : %d" % currency
 	for powerup: String in powerups_dict:
 		var panel: Panel = Panel.new()
@@ -79,13 +81,10 @@ func _on_buy_pressed(powerup: String) -> void:
 		else:
 			return
 	
-	
-		
 	buy_btns_and_labels[powerup][0].text = "Rank %d / %d" % powerups_dict[powerup][0]
 	buy_btns_and_labels[powerup][2].text =  "Price: %d" % price
 	
-	
-	save_requested.emit(powerups_dict, currency)
+	save_utils.save_powerups(powerups_dict, currency)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
