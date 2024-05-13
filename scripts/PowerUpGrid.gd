@@ -9,7 +9,8 @@ var buy_btns_and_labels: Dictionary = {
 						}
 
 var powerups_dict: Dictionary
-var currency: int = 500
+var currency: int
+@onready var currency_label : Label = $"../../../../../Currency"
 
 signal save_requested(powerups_dict: Dictionary, currency: int)
 signal load_requested()
@@ -19,6 +20,7 @@ var offset_y: float = 29
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_requested.emit()
+	currency_label.text = "Currency : %d" % currency
 	for powerup: String in powerups_dict:
 		var panel: Panel = Panel.new()
 		panel.set_custom_minimum_size(Vector2(150, 100))
@@ -66,6 +68,7 @@ func _on_buy_pressed(powerup: String) -> void:
 	if powerups_dict[powerup][0][0] < powerups_dict[powerup][0][1] and currency >= price:
 		powerups_dict[powerup][0][0] += 1
 		currency -= price
+		currency_label.text = "Currency : %d" % currency
 		price *= 2
 		powerups_dict[powerup][2] = price
 	
