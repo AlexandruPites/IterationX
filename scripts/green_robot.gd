@@ -9,4 +9,4 @@ func _ready() -> void:
 	speed = robot_speed
 	health = robot_health
 	knockback_resist = robot_knockback_resist
-	scale = Vector2(2, 2)
+	scale = Vector2(1.5, 1.5)

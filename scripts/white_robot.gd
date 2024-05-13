@@ -2,7 +2,7 @@ extends Enemy
 class_name WhiteRobot
 
 var robot_speed : float = 25
-var robot_health : float = 2000
+var robot_health : float = 500
 var robot_knockback_resist : float = 0.1
 var projectile : Resource
 var projectile_speed : float = 200

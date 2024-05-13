@@ -1,7 +1,7 @@
 extends Area2D
 
 var velocity : Vector2
-var damage : float = 3
+var damage : float = 1
 var hit_counter : int = 1
 
 func _process(delta: float) -> void:

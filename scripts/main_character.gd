@@ -52,7 +52,7 @@ func _process(_delta : float) -> void:
 	
 	var collision_info : bool = move_and_slide()
 	if collision_info:
-		take_damage(1)
+		take_damage(3)
 	camera_2d.position = position
 	
 
@@ -75,7 +75,7 @@ func calc_stats() -> void:
 
 func collide_enemy(body : Node2D) -> void:
 	body.take_damage(20, 500)
-	take_damage(1)
+	take_damage(3)
 
 func _on_area_2d_body_entered(body : Node2D) -> void:
 	if body.is_in_group("damageable"):
