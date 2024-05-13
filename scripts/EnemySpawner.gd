@@ -4,7 +4,7 @@ class_name EnemySpawner
 var enemy_array : Array[Enemy] = []
 var enemy_scenes : Array[PackedScene]
 var xp_scene : Resource = preload("res://scenes/xp.tscn")
-const max_enemies : int = 50
+const max_enemies : int = 5
 const spawn_distance : float = 900
 @onready var player : CharacterBody2D = $"../Player"
 @onready var timer : Timer = $Timer
