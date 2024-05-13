@@ -8,26 +8,18 @@ var buy_btns_and_labels: Dictionary = {
 								"Revival2":  []
 						}
 
-
-var powerups_dict: Dictionary = {
-								"Max HP": [[0, 2], "Increases maximum HP of character by a fixed amount", 100],
-								"HP regen": [[0, 2], "Character now regains x HP back per second", 250],
-								"Movement Speed": [[0, 3], "Increase movement speed by x% percentage", 200],
-								"Revival": [[0, 1], "Character administers an injection\n which revitalizes him from the brink with X HP", 1000],
-								"Revival2": [[0, 1], "Character administers an injection\n which revitalizes him from the brink with X HP", 1000] 
-								}
+var powerups_dict: Dictionary
 var currency: int = 500
 
 signal save_requested(powerups_dict: Dictionary)
+signal load_requested()
 
 var offset_x: float = 190
 var offset_y: float = 29
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
+	load_requested.emit()
 	for powerup: String in powerups_dict:
-		
-		
 		var panel: Panel = Panel.new()
 		panel.set_custom_minimum_size(Vector2(150, 100))
 		add_child(panel)
@@ -68,7 +60,10 @@ func _ready() -> void:
 
 func _on_buy_pressed(powerup: String) -> void:
 	var price: int = powerups_dict[powerup][2]
-	if powerups_dict[powerup][0][0] < powerups_dict[powerup][0][1] and currency > price:
+	if powerups_dict[powerup][0][0] < powerups_dict[powerup][0][1] and currency < price:
+		print("not enough currency")
+	
+	if powerups_dict[powerup][0][0] < powerups_dict[powerup][0][1] and currency >= price:
 		powerups_dict[powerup][0][0] += 1
 		currency -= price
 		price *= 2
@@ -76,10 +71,12 @@ func _on_buy_pressed(powerup: String) -> void:
 	
 	# maxed out rank, should not display any price
 	if powerups_dict[powerup][0][0] == powerups_dict[powerup][0][1]:
-		buy_btns_and_labels[powerup][2].queue_free()
+		if buy_btns_and_labels[powerup][2] != null:
+			buy_btns_and_labels[powerup][2].queue_free()
+		else:
+			return
 	
-	if powerups_dict[powerup][0][0] < powerups_dict[powerup][0][1]:
-		print("not enough currency")
+	
 		
 	buy_btns_and_labels[powerup][0].text = "Rank %d / %d" % powerups_dict[powerup][0]
 	buy_btns_and_labels[powerup][2].text =  "Price: %d" % price
