@@ -14,7 +14,7 @@ func load_powerups(powerup_dict: Dictionary) -> void:
 		return
 	var savefile: FileAccess = FileAccess.open(save_path, FileAccess.READ)
 	powerup_dict = savefile.get_var(true)
-	get_node('root/Game/PowerUpGrid').currency = savefile.get_var()
+
 	
 func _ready() -> void:
 	get_parent().connect("save_requested", save_powerups)
