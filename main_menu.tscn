@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm3hvuynnjll4"]
+[gd_scene load_steps=7 format=3 uid="uid://bm3hvuynnjll4"]
 
 [ext_resource type="Texture2D" uid="uid://cctsfl71n878m" path="res://images/main-menu-background.png" id="1_8dc4l"]
 [ext_resource type="Script" path="res://scripts/CanvasLayer.gd" id="2_x64re"]
 [ext_resource type="Script" path="res://scripts/ButtonGrab.gd" id="3_ry2a3"]
 [ext_resource type="FontFile" uid="uid://ch4eyovb85f2h" path="res://VCR_OSD_MONO_1.001.ttf" id="4_hylni"]
 [ext_resource type="Script" path="res://scripts/PowerUpGrid.gd" id="4_s6s7p"]
+[ext_resource type="Script" path="res://scripts/save_utils.gd" id="5_qvvrh"]
 
 [node name="MainMenu" type="Node"]
 
@@ -225,6 +226,9 @@ custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 vertical = true
 script = ExtResource("4_s6s7p")
+
+[node name="SaveHandler" type="Node2D" parent="CanvasLayer/Injector/TabContainer/PowerUps/Node2D/ScrollContainer/BoxContainer"]
+script = ExtResource("5_qvvrh")
 
 [node name="Header" type="Label" parent="CanvasLayer/Injector"]
 layout_mode = 0
