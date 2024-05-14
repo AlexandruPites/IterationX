@@ -78,6 +78,7 @@ anchors_preset = 0
 script = ExtResource("7_uemc8")
 
 [node name="Camera2D" parent="." instance=ExtResource("4_r5wui")]
+z_index = 4
 
 [connection signal="level_up" from="Player" to="LevelUpHandler" method="_on_player_level_up"]
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]

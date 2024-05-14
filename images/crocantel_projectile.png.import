@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxps1lueix621"
-path="res://.godot/imported/crocantel.png-bbef8e27176ebba78cc3b560aa143167.ctex"
+uid="uid://d37xbmvsu6akj"
+path="res://.godot/imported/crocantel_projectile.png-72acd62717f8adacf49eebf56388e3d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/crocantel.png"
-dest_files=["res://.godot/imported/crocantel.png-bbef8e27176ebba78cc3b560aa143167.ctex"]
+source_file="res://images/crocantel_projectile.png"
+dest_files=["res://.godot/imported/crocantel_projectile.png-72acd62717f8adacf49eebf56388e3d9.ctex"]
 
 [params]
 

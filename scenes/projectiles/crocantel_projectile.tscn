@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bft7bryw410i3"]
+
+[ext_resource type="Script" path="res://scripts/crocantel_projectile.gd" id="1_0qpfq"]
+[ext_resource type="Texture2D" uid="uid://d37xbmvsu6akj" path="res://images/crocantel_projectile.png" id="2_o655x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jtmxu"]
+height = 20.0
+
+[node name="crocantel_projectile" type="Area2D" groups=["despawnable"]]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_0qpfq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("2_o655x")
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 1)
+shape = SubResource("CapsuleShape2D_jtmxu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
