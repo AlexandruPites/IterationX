@@ -203,7 +203,7 @@ platform_on_leave = 2
 platform_floor_layers = 4294901760
 script = ExtResource("1_jfm5d")
 
-[node name="UselessButDon\'tRemove" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.333333, 2)
@@ -235,8 +235,6 @@ one_shot = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_o5mmf")
 animation = &"spiral"
-frame = 2
-frame_progress = 1.0
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(0, -9.33333)

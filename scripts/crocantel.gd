@@ -24,7 +24,7 @@ var wave_speed : float = 1
 var laser_res : Resource
 var laser : Area2D
 var laser_rot_max : float = 2 * PI
-var laser_speed : float = 1.5
+var laser_speed : float = 1.25
 var elapsed_rot : float = 0
 var laser_speeds : Array = [laser_speed, -laser_speed]
 
@@ -93,7 +93,7 @@ func _process(delta: float) -> void:
 				if not is_instance_valid(laser):
 					laser = laser_res.instantiate()
 					laser.rotation = randf_range(0, 2 * PI)
-					while abs(laser.rotation - position.angle_to_point(player.position)) < deg_to_rad(10):
+					while abs(laser.rotation - position.angle_to_point(player.position)) < deg_to_rad(25):
 						laser.rotation = randf_range(0, 2 * PI)
 					laser.position = laser_pos.position
 					laser.scale = Vector2(5, 0.75)
