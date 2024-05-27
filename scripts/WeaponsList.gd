@@ -12,5 +12,5 @@ func _process(delta: float) -> void:
 	self.clear()
 	self.item_count = 0
 	for weapon: String in UpgradeHandler.inventory:
-		self.add_icon_item(load(format_string_weapon % weapon))
+		self.add_icon_item(load(format_string_weapon % weapon), false)
 		self.item_count += 1
