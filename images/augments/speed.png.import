@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxps1lueix621"
-path="res://.godot/imported/crocantel.png-bbef8e27176ebba78cc3b560aa143167.ctex"
+uid="uid://da1mdbuvg5oct"
+path="res://.godot/imported/speed.png-973816f333bfca918198a45a008412ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/crocantel.png"
-dest_files=["res://.godot/imported/crocantel.png-bbef8e27176ebba78cc3b560aa143167.ctex"]
+source_file="res://images/augments/speed.png"
+dest_files=["res://.godot/imported/speed.png-973816f333bfca918198a45a008412ea.ctex"]
 
 [params]
 

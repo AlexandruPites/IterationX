@@ -5,8 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://c8f18qogjnm0k" path="res://sound_effects/Hit_hurt 79.wav" id="3_ubkpl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nsktk"]
-radius = 13.4715
-height = 46.9775
+radius = 27.2884
+height = 60.1036
 
 [sub_resource type="Animation" id="Animation_h4wie"]
 resource_name = "take_damage"

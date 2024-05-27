@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b07jcoq16egj1"]
+
+[ext_resource type="Script" path="res://scripts/Regen.gd" id="1_jvfgu"]
+
+[node name="Regen" type="Node"]
+script = ExtResource("1_jvfgu")

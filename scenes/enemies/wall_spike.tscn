@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxp0v182bod02"]
+
+[ext_resource type="Script" path="res://scripts/wall_spike.gd" id="1_xuxj4"]
+[ext_resource type="Texture2D" uid="uid://6ms8tsiedqa3" path="res://images/rachetuta.png" id="2_b72dl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ls3v"]
+size = Vector2(31, 18)
+
+[node name="WallSpike" type="Area2D" groups=["despawnable"]]
+collision_layer = 2
+script = ExtResource("1_xuxj4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_b72dl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_4ls3v")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

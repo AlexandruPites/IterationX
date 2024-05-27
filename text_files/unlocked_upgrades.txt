@@ -6,3 +6,7 @@ lightning-field
 ::augments::
 health
 damage
+speed
+regen
+revive
+magnet
