@@ -5,7 +5,7 @@ class_name Crocantel
 enum {IDLE, WAVE_ATTACK, LASER_ATTACK, SPIRAL_ATTACK, DEAD}
 
 var robot_speed : float = 250
-var robot_health : float = 500
+var robot_health : float = 5000
 var robot_knockback_resist : float = 0
 var state : int
 
@@ -49,8 +49,6 @@ func _ready() -> void:
 	health = robot_health
 	knockback_resist = robot_knockback_resist
 	scale = Vector2(4, 4)
-	#player.position = Vector2(-300, 0)
-	#position = Vector2(0,0)
 	state = IDLE
 	wave_res = preload("res://scenes/projectiles/wave.tscn")
 	laser_res = preload("res://scenes/projectiles/laser.tscn")
@@ -93,7 +91,7 @@ func _process(delta: float) -> void:
 				if not is_instance_valid(laser):
 					laser = laser_res.instantiate()
 					laser.rotation = randf_range(0, 2 * PI)
-					while abs(laser.rotation - position.angle_to_point(player.position)) < deg_to_rad(25):
+					while abs(laser.rotation - position.angle_to_point(player.position)) < deg_to_rad(45):
 						laser.rotation = randf_range(0, 2 * PI)
 					laser.position = laser_pos.position
 					laser.scale = Vector2(5, 0.75)
