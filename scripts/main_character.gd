@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 #player base attributes
-var base_max_health : float = 5.0
+var base_max_health : float = 100.0
 var base_speed : float = 300.0
 var base_regen : float = 0.0
 var base_regen_speed : float = 5.0
