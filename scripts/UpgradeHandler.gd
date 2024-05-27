@@ -4,8 +4,8 @@ class_name UpgradeHandler
 const MAX_LEVEL : int = 9
 const AUGMENT_MAX_LEVEL : int = 5
 
-const max_nr_weapons : int = 5
-const max_nr_augments : int = 5
+const max_nr_weapons : int = 6
+const max_nr_augments : int = 6
 
 var nr_weapons : int = 0
 var nr_augments : int = 0

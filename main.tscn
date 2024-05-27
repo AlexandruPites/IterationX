@@ -49,7 +49,7 @@ format = 2
 position = Vector2(-1, -4)
 
 [node name="WeaponsList" type="ItemList" parent="Player"]
-custom_minimum_size = Vector2(288, 32)
+custom_minimum_size = Vector2(298, 32)
 offset_left = -571.0
 offset_top = -288.0
 offset_right = -315.0
@@ -57,7 +57,7 @@ offset_bottom = -242.0
 script = ExtResource("11_r31lv")
 
 [node name="AugmentList" type="ItemList" parent="Player"]
-custom_minimum_size = Vector2(288, 32)
+custom_minimum_size = Vector2(298, 32)
 offset_left = -571.0
 offset_top = -241.0
 offset_right = -315.0
