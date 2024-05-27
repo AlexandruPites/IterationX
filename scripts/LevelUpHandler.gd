@@ -15,8 +15,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("debug_level") and level_up_instance == null:
-		create_instance()
-		
+		#create_instance()
+		pass
+				
 func create_instance() -> void:
 	var chosen : Array[RandomItem] = weapon_handler.choose_level_ups()
 	dummy.visible = true
