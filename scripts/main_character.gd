@@ -34,7 +34,24 @@ var enemies_collided_list : Array[Node2D] = []
 
 func _ready() -> void:
 	player_viewport = get_viewport_rect().size / 2
+	var save_dict: Dictionary
+	save_dict = save_utils.load_powerups()
+	save_utils.currency = save_dict['currency']
+	var powerups_dict: Dictionary = save_dict['powerups']
+	for key: String in powerups_dict:
+		match key:
+			"Max HP":
+				base_max_health += 10 * powerups_dict[key][0][1]
+			"HP regen":
+				pass
+			"Movement Speed":
+				base_speed += 15 * powerups_dict[key][0][1]
+			"Revival":
+				pass
 	calc_stats()
+
+
+		
 	health = max_health
 
 func _process(_delta : float) -> void:
