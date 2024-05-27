@@ -4,12 +4,15 @@ class_name Player
 #player base attributes
 var base_max_health : float = 100.0
 var base_speed : float = 300.0
+var base_regen : float = 0.0
+var base_regen_speed : float = 5.0
 
 #player attributes - do not change these
 var max_health : float
 var health : float
 var speed : float
 var direction : Vector2
+var regen : float
 
 #player xp attributes
 var xp : float = 0
@@ -27,6 +30,7 @@ signal level_up
 @onready var xp_pickup_sound : AudioStreamPlayer = $XP_pickup_sound
 @onready var hurt_sound : AudioStreamPlayer = $Hurt_sound
 @onready var levelup_sound : AudioStreamPlayer = $Levelup_sound
+@onready var regen_timer: Timer = $RegenTimer
 
 var player_viewport : Vector2
 var modifiers : StatIncrease = StatIncrease.new()
@@ -34,6 +38,7 @@ var enemies_collided_list : Array[Node2D] = []
 
 func _ready() -> void:
 	player_viewport = get_viewport_rect().size / 2
+	
 	var save_dict: Dictionary
 	save_dict = save_utils.load_powerups()
 	save_utils.currency = save_dict['currency']
@@ -43,14 +48,15 @@ func _ready() -> void:
 			"Max HP":
 				base_max_health += 10 * powerups_dict[key][0][1]
 			"HP regen":
-				pass
+				base_regen += 1 * powerups_dict[key][0][1]
 			"Movement Speed":
 				base_speed += 15 * powerups_dict[key][0][1]
 			"Revival":
 				pass
 	calc_stats()
-
-
+	
+	regen_timer.wait_time = base_regen_speed;
+	regen_timer.start()
 		
 	health = max_health
 
@@ -90,6 +96,7 @@ func calc_stats() -> void:
 	var damage_taken : float = max_health - health
 	max_health = base_max_health * (1 + modifiers.health_increase)
 	health = max_health - damage_taken
+	regen = base_regen * (1 + modifiers.regen_increase)
 	
 	speed = base_speed * (1 + modifiers.speed_increase)
 
@@ -133,3 +140,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			levelup_sound.play()
 			level_up.emit()
 		area.queue_free()
+
+
+func _on_regen_timer_timeout() -> void:
+	health += regen
