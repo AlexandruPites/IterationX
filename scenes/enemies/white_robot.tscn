@@ -114,14 +114,15 @@ libraries = {
 wait_time = 0.1
 one_shot = true
 
+[node name="Enemy_hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ubkpl")
+volume_db = -10.0
+bus = &"SFX"
+
 [node name="DeathPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_4lxt7")
 }
-
-[node name="Enemy_hurt" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_ubkpl")
-volume_db = -10.0
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 2.0

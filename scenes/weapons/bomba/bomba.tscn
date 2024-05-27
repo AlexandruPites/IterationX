@@ -29,5 +29,6 @@ autostart = true
 [node name="BombaSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_hl4bh")
 autoplay = true
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

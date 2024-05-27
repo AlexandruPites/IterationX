@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm3hvuynnjll4"]
+[gd_scene load_steps=7 format=3 uid="uid://bm3hvuynnjll4"]
 
-[ext_resource type="Texture2D" uid="uid://cctsfl71n878m" path="res://images/main-menu-background.png" id="1_8dc4l"]
+[ext_resource type="Texture2D" uid="uid://ekhr5nplss1p" path="res://images/main-menu-wall.png" id="1_3elma"]
 [ext_resource type="Script" path="res://scripts/CanvasLayer.gd" id="2_x64re"]
 [ext_resource type="Script" path="res://scripts/ButtonGrab.gd" id="3_ry2a3"]
 [ext_resource type="FontFile" uid="uid://ch4eyovb85f2h" path="res://VCR_OSD_MONO_1.001.ttf" id="4_hylni"]
 [ext_resource type="Script" path="res://scripts/PowerUpGrid.gd" id="4_s6s7p"]
+[ext_resource type="Script" path="res://scripts/MusicVolSlider.gd" id="5_12tsw"]
 
 [node name="MainMenu" type="Node"]
 
@@ -14,7 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_8dc4l")
+texture = ExtResource("1_3elma")
 expand_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -34,10 +35,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -160.0
-offset_top = -48.0
-offset_right = -160.0
-offset_bottom = -48.0
+offset_left = 144.0
+offset_top = 105.0
+offset_right = -655.0
+offset_bottom = -192.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -95,20 +96,47 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -248.0
+offset_right = 471.0
+offset_bottom = 299.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.592157, 0.301961, 1)
+
+[node name="Header" type="Label" parent="CanvasLayer/Settings"]
+texture_filter = 1
+offset_left = 423.0
+offset_top = 103.0
+offset_right = 713.0
+offset_bottom = 130.0
+theme_override_fonts/font = ExtResource("4_hylni")
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Settings"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -160.0
-offset_top = -48.0
-offset_right = -160.0
-offset_bottom = -48.0
+offset_left = 176.0
+offset_top = 169.0
+offset_right = -173.0
+offset_bottom = -83.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Settings/CenterContainer"]
-custom_minimum_size = Vector2(256, 256)
+custom_minimum_size = Vector2(800, 387.99)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Settings/CenterContainer/PanelContainer"]
@@ -118,52 +146,79 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer"]
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/ScrollContainer"]
+[node name="Settings List" type="ScrollContainer" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/TabContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/TabContainer/Settings List"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="MusicVolControl" type="Control" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/TabContainer/Settings List/VBoxContainer"]
 layout_mode = 2
+
+[node name="MusicVolLabel" type="Label" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/TabContainer/Settings List/VBoxContainer/MusicVolControl"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 753.0
+offset_bottom = 53.0
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 32
-text = "Settings
-"
-horizontal_alignment = 1
+theme_override_fonts/font = ExtResource("4_hylni")
+theme_override_font_sizes/font_size = 22
+text = "Music Volume"
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="MusicVolSlider" type="HSlider" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/TabContainer/Settings List/VBoxContainer/MusicVolControl"]
 layout_mode = 2
+offset_left = 14.0
+offset_top = 54.0
+offset_right = 754.0
+offset_bottom = 70.0
+max_value = 1.0
+step = 0.1
+value = 1.0
+script = ExtResource("5_12tsw")
+bus_name = "Music"
+
+[node name="SFXVolControl" type="Control" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/TabContainer/Settings List/VBoxContainer"]
+layout_mode = 2
+
+[node name="SFXVolLabel" type="Label" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/TabContainer/Settings List/VBoxContainer/SFXVolControl"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 16.0
+offset_top = 78.0
+offset_right = 753.0
+offset_bottom = 123.0
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 32
-text = "Settings
-"
-horizontal_alignment = 1
+theme_override_fonts/font = ExtResource("4_hylni")
+theme_override_font_sizes/font_size = 22
+text = "SFX Volume"
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="SFXVolSlider" type="HSlider" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/TabContainer/Settings List/VBoxContainer/SFXVolControl"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 32
-text = "Settings
-"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = 16.0
+offset_top = 123.0
+offset_right = 756.0
+offset_bottom = 139.0
+max_value = 1.0
+step = 0.1
+value = 1.0
+script = ExtResource("5_12tsw")
+bus_name = "SFX"
 
-[node name="Label4" type="Label" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="ButtonBack" type="Button" parent="CanvasLayer/Settings"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 32
-text = "Settings
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ButtonBack" type="Button" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
+offset_left = 860.0
+offset_top = 569.0
+offset_right = 978.0
+offset_bottom = 604.0
 size_flags_vertical = 3
 text = "Back"
 
@@ -256,5 +311,5 @@ text = "Back"
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonInjector" to="CanvasLayer" method="_on_button_injector_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonSettings" to="CanvasLayer" method="_on_button_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonQuit" to="CanvasLayer" method="_on_button_quit_pressed"]
-[connection signal="pressed" from="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/ButtonBack" to="CanvasLayer" method="_on_button_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/Settings/ButtonBack" to="CanvasLayer" method="_on_button_back_pressed"]
 [connection signal="pressed" from="CanvasLayer/Injector/BackFromInjectorToMain" to="CanvasLayer" method="_on_back_from_injector_to_main_pressed"]

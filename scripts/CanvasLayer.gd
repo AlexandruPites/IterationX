@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var main_menu: Control = $Main
 @onready var injector: Control = $Injector
 
-@onready var button_back: Button = $Settings/CenterContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/ButtonBack
+@onready var button_back: Button = $Settings/ButtonBack
 @onready var button_play: Button = $Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonPlay
 @onready var button_injector: Button = $Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonInjector
 @onready var back_from_injector_to_main: Button = $Injector/BackFromInjectorToMain

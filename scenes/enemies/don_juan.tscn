@@ -117,6 +117,7 @@ one_shot = true
 [node name="Enemy_hurt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_kojt5")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="DeathPlayer" type="AnimationPlayer" parent="."]
 libraries = {
