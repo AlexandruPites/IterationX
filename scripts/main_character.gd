@@ -6,6 +6,8 @@ var base_max_health : float = 5.0
 var base_speed : float = 300.0
 var base_regen : float = 0.0
 var base_regen_speed : float = 5.0
+var base_revives : int = 0
+var base_magnet : Vector2 = Vector2(3, 3)
 
 #player attributes - do not change these
 var max_health : float
@@ -13,6 +15,8 @@ var health : float
 var speed : float
 var direction : Vector2
 var regen : float
+var revives : int
+var magnet : Vector2
 
 #player xp attributes
 var xp : float = 0
@@ -32,11 +36,11 @@ signal level_up
 @onready var hurt_sound : AudioStreamPlayer = $Hurt_sound
 @onready var levelup_sound : AudioStreamPlayer = $Levelup_sound
 @onready var regen_timer: Timer = $RegenTimer
+@onready var pickup_radius: Area2D = $PickupRadius
 
 var player_viewport : Vector2
 var modifiers : StatIncrease = StatIncrease.new()
 var enemies_collided_list : Array[Node2D] = []
-var revival_available: int = 0
 
 
 var ghosts : Array[Sprite2D]
@@ -66,13 +70,16 @@ func _ready() -> void:
 			"Movement Speed":
 				base_speed += 15 * powerups_dict[key][0][1]
 			"Revival":
-				revival_available = powerups_dict[key][0][1]
+				base_revives = powerups_dict[key][0][1]
 	calc_stats()
 	
 	regen_timer.wait_time = base_regen_speed;
 	regen_timer.start()
-		
+	
 	health = max_health
+	revives = base_revives
+	magnet = base_magnet
+	pickup_radius.scale = magnet
 
 func _process(_delta : float) -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
@@ -111,12 +118,10 @@ func take_damage(damage : float, knockback : float = 0) -> void:
 		animation_player.play("take_damage")
 		timer.start() # timer is set to 0.3
 		health -= damage
-		if health <= 0:
-			if revival_available == 1:
-				hurt_sound.play()
-				health = max_health
-				revival_available = 0
-				return
+		if health <= 0 and revives > 0:
+			health = max_health
+			revives -= 1
+		elif health <= 0:
 			get_tree().change_scene_to_file.call_deferred("res://game_over_screen.tscn")
 		print(health)
 		hurt_sound.play()
@@ -128,6 +133,10 @@ func calc_stats() -> void:
 	regen = base_regen * (1 + modifiers.regen_increase)
 	
 	speed = base_speed * (1 + modifiers.speed_increase)
+	revives = base_revives + modifiers.revive_amount
+	
+	magnet = base_magnet * (1 + modifiers.magnet_increase)
+	pickup_radius.scale = magnet
 
 func collide_enemy(body : Node2D) -> void:
 	body.take_damage(20, 500)
@@ -173,3 +182,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 func _on_regen_timer_timeout() -> void:
 	health += regen
+	if health > base_max_health:
+		health = base_max_health
+	

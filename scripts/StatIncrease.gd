@@ -9,6 +9,10 @@ var damage_increase : float = 0
 var area_increase : float = 0
 var knockback_increase : float = 0
 var regen_increase : float = 0
+var magnet_increase : float = 0
+
+#additive
+var revive_amount : int = 0
 
 func calculate_increases(augments : Array) -> void:
 	for aug : Augment in augments:
