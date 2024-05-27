@@ -73,8 +73,7 @@ func get_wall_handler() -> WallSpikeHandler:
 	add_child(new_spike)
 	return new_spike
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta : float) -> void:
+func normal_spawn_logic() -> void:
 	var new_melee : int = max_melee - melee_count
 	var new_ranged : int = max_ranged - ranged_count
 	var elapsed_time : float = timer.wait_time - timer.time_left
@@ -97,3 +96,7 @@ func _process(_delta : float) -> void:
 		enemy_array.append(new_enemy)
 		add_child(new_enemy)
 		ranged_count += 1
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta : float) -> void:
+	normal_spawn_logic()
