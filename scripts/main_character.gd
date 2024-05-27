@@ -38,8 +38,20 @@ var modifiers : StatIncrease = StatIncrease.new()
 var enemies_collided_list : Array[Node2D] = []
 var revival_available: int = 0
 
+
+var ghosts : Array[Sprite2D]
+
+
 func _ready() -> void:
 	player_viewport = get_viewport_rect().size / 2
+	
+	for i in range(3):
+		var ghost : Sprite2D = Sprite2D.new()
+		ghost.texture = load("res://images/astronaut.png")
+		ghost.z_index = -1
+		ghost.modulate = Color(1, 1, 1, 1 - 0.2 * (i + 1))
+		ghosts.append(ghost)
+		add_child(ghost)
 	
 	var save_dict: Dictionary
 	save_dict = save_utils.load_powerups()
@@ -69,6 +81,16 @@ func _process(_delta : float) -> void:
 		direction = (pos - player_viewport).normalized()
 
 	velocity = direction * speed
+	if direction != Vector2.ZERO:
+		var dir : float = 1 if direction.x > 0 else -1
+		for i in ghosts.size():
+			var g : Sprite2D = ghosts[i]
+			g.visible = true
+			g.position = sprite_2d.position - Vector2(5 * (i + 1), 5 * ( i + 1)) * Vector2(direction.x, direction.y)
+			g.flip_h = sprite_2d.flip_h
+	else:
+		for g in ghosts:
+			g.visible = false
 	
 	if direction.x < 0:
 		sprite_2d.flip_h = true
