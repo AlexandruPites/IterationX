@@ -5,8 +5,8 @@ var enemy_array : Array[Enemy] = []
 var enemy_scenes : Array[PackedScene]
 var xp_scene : Resource = preload("res://scenes/xp.tscn")
 var ranged_enemy : PackedScene
-const max_melee: int = 0
-const max_ranged: int = 1
+const max_melee: int = 50
+const max_ranged: int = 3
 var melee_count : int = 0
 var ranged_count : int = 0
 const spawn_distance : float = 900
@@ -17,13 +17,12 @@ var enemy_index : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	ranged_enemy = preload("res://scenes/enemies/crocantel.tscn")
 	enemy_scenes.append(preload("res://scenes/enemies/robot.tscn"))
-	#enemy_scenes.append(preload("res://scenes/enemies/green_robot.tscn"))
-	#enemy_scenes.append(preload("res://scenes/enemies/don_juan.tscn"))
-	#enemy_scenes.append(preload("res://scenes/enemies/zumzarel.tscn"))
-	#enemy_scenes.append(preload("res://scenes/enemies/torpalod.tscn"))
-	#ranged_enemy = preload("res://scenes/enemies/white_robot.tscn")
+	enemy_scenes.append(preload("res://scenes/enemies/green_robot.tscn"))
+	enemy_scenes.append(preload("res://scenes/enemies/don_juan.tscn"))
+	enemy_scenes.append(preload("res://scenes/enemies/zumzarel.tscn"))
+	enemy_scenes.append(preload("res://scenes/enemies/torpalod.tscn"))
+	ranged_enemy = preload("res://scenes/enemies/white_robot.tscn")
 	
 func _on_timer_timeout() -> void:
 	if enemy_index + 1 < enemy_scenes.size():
