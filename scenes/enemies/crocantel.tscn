@@ -194,7 +194,7 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="Crocantel" type="CharacterBody2D" groups=["damageable", "despawnable", "ranged"]]
+[node name="Crocantel" type="CharacterBody2D" groups=["damageable", "despawnable"]]
 z_index = 1
 scale = Vector2(1.5, 1.5)
 collision_layer = 2

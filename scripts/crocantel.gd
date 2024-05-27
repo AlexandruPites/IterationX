@@ -5,7 +5,7 @@ class_name Crocantel
 enum {IDLE, WAVE_ATTACK, LASER_ATTACK, SPIRAL_ATTACK, DEAD}
 
 var robot_speed : float = 250
-var robot_health : float = 5000
+var robot_health : float = 500
 var robot_knockback_resist : float = 0
 var state : int
 
@@ -49,8 +49,8 @@ func _ready() -> void:
 	health = robot_health
 	knockback_resist = robot_knockback_resist
 	scale = Vector2(4, 4)
-	player.position = Vector2(-300, 0)
-	position = Vector2(0,0)
+	#player.position = Vector2(-300, 0)
+	#position = Vector2(0,0)
 	state = IDLE
 	wave_res = preload("res://scenes/projectiles/wave.tscn")
 	laser_res = preload("res://scenes/projectiles/laser.tscn")
