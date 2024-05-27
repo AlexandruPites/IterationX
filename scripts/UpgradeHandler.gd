@@ -4,8 +4,8 @@ class_name UpgradeHandler
 const MAX_LEVEL : int = 9
 const AUGMENT_MAX_LEVEL : int = 5
 
-var inventory : Dictionary = {}
-var augments : Dictionary = {}
+static var inventory : Dictionary = {}
+static var augments : Dictionary = {}
 var weapon_levels : Dictionary = {}
 var augment_levels : Dictionary = {}
 
