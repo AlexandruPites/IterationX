@@ -4,6 +4,7 @@ var format_string_augment : String = "res://images/augments/%s.png"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	self.clear()
 	self.max_columns = 0
 	self.get_v_scroll_bar().visible = false
 	self.get_v_scroll_bar().modulate.a = 0
