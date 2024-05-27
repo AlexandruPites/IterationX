@@ -4,6 +4,7 @@ class_name EnemySpawner
 var enemy_array : Array[Enemy] = []
 var enemy_scenes : Array[PackedScene]
 var xp_scene : Resource = preload("res://scenes/xp.tscn")
+var spike_handler_scene : Resource = preload("res://scenes/enemies/wall_attack_handler.tscn")
 var ranged_enemy : PackedScene
 const max_melee: int = 50
 const max_ranged: int = 3
@@ -15,6 +16,7 @@ const spawn_distance : float = 900
 
 var enemy_index : int = 0
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	enemy_scenes.append(preload("res://scenes/enemies/robot.tscn"))
@@ -23,6 +25,8 @@ func _ready() -> void:
 	enemy_scenes.append(preload("res://scenes/enemies/zumzarel.tscn"))
 	enemy_scenes.append(preload("res://scenes/enemies/torpalod.tscn"))
 	ranged_enemy = preload("res://scenes/enemies/white_robot.tscn")
+	
+	#var wallhandler : Node2D = get_wall_handler()
 	
 func _on_timer_timeout() -> void:
 	if enemy_index + 1 < enemy_scenes.size():
@@ -60,6 +64,14 @@ func get_closest_enemy_to_point(source_pos : Vector2) -> Enemy:
 			min_dist = dist
 			closest_enemy = enemy
 	return closest_enemy
+
+func get_wall_handler() -> WallSpikeHandler:
+	var new_spike : WallSpikeHandler = spike_handler_scene.instantiate()
+	new_spike.player = player
+	new_spike.initial_x = player.position.x
+	new_spike.initial_y = player.position.y
+	add_child(new_spike)
+	return new_spike
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta : float) -> void:
