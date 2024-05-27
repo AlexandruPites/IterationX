@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl1xj0dad364u"]
+[gd_scene load_steps=5 format=3 uid="uid://bl1xj0dad364u"]
 
+[ext_resource type="Shader" path="res://shaders/prison.gdshader" id="1_b6y5n"]
 [ext_resource type="Texture2D" uid="uid://dj86sktvlr0bk" path="res://images/square.png" id="1_k154o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1213u"]
 size = Vector2(62, 62)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_440lc"]
+shader = ExtResource("1_b6y5n")
+shader_parameter/color = Color(0.0941176, 0.439216, 1, 1)
+shader_parameter/zoom = 2.0
 
 [node name="StaticBody2D" type="StaticBody2D" groups=["wall"]]
 collision_layer = 33554433
@@ -12,4 +18,5 @@ collision_layer = 33554433
 shape = SubResource("RectangleShape2D_1213u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_440lc")
 texture = ExtResource("1_k154o")
