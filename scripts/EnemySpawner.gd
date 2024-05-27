@@ -16,7 +16,7 @@ var melee_count : int = 0
 var ranged_count : int = 0
 const spawn_distance : float = 900
 var special_phase : bool = false
-var next_phase : int = BOSS
+var next_phase : int = DODGE
 @onready var player : CharacterBody2D = $"../Player"
 @onready var timer : Timer = $Timer
 @onready var phase_timer : Timer = $PhaseTransitionTimer
@@ -152,5 +152,6 @@ func _on_phase_transition_timer_timeout() -> void:
 	else:
 		phase_handler = get_boss_handler()
 		phase_handler.death.connect(_on_phase_end)
+		enemy_array.append(phase_handler)
 		next_phase = DODGE
 	

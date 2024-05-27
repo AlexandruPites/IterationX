@@ -5,7 +5,7 @@ class_name Crocantel
 enum {IDLE, WAVE_ATTACK, LASER_ATTACK, SPIRAL_ATTACK, DEAD}
 
 var robot_speed : float = 250
-var robot_health : float = 5000
+var robot_health : float = 25000
 var robot_knockback_resist : float = 0
 var state : int
 

@@ -2,8 +2,8 @@ extends Node2D
 class_name WallSpikeHandler
 
 const wall_size: float = 2000
-const wall_distance: float = 600
-const hole_window = 600
+const wall_distance: float = 720
+const hole_window = 500
 const hole_size = 0
 const projectile_size: float = 32
 const max_wall_count: int = 25
@@ -30,8 +30,6 @@ func spawn_wall_vertical(player_pos: Vector2) -> void:
 	for offset in range(0, wall_size, projectile_size):
 		if x_base + offset > hole_position - hole_size - projectile_size and x_base + offset < hole_position + hole_size + projectile_size:
 			continue
-		if player_pos.y < initial_y:
-			initial_y = player_pos.y
 		var new_spike : WallSpike = spike_scene.instantiate()
 		new_spike.velocity = Vector2(0, 1)
 		new_spike.position = Vector2(x_base + offset, player_pos.y - wall_distance)
@@ -47,8 +45,6 @@ func spawn_wall_horizontal(player_pos: Vector2) -> void:
 	for offset in range(0, wall_size, projectile_size):
 		if y_base + offset > hole_position - hole_size - projectile_size and y_base + offset < hole_position + hole_size + projectile_size:
 			continue
-		if player_pos.x < initial_x:
-			initial_x = player_pos.x
 		var new_spike : WallSpike = spike_scene.instantiate()
 		new_spike.velocity = Vector2(1, 0)
 		new_spike.position = Vector2(player_pos.x - wall_distance, y_base + offset)
@@ -62,9 +58,9 @@ func _process(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	var roll : int = randi() % 2
 	if roll == 0:
-		spawn_wall_vertical(player.position)
+		spawn_wall_vertical(Vector2(initial_x, initial_y))
 	else:
-		spawn_wall_horizontal(player.position)
+		spawn_wall_horizontal(Vector2(initial_x, initial_y))
 	spawned_walls += 1
 	
 	if spawned_walls >= max_wall_count:

@@ -3,7 +3,7 @@ class_name WallSpike
 
 var velocity: Vector2
 const SPEED: int = 300
-const DAMAGE: float = 4
+const DAMAGE: float = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
