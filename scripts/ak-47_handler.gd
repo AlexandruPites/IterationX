@@ -34,15 +34,17 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if timer.is_stopped():
 		timer.start()
-		var instance : Projectile = resource.instantiate()
-		instance.velocity = velocity 
-		instance.position = player.position
-		instance.damage = damage
-		instance.hit_counter = hit_counter
-		instance.speed = speed
-		instance.knockback = knockback
-		instance.target = spawner.get_closest_enemy_to_point(player.position)
-		add_child(instance)
+		var target : Enemy = spawner.get_closest_enemy_to_point(player.position)
+		if target != null:
+			var instance : Projectile = resource.instantiate()
+			instance.velocity = velocity 
+			instance.position = player.position
+			instance.damage = damage
+			instance.hit_counter = hit_counter
+			instance.speed = speed
+			instance.knockback = knockback
+			instance.target = target
+			add_child(instance)
 
 func calc_stats() -> void:
 	damage = base_damage * level * (1 + modifiers.damage_increase)

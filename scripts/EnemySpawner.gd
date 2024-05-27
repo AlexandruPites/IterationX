@@ -20,6 +20,8 @@ var next_phase : int = DODGE
 @onready var player : CharacterBody2D = $"../Player"
 @onready var timer : Timer = $Timer
 @onready var phase_timer : Timer = $PhaseTransitionTimer
+@onready var prison_handler: Node2D = $"../PrisonHandler"
+
 
 
 var enemy_index : int = 0
@@ -47,6 +49,7 @@ func _on_timer_timeout() -> void:
 
 func _on_phase_end(source : Node2D) -> void:
 	print("Phase Ends")
+	prison_handler.jailbreak()
 	special_phase = false
 	timer.paused = false
 	phase_timer.start()
@@ -96,12 +99,14 @@ func get_wall_handler() -> WallSpikeHandler:
 	new_spike.initial_x = player.position.x
 	new_spike.initial_y = player.position.y
 	add_child(new_spike)
+	prison_handler.spawn_prison(player.position, 20)
 	return new_spike
 	
 func get_boss_handler() -> Crocantel:
 	var boss : Crocantel = boss_scene.instantiate()
 	boss.position = player.position + Vector2(300, 0)
 	add_child(boss)
+	prison_handler.spawn_prison(boss.position, 20)
 	return boss
 
 func normal_spawn_logic() -> void:

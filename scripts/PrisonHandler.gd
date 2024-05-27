@@ -29,3 +29,8 @@ func spawn_prison(pos : Vector2, size : int) -> void:
 		curr_pos += brick_size * Vector2(0, -1)
 		brick.position = curr_pos
 		add_child(brick)
+		
+func jailbreak() -> void:
+	var chld : Array = get_children()
+	for c : StaticBody2D in chld:
+		c.queue_free()
