@@ -4,7 +4,7 @@ var format_string_weapon : String = "res://images/weapons/%s.png"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.max_columns = 6
-
+	self.get_v_scroll_bar().visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
