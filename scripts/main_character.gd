@@ -60,13 +60,13 @@ func _ready() -> void:
 	for key: String in powerups_dict:
 		match key:
 			"Max HP":
-				base_max_health += 10 * powerups_dict[key][0][1]
+				base_max_health += 10 * powerups_dict[key][0][0]
 			"HP regen":
-				base_regen += 1 * powerups_dict[key][0][1]
+				base_regen += 1 * powerups_dict[key][0][0]
 			"Movement Speed":
-				base_speed += 15 * powerups_dict[key][0][1]
+				base_speed += 15 * powerups_dict[key][0][0]
 			"Revival":
-				revival_available = powerups_dict[key][0][1]
+				revival_available = powerups_dict[key][0][0]
 	calc_stats()
 	
 	regen_timer.wait_time = base_regen_speed;
