@@ -5,10 +5,10 @@ static var save_path: String = 'user://save'
 static var currency : int
 # Called when the node enters the scene tree for the first time.
 
-static func save_powerups(powerup_dict: Dictionary, currency: int) -> void:
+static func save_powerups(powerup_dict: Dictionary, currencyFunc: int) -> void:
 	var savefile: FileAccess = FileAccess.open(save_path, FileAccess.WRITE)
 	savefile.store_var(powerup_dict)
-	savefile.store_var(currency)
+	savefile.store_var(currencyFunc)
 
 	
 static func load_powerups() -> Dictionary:
