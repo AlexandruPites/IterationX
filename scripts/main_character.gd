@@ -21,6 +21,7 @@ var level : int = 0
 
 signal level_up
 
+@onready var weapons_list: ItemList = $WeaponsList
 @onready var sprite_2d : Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var timer: Timer = $Timer
