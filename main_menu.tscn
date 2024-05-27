@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bm3hvuynnjll4"]
 
-[ext_resource type="Texture2D" uid="uid://cctsfl71n878m" path="res://images/main-menu-background.png" id="1_8dc4l"]
+[ext_resource type="Texture2D" uid="uid://ekhr5nplss1p" path="res://images/main-menu-wall.png" id="1_3elma"]
 [ext_resource type="Script" path="res://scripts/CanvasLayer.gd" id="2_x64re"]
 [ext_resource type="Script" path="res://scripts/ButtonGrab.gd" id="3_ry2a3"]
 [ext_resource type="FontFile" uid="uid://ch4eyovb85f2h" path="res://VCR_OSD_MONO_1.001.ttf" id="4_hylni"]
@@ -15,7 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_8dc4l")
+texture = ExtResource("1_3elma")
 expand_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -35,10 +35,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -160.0
-offset_top = -48.0
-offset_right = -160.0
-offset_bottom = -48.0
+offset_left = 144.0
+offset_top = 105.0
+offset_right = -655.0
+offset_bottom = -192.0
 grow_horizontal = 2
 grow_vertical = 2
 
