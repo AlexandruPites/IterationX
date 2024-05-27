@@ -6,11 +6,16 @@ const wall_distance: float = 600
 const hole_window = 600
 const hole_size = 0
 const projectile_size: float = 32
+const max_wall_count: int = 25
+
 var initial_y: float
 var initial_x: float
 
 var player : CharacterBody2D
 var spike_scene : Resource = preload("res://scenes/enemies/wall_spike.tscn")
+
+var spawned_walls : int = 0
+signal end_signal
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -60,4 +65,9 @@ func _on_timer_timeout() -> void:
 		spawn_wall_vertical(player.position)
 	else:
 		spawn_wall_horizontal(player.position)
+	spawned_walls += 1
+	
+	if spawned_walls >= max_wall_count:
+		end_signal.emit(self)
+		queue_free()
 	print("Wall spawned")

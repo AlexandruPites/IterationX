@@ -1,18 +1,26 @@
 extends Node2D
 class_name EnemySpawner
 
+enum {BOSS, DODGE}
+
 var enemy_array : Array[Enemy] = []
 var enemy_scenes : Array[PackedScene]
 var xp_scene : Resource = preload("res://scenes/xp.tscn")
 var spike_handler_scene : Resource = preload("res://scenes/enemies/wall_attack_handler.tscn")
+var boss_scene : Resource = preload("res://scenes/enemies/crocantel.tscn")
 var ranged_enemy : PackedScene
+var phase_handler : Node2D
 const max_melee: int = 50
 const max_ranged: int = 3
 var melee_count : int = 0
 var ranged_count : int = 0
 const spawn_distance : float = 900
+var special_phase : bool = false
+var next_phase : int = DODGE
 @onready var player : CharacterBody2D = $"../Player"
 @onready var timer : Timer = $Timer
+@onready var phase_timer : Timer = $PhaseTransitionTimer
+
 
 var enemy_index : int = 0
 
@@ -26,12 +34,25 @@ func _ready() -> void:
 	enemy_scenes.append(preload("res://scenes/enemies/torpalod.tscn"))
 	ranged_enemy = preload("res://scenes/enemies/white_robot.tscn")
 	
+	phase_timer.start()
+	
 	#var wallhandler : Node2D = get_wall_handler()
 	
 func _on_timer_timeout() -> void:
 	if enemy_index + 1 < enemy_scenes.size():
 		enemy_index += 1
 		print("Improved enemies to index " + str(enemy_index))
+		
+		
+
+func _on_phase_end(source : Node2D) -> void:
+	print("Phase Ends")
+	special_phase = false
+	timer.paused = false
+	phase_timer.start()
+	if source.is_in_group("despawnable"):
+		_on_death(source)
+	phase_handler = null
 
 func _on_death(source : CharacterBody2D) -> void:
 	source.alive = false
@@ -64,6 +85,10 @@ func get_closest_enemy_to_point(source_pos : Vector2) -> Enemy:
 			min_dist = dist
 			closest_enemy = enemy
 	return closest_enemy
+	
+func clear_all_enemies() -> void:
+	while enemy_array.size() > 0:
+		_on_death(enemy_array[0])
 
 func get_wall_handler() -> WallSpikeHandler:
 	var new_spike : WallSpikeHandler = spike_handler_scene.instantiate()
@@ -72,6 +97,12 @@ func get_wall_handler() -> WallSpikeHandler:
 	new_spike.initial_y = player.position.y
 	add_child(new_spike)
 	return new_spike
+	
+func get_boss_handler() -> Crocantel:
+	var boss : Crocantel = boss_scene.instantiate()
+	boss.position = player.position + Vector2(300, 0)
+	add_child(boss)
+	return boss
 
 func normal_spawn_logic() -> void:
 	var new_melee : int = max_melee - melee_count
@@ -99,4 +130,22 @@ func normal_spawn_logic() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta : float) -> void:
-	normal_spawn_logic()
+	if not special_phase:
+		normal_spawn_logic()
+
+
+func _on_phase_transition_timer_timeout() -> void:
+	print("Phase starts")
+	special_phase = true
+	timer.paused = true
+	clear_all_enemies()
+	
+	if(next_phase == DODGE):
+		phase_handler = get_wall_handler()
+		phase_handler.end_signal.connect(_on_phase_end)
+		next_phase = BOSS
+	else:
+		phase_handler = get_boss_handler()
+		phase_handler.death.connect(_on_phase_end)
+		next_phase = DODGE
+	
