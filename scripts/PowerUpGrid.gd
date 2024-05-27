@@ -9,7 +9,7 @@ var buy_btns_and_labels: Dictionary = {
 						}
 
 var powerups_dict: Dictionary
-var currency: int
+var currency: float
 @onready var currency_label : Label = $"../../../../../Currency"
 
 var offset_x: float = 190
@@ -22,7 +22,7 @@ func _ready() -> void:
 	currency = load_dict["currency"]
 	powerups_dict = load_dict["powerups"]
 	
-	currency_label.text = "Currency : %d" % currency
+	currency_label.text = "Currency : %f" % currency
 	for powerup: String in powerups_dict:
 		var panel: Panel = Panel.new()
 		panel.set_custom_minimum_size(Vector2(150, 100))
@@ -64,13 +64,14 @@ func _ready() -> void:
 
 func _on_buy_pressed(powerup: String) -> void:
 	var price: int = powerups_dict[powerup][2]
+	print(currency)
 	if powerups_dict[powerup][0][0] < powerups_dict[powerup][0][1] and currency < price:
 		print("not enough currency")
 	
 	if powerups_dict[powerup][0][0] < powerups_dict[powerup][0][1] and currency >= price:
 		powerups_dict[powerup][0][0] += 1
 		currency -= price
-		currency_label.text = "Currency : %d" % currency
+		currency_label.text = "Currency : %.2f" % currency
 		price *= 2
 		powerups_dict[powerup][2] = price
 	
