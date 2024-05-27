@@ -79,6 +79,7 @@ process_mode = 3
 stream = ExtResource("6_hs82m")
 volume_db = -20.0
 autoplay = true
+bus = &"Music"
 
 [node name="XP" parent="." instance=ExtResource("7_x5b6a")]
 position = Vector2(247, 0)

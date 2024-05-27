@@ -94,14 +94,17 @@ shape = SubResource("CircleShape2D_m2514")
 [node name="XP_pickup_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_lm5oe")
 volume_db = -25.0
+bus = &"SFX"
 
 [node name="Hurt_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_n8d1x")
+bus = &"SFX"
 
 [node name="Levelup_sound" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("5_8rfyj")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 offset_left = -32.0
