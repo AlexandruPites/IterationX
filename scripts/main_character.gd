@@ -25,6 +25,7 @@ var level : int = 0
 
 signal level_up
 
+@onready var tm_currency: Timer = get_node("/root/Game/Camera2D/Timer")
 @onready var weapons_list: ItemList = $WeaponsList
 @onready var sprite_2d : Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -60,7 +61,7 @@ func _ready() -> void:
 	
 	var save_dict: Dictionary
 	save_dict = save_utils.load_powerups()
-	save_utils.currency = save_dict['currency']
+
 	var powerups_dict: Dictionary = save_dict['powerups']
 	for key: String in powerups_dict:
 		match key:
@@ -71,7 +72,7 @@ func _ready() -> void:
 			"Movement Speed":
 				base_speed += 15 * powerups_dict[key][0][0]
 			"Revival":
-				base_revives = powerups_dict[key][0][1]
+				base_revives = powerups_dict[key][0][0]
 	calc_stats()
 	
 	regen_timer.wait_time = base_regen_speed;
@@ -121,6 +122,9 @@ func take_damage(damage : float, knockback : float = 0) -> void:
 			health = max_health
 			revives -= 1
 		elif health <= 0:
+			var save_dict: Dictionary = save_utils.load_powerups()
+			save_dict["currency"] += (tm_currency.wait_time - tm_currency.time_left) * 0.2
+			save_utils.save_powerups(save_dict["powerups"], save_dict["currency"])
 			get_tree().change_scene_to_file.call_deferred("res://game_over_screen.tscn")
 		print(health)
 		hurt_sound.play()

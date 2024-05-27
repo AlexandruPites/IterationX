@@ -2,7 +2,7 @@ extends Node
 class_name save_utils
 
 static var save_path: String = 'user://save'
-static var currency : int
+static var currency : float
 # Called when the node enters the scene tree for the first time.
 
 static func save_powerups(powerup_dict: Dictionary, currency_func: int) -> void:
