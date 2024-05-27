@@ -50,18 +50,18 @@ position = Vector2(-1, -4)
 
 [node name="WeaponsList" type="ItemList" parent="Player"]
 custom_minimum_size = Vector2(256, 32)
-offset_left = -572.0
-offset_top = -293.0
-offset_right = -316.0
-offset_bottom = -247.0
+offset_left = -571.0
+offset_top = -288.0
+offset_right = -315.0
+offset_bottom = -242.0
 script = ExtResource("11_r31lv")
 
 [node name="AugmentList" type="ItemList" parent="Player"]
 custom_minimum_size = Vector2(256, 32)
-offset_left = -572.0
-offset_top = -246.0
-offset_right = -316.0
-offset_bottom = -206.0
+offset_left = -571.0
+offset_top = -241.0
+offset_right = -315.0
+offset_bottom = -195.0
 script = ExtResource("5_4eh0n")
 
 [node name="UpgradeHandler" type="Node2D" parent="."]
