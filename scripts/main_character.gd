@@ -4,12 +4,19 @@ class_name Player
 #player base attributes
 var base_max_health : float = 100.0
 var base_speed : float = 300.0
+var base_regen : float = 0.0
+var base_regen_speed : float = 5.0
+var base_revives : int = 0
+var base_magnet : Vector2 = Vector2(3, 3)
 
 #player attributes - do not change these
 var max_health : float
 var health : float
 var speed : float
 var direction : Vector2
+var regen : float
+var revives : int
+var magnet : Vector2
 
 #player xp attributes
 var xp : float = 0
@@ -18,6 +25,7 @@ var level : int = 0
 
 signal level_up
 
+@onready var weapons_list: ItemList = $WeaponsList
 @onready var sprite_2d : Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var timer: Timer = $Timer
@@ -27,15 +35,51 @@ signal level_up
 @onready var xp_pickup_sound : AudioStreamPlayer = $XP_pickup_sound
 @onready var hurt_sound : AudioStreamPlayer = $Hurt_sound
 @onready var levelup_sound : AudioStreamPlayer = $Levelup_sound
+@onready var regen_timer: Timer = $RegenTimer
+@onready var pickup_radius: Area2D = $PickupRadius
 
 var player_viewport : Vector2
 var modifiers : StatIncrease = StatIncrease.new()
 var enemies_collided_list : Array[Node2D] = []
 
+
+var ghosts : Array[Sprite2D]
+
+
 func _ready() -> void:
 	player_viewport = get_viewport_rect().size / 2
+	
+	for i in range(3):
+		var ghost : Sprite2D = Sprite2D.new()
+		ghost.texture = load("res://images/astronaut.png")
+		ghost.z_index = -1
+		ghost.modulate = Color(1, 1, 1, 1 - 0.2 * (i + 1))
+		ghosts.append(ghost)
+		add_child(ghost)
+	
+	var save_dict: Dictionary
+	save_dict = save_utils.load_powerups()
+	save_utils.currency = save_dict['currency']
+	var powerups_dict: Dictionary = save_dict['powerups']
+	for key: String in powerups_dict:
+		match key:
+			"Max HP":
+				base_max_health += 10 * powerups_dict[key][0][0]
+			"HP regen":
+				base_regen += 1 * powerups_dict[key][0][0]
+			"Movement Speed":
+				base_speed += 15 * powerups_dict[key][0][0]
+			"Revival":
+				base_revives = powerups_dict[key][0][1]
 	calc_stats()
+	
+	regen_timer.wait_time = base_regen_speed;
+	regen_timer.start()
+	
 	health = max_health
+	revives = base_revives
+	magnet = base_magnet
+	pickup_radius.scale = magnet
 
 func _process(_delta : float) -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
@@ -44,6 +88,16 @@ func _process(_delta : float) -> void:
 		direction = (pos - player_viewport).normalized()
 
 	velocity = direction * speed
+	if direction != Vector2.ZERO:
+		var dir : float = 1 if direction.x > 0 else -1
+		for i in ghosts.size():
+			var g : Sprite2D = ghosts[i]
+			g.visible = true
+			g.position = sprite_2d.position - Vector2(5 * (i + 1), 5 * ( i + 1)) * Vector2(direction.x, direction.y)
+			g.flip_h = sprite_2d.flip_h
+	else:
+		for g in ghosts:
+			g.visible = false
 	
 	if direction.x < 0:
 		sprite_2d.flip_h = true
@@ -64,7 +118,10 @@ func take_damage(damage : float, knockback : float = 0) -> void:
 		animation_player.play("take_damage")
 		timer.start() # timer is set to 0.3
 		health -= damage
-		if health <= 0:
+		if health <= 0 and revives > 0:
+			health = max_health
+			revives -= 1
+		elif health <= 0:
 			get_tree().change_scene_to_file.call_deferred("res://game_over_screen.tscn")
 		print(health)
 		hurt_sound.play()
@@ -73,8 +130,13 @@ func calc_stats() -> void:
 	var damage_taken : float = max_health - health
 	max_health = base_max_health * (1 + modifiers.health_increase)
 	health = max_health - damage_taken
+	regen = base_regen * (1 + modifiers.regen_increase)
 	
 	speed = base_speed * (1 + modifiers.speed_increase)
+	revives = base_revives + modifiers.revive_amount
+	
+	magnet = base_magnet * (1 + modifiers.magnet_increase)
+	pickup_radius.scale = magnet
 
 func collide_enemy(body : Node2D) -> void:
 	body.take_damage(20, 500)
@@ -116,3 +178,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			levelup_sound.play()
 			level_up.emit()
 		area.queue_free()
+
+
+func _on_regen_timer_timeout() -> void:
+	health += regen
+	if health > base_max_health:
+		health = base_max_health
+	

@@ -1,15 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://dv5v7x871fmkq"]
+[gd_scene load_steps=17 format=3 uid="uid://dv5v7x871fmkq"]
 
 [ext_resource type="Texture2D" uid="uid://rvtj6d8uhegu" path="res://images/mars-tiles.png" id="1_s6454"]
 [ext_resource type="Script" path="res://scripts/Terrain.gd" id="1_sech5"]
 [ext_resource type="PackedScene" uid="uid://ca3p3id8imxb" path="res://scenes/main_character.tscn" id="2_rbl60"]
 [ext_resource type="PackedScene" uid="uid://cpjafs71x7bqv" path="res://scenes/camera.tscn" id="4_r5wui"]
+[ext_resource type="Script" path="res://scripts/AugmentList.gd" id="5_4eh0n"]
 [ext_resource type="AudioStream" uid="uid://db4h37ul2plip" path="res://music/Doppelganger%20Assault.mp3" id="6_hs82m"]
 [ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="6_pk4xv"]
 [ext_resource type="Script" path="res://scripts/PauseHandler.gd" id="6_satg3"]
 [ext_resource type="Script" path="res://scripts/LevelUpHandler.gd" id="7_uemc8"]
 [ext_resource type="PackedScene" uid="uid://cqmic4ctrs30l" path="res://scenes/xp.tscn" id="7_x5b6a"]
 [ext_resource type="Script" path="res://scripts/UpgradeHandler.gd" id="9_sndql"]
+[ext_resource type="Script" path="res://scripts/WeaponsList.gd" id="11_r31lv"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_pnfgt"]
 seed = 1
@@ -45,6 +47,22 @@ format = 2
 
 [node name="Player" parent="." instance=ExtResource("2_rbl60")]
 position = Vector2(-1, -4)
+
+[node name="WeaponsList" type="ItemList" parent="Player"]
+custom_minimum_size = Vector2(298, 32)
+offset_left = -571.0
+offset_top = -288.0
+offset_right = -315.0
+offset_bottom = -242.0
+script = ExtResource("11_r31lv")
+
+[node name="AugmentList" type="ItemList" parent="Player"]
+custom_minimum_size = Vector2(298, 32)
+offset_left = -571.0
+offset_top = -241.0
+offset_right = -315.0
+offset_bottom = -195.0
+script = ExtResource("5_4eh0n")
 
 [node name="UpgradeHandler" type="Node2D" parent="."]
 script = ExtResource("9_sndql")

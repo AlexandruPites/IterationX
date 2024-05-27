@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://byxrhrbvt3ave"]
+
+[ext_resource type="Script" path="res://scripts/Magnet.gd" id="1_nqqtc"]
+
+[node name="Magnet" type="Node"]
+script = ExtResource("1_nqqtc")

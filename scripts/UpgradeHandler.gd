@@ -4,6 +4,12 @@ class_name UpgradeHandler
 const MAX_LEVEL : int = 9
 const AUGMENT_MAX_LEVEL : int = 5
 
+const max_nr_weapons : int = 6
+const max_nr_augments : int = 6
+
+var nr_weapons : int = 0
+var nr_augments : int = 0
+
 var inventory : Dictionary = {}
 var augments : Dictionary = {}
 var weapon_levels : Dictionary = {}
@@ -64,6 +70,7 @@ func update_augment_level(changedItem : RandomItem) -> void:
 	
 	
 func add_weapon(weapon_name : String) -> void:
+	nr_weapons += 1
 	weapon_levels[weapon_name] = 1
 	var format_string : String = "res://scenes/weapons/%s/%s_handler.tscn"
 	var resource : Resource = load(format_string % [weapon_name, weapon_name])
@@ -75,26 +82,35 @@ func add_weapon(weapon_name : String) -> void:
 	temp.weapon_name = weapon_name
 	temp.handler = instance
 	inventory[weapon_name] = temp
+	get_node("/root/Game/Player/WeaponsList").add_weapon_to_list(weapon_name)
 	add_child(temp.handler)
 	
 func add_augment(augment_name : String) -> void:
+	nr_augments += 1
 	augment_levels[augment_name] = 1
 	var format_string : String = "res://scenes/augments/%s.tscn"
 	var resource : Resource = load(format_string % augment_name)
 	var instance : Augment = resource.instantiate()
 	augments[augment_name] = instance
+	get_node("/root/Game/Player/AugmentList").add_augment_to_list(augment_name)
 	add_child(instance)
 	
 func choose_level_ups() -> Array[RandomItem]:
 	var choices : Array[RandomItem] = []
 	var copy_dict : Dictionary = {}
-	for elem : String in weapon_levels.keys():
-		if weapon_levels[elem] < MAX_LEVEL:
-			copy_dict[elem] = weapon_levels[elem]
+	if nr_weapons < max_nr_weapons:
+		for elem : String in weapon_levels.keys():
+			if weapon_levels[elem] < MAX_LEVEL:
+				copy_dict[elem] = weapon_levels[elem]
 			
-	for elem : String in augment_levels.keys():
-		if augment_levels[elem] < AUGMENT_MAX_LEVEL:
-			copy_dict[elem] = augment_levels[elem]
+	if nr_augments < max_nr_augments:
+		for elem : String in augment_levels.keys():
+			if elem in augments:
+				if augment_levels[elem] < augments[elem].max_level:
+					copy_dict[elem] = augment_levels[elem]
+			else:
+				if augment_levels[elem] < AUGMENT_MAX_LEVEL:
+					copy_dict[elem] = augment_levels[elem]
 			
 	for i in range(3):
 		if copy_dict.keys().size() > 0:
