@@ -11,7 +11,8 @@ func _process(delta: float) -> void:
 		position += velocity * delta
 	else:
 		target = spawner.get_closest_enemy_to_point(position)
-		#queue_free()
+		if target == null:
+			queue_free()
 
 func target_nonbeliever() -> void:
 	if is_instance_valid(target) and target.alive:
