@@ -4,8 +4,8 @@ class_name UpgradeHandler
 const MAX_LEVEL : int = 9
 const AUGMENT_MAX_LEVEL : int = 5
 
-static var inventory : Dictionary = {}
-static var augments : Dictionary = {}
+var inventory : Dictionary = {}
+var augments : Dictionary = {}
 var weapon_levels : Dictionary = {}
 var augment_levels : Dictionary = {}
 
@@ -95,8 +95,12 @@ func choose_level_ups() -> Array[RandomItem]:
 			copy_dict[elem] = weapon_levels[elem]
 			
 	for elem : String in augment_levels.keys():
-		if augment_levels[elem] < AUGMENT_MAX_LEVEL:
-			copy_dict[elem] = augment_levels[elem]
+		if elem in augments:
+			if augment_levels[elem] < augments[elem].max_level:
+				copy_dict[elem] = augment_levels[elem]
+		else:
+			if augment_levels[elem] < AUGMENT_MAX_LEVEL:
+				copy_dict[elem] = augment_levels[elem]
 			
 	for i in range(3):
 		if copy_dict.keys().size() > 0:

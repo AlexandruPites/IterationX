@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://pq53ta18g7df"]
+
+[ext_resource type="Script" path="res://scripts/Revive.gd" id="1_d0ibc"]
+
+[node name="Revive" type="Node"]
+script = ExtResource("1_d0ibc")
