@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dv5v7x871fmkq"]
+[gd_scene load_steps=18 format=3 uid="uid://dv5v7x871fmkq"]
 
 [ext_resource type="Texture2D" uid="uid://rvtj6d8uhegu" path="res://images/mars-tiles.png" id="1_s6454"]
 [ext_resource type="Script" path="res://scripts/Terrain.gd" id="1_sech5"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cqmic4ctrs30l" path="res://scenes/xp.tscn" id="7_x5b6a"]
 [ext_resource type="Script" path="res://scripts/UpgradeHandler.gd" id="9_sndql"]
 [ext_resource type="Script" path="res://scripts/WeaponsList.gd" id="11_r31lv"]
+[ext_resource type="Script" path="res://scripts/PrisonHandler.gd" id="14_4xxrc"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_pnfgt"]
 seed = 1
@@ -97,6 +98,9 @@ script = ExtResource("7_uemc8")
 
 [node name="Camera2D" parent="." instance=ExtResource("4_r5wui")]
 z_index = 4
+
+[node name="PrisonHandler" type="Node2D" parent="."]
+script = ExtResource("14_4xxrc")
 
 [connection signal="level_up" from="Player" to="LevelUpHandler" method="_on_player_level_up"]
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]

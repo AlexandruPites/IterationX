@@ -37,6 +37,7 @@ signal level_up
 @onready var levelup_sound : AudioStreamPlayer = $Levelup_sound
 @onready var regen_timer: Timer = $RegenTimer
 @onready var pickup_radius: Area2D = $PickupRadius
+@onready var prison_handler: Node2D = $"../PrisonHandler"
 
 var player_viewport : Vector2
 var modifiers : StatIncrease = StatIncrease.new()
@@ -105,8 +106,6 @@ func _process(_delta : float) -> void:
 		sprite_2d.flip_h = false
 	
 	var collision_info : bool = move_and_slide()
-	if collision_info:
-		take_damage(3)
 	camera_2d.position = position
 	
 
