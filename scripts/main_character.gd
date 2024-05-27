@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 #player base attributes
-var base_max_health : float = 5.0
+var base_max_health : float = 100.0
 var base_speed : float = 300.0
 var base_regen : float = 0.0
 var base_regen_speed : float = 5.0
@@ -64,11 +64,11 @@ func _ready() -> void:
 	for key: String in powerups_dict:
 		match key:
 			"Max HP":
-				base_max_health += 10 * powerups_dict[key][0][1]
+				base_max_health += 10 * powerups_dict[key][0][0]
 			"HP regen":
-				base_regen += 1 * powerups_dict[key][0][1]
+				base_regen += 1 * powerups_dict[key][0][0]
 			"Movement Speed":
-				base_speed += 15 * powerups_dict[key][0][1]
+				base_speed += 15 * powerups_dict[key][0][0]
 			"Revival":
 				base_revives = powerups_dict[key][0][1]
 	calc_stats()
