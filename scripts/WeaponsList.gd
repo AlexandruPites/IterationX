@@ -6,6 +6,7 @@ var format_string_weapon : String = "res://images/weapons/%s.png"
 var katana: Texture2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	self.clear()
 	self.max_columns = 0
 	self.get_v_scroll_bar().visible = false
 	self.get_v_scroll_bar().modulate.a = 0
