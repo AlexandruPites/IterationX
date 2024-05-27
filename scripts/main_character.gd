@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 #player base attributes
-var base_max_health : float = 100.0
+var base_max_health : float = 5.0
 var base_speed : float = 300.0
 var base_regen : float = 0.0
 var base_regen_speed : float = 5.0
@@ -35,6 +35,7 @@ signal level_up
 var player_viewport : Vector2
 var modifiers : StatIncrease = StatIncrease.new()
 var enemies_collided_list : Array[Node2D] = []
+var revival_available: int = 0
 
 func _ready() -> void:
 	player_viewport = get_viewport_rect().size / 2
@@ -52,7 +53,7 @@ func _ready() -> void:
 			"Movement Speed":
 				base_speed += 15 * powerups_dict[key][0][1]
 			"Revival":
-				pass
+				revival_available = powerups_dict[key][0][1]
 	calc_stats()
 	
 	regen_timer.wait_time = base_regen_speed;
@@ -88,6 +89,11 @@ func take_damage(damage : float, knockback : float = 0) -> void:
 		timer.start() # timer is set to 0.3
 		health -= damage
 		if health <= 0:
+			if revival_available == 1:
+				hurt_sound.play()
+				health = max_health
+				revival_available = 0
+				return
 			get_tree().change_scene_to_file.call_deferred("res://game_over_screen.tscn")
 		print(health)
 		hurt_sound.play()
