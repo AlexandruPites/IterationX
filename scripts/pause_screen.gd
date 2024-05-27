@@ -5,6 +5,7 @@ extends Control
 
 @onready var button_back: Button = $ColorRect/Settings/CenterContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/ButtonBack
 @onready var resume: Button = $ColorRect/Panel/Resume
+@onready var timer: Timer = get_node("/root/Game/Camera2D/Timer")
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
@@ -29,6 +30,7 @@ func _on_resume_pressed() -> void:
 
 func _on_save_pressed() -> void:
 	get_tree().paused = not get_tree().paused
+	save_utils.save_currency(timer.wait_time - timer.time_left)
 	get_tree().change_scene_to_file("res://main_menu.tscn")
 
 

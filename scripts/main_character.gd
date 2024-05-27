@@ -122,9 +122,7 @@ func take_damage(damage : float, knockback : float = 0) -> void:
 			health = max_health
 			revives -= 1
 		elif health <= 0:
-			var save_dict: Dictionary = save_utils.load_powerups()
-			save_dict["currency"] += (tm_currency.wait_time - tm_currency.time_left) * 0.2
-			save_utils.save_powerups(save_dict["powerups"], save_dict["currency"])
+			save_utils.save_currency(tm_currency.wait_time - tm_currency.time_left)
 			get_tree().change_scene_to_file.call_deferred("res://game_over_screen.tscn")
 		print(health)
 		hurt_sound.play()
@@ -134,7 +132,6 @@ func calc_stats() -> void:
 	max_health = base_max_health * (1 + modifiers.health_increase)
 	health = max_health - damage_taken
 	regen = base_regen * (1 + modifiers.regen_increase)
-	
 	speed = base_speed * (1 + modifiers.speed_increase)
 	revives = base_revives + modifiers.revive_amount
 	

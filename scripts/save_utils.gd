@@ -32,6 +32,12 @@ static func load_powerups() -> Dictionary:
 		"powerups": powerups_dict
 	}
 
+static func save_currency(elapsed_time : float) -> void:
+	var save_dict: Dictionary = save_utils.load_powerups()
+	save_dict["currency"] += elapsed_time * 0.2
+	print("Added %s currency to save" % (elapsed_time * 0.2)) 
+	save_utils.save_powerups(save_dict["powerups"], save_dict["currency"])
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
