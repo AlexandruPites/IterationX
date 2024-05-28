@@ -3,13 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://dj86sktvlr0bk" path="res://images/square.png" id="1_kgpwx"]
 [ext_resource type="Script" path="res://scripts/item_slot.gd" id="1_xp0st"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t2kgq"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l63bl"]
 texture = ExtResource("1_kgpwx")
 
 [node name="ItemSlot" type="PanelContainer"]
 offset_right = 64.0
 offset_bottom = 64.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_t2kgq")
+theme_override_styles/panel = SubResource("StyleBoxTexture_l63bl")
 script = ExtResource("1_xp0st")
 
 [node name="TextureRect" type="TextureRect" parent="."]
