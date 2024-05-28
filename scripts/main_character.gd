@@ -1,6 +1,11 @@
 extends CharacterBody2D
 class_name Player
 
+const dash_speed : float = 800
+const dash_len : float = 0.2
+const dash_cooldown : float = 0.5
+const dash_ghost_time : float = 0.02
+
 #player base attributes
 var base_max_health : float = 100.0
 var base_speed : float = 300.0
@@ -38,6 +43,10 @@ signal level_up
 @onready var regen_timer: Timer = $RegenTimer
 @onready var pickup_radius: Area2D = $PickupRadius
 @onready var prison_handler: Node2D = $"../PrisonHandler"
+@onready var dash_timer: Timer = $DashTimer
+@onready var dash_cooldown_timer: Timer = $DashCooldownTimer
+@onready var ghost_timer: Timer = $GhostTimer
+@onready var ghost_resource : Resource = preload("res://scenes/ghost.tscn")
 
 var player_viewport : Vector2
 var modifiers : StatIncrease = StatIncrease.new()
@@ -47,6 +56,8 @@ var ghosts : Array[Sprite2D]
 
 func _ready() -> void:
 	player_viewport = get_viewport_rect().size / 2
+	dash_cooldown_timer.wait_time = dash_cooldown
+	ghost_timer.wait_time = dash_ghost_time
 	
 	for i in range(3):
 		var ghost : Sprite2D = Sprite2D.new()
@@ -80,14 +91,26 @@ func _ready() -> void:
 	magnet = base_magnet
 	pickup_radius.scale = magnet
 
+
 func _process(_delta : float) -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
-	if Input.is_action_pressed("accept"):
+	if Input.is_action_pressed("touch"):
 		var pos : Vector2 = get_viewport().get_mouse_position()
 		direction = (pos - player_viewport).normalized()
 
-	velocity = direction * speed
-	if direction != Vector2.ZERO:
+	if Input.is_action_just_pressed("dash") and dash_cooldown_timer.is_stopped():
+		start_dash(dash_len)
+		dash_cooldown_timer.start()
+	
+	if is_dashing():
+		set_collision_layer_value(1, false)
+	else:
+		set_collision_layer_value(1, true)
+		
+	var new_speed : float = dash_speed if is_dashing() else speed
+
+	velocity = direction * new_speed
+	if direction != Vector2.ZERO and !is_dashing():
 		for i in ghosts.size():
 			var g : Sprite2D = ghosts[i]
 			g.visible = true
@@ -112,12 +135,31 @@ func _process(_delta : float) -> void:
 		level += 1
 		levelup_sound.play()
 		level_up.emit()
+		
+
+func instance_ghost() -> void:
+	var instance : Ghost = ghost_resource.instantiate()
+	instance.position = position
+	instance.flip_h = sprite_2d.flip_h
+	get_parent().add_child(instance)
+
 	
+func start_dash(duration : float) -> void:
+	dash_timer.wait_time = duration
+	dash_timer.start()
+	ghost_timer.start()
+	
+	instance_ghost()
+	
+func is_dashing() -> bool:
+	return !dash_timer.is_stopped()
 
 func is_left() -> bool:
 	return sprite_2d.flip_h
 
 func take_damage(damage : float, _knockback : float = 0) -> void:
+	if is_dashing():
+		return
 	if timer.is_stopped():
 		animation_player.play("take_damage")
 		timer.start() # timer is set to 0.3
@@ -176,9 +218,14 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		xp += area.value
 		area.queue_free()
 
-
 func _on_regen_timer_timeout() -> void:
 	health += regen
 	if health > max_health:
 		health = max_health
+	
+func _on_ghost_timer_timeout() -> void:
+	instance_ghost()
+
+func _on_dash_timer_timeout() -> void:
+	ghost_timer.stop()
 	

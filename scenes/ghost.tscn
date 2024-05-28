@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyj73j8vpgsuc"]
+
+[ext_resource type="Texture2D" uid="uid://cjb3fpdjmw2q7" path="res://images/astronaut.png" id="1_2qown"]
+[ext_resource type="Script" path="res://scripts/Ghost.gd" id="1_lsmne"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_2qown")
+script = ExtResource("1_lsmne")
