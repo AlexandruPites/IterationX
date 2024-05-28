@@ -180,6 +180,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 func _on_regen_timer_timeout() -> void:
 	health += regen
-	if health > base_max_health:
-		health = base_max_health
+	print(health)
+	if health > max_health:
+		health = max_health
 	
