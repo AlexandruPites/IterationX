@@ -48,8 +48,6 @@ func _process(_delta: float) -> void:
 
 func calc_stats() -> void:
 	damage = base_damage * level * (1 + modifiers.damage_increase)
-	if level < 5:
-		damage = base_damage * 5 * (1 + modifiers.damage_increase)
 	speed = base_projectile_speed * (1 + modifiers.projectile_speed_increase)
 	knockback = base_knockback * (1 + modifiers.knockback_increase)
 	fire_rate = base_fire_rate / float(level)

@@ -13,7 +13,7 @@ var velocity : Vector2 = Vector2(base_projectile_speed, base_projectile_speed)
 var base_damage : float = 10
 var hit_counter : int = 1
 var base_fire_rate : float = 2
-var base_knockback : float = 250
+var base_knockback : float = 500
 var base_pellet_count : int = 5
 var base_cone_degrees_half : float = 22.5
 
