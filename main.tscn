@@ -89,6 +89,7 @@ z_index = 4
 
 [node name="WeaponList" type="GridContainer" parent="Camera2D"]
 unique_name_in_owner = true
+texture_filter = 1
 offset_left = -576.0
 offset_top = -297.0
 offset_right = -536.0
