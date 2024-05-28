@@ -37,20 +37,10 @@ func _ready() -> void:
 	# DO NOT EVER DO THIS, THIS IS SO BAD
 	# incomplete representation but it works
 	var bullshitImplementation : RandomItem = RandomItem.new()
-	bullshitImplementation.item_name = '4-way'
+	bullshitImplementation.item_name = 'shotgun'
 	# this could very well break in the future
 	# call deferred is very important, otherwise it gets added before ui is _ready
 	update_weapon_level.call_deferred(bullshitImplementation)
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	if not Input.is_action_pressed("reject"):
-		check_if_exists()
-	else:
-		for i : String in inventory:
-			var elm : ProjectileReference = inventory[i]
-			if is_instance_valid(elm.handler):
-				elm.handler.queue_free()
 			
 func update_weapon_level(changedItem : RandomItem) -> void:
 	if weapon_levels[changedItem.item_name] == 0:

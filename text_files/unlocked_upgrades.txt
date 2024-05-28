@@ -3,6 +3,7 @@ katanatata
 ak-47
 bomba
 lightning-field
+shotgun
 ::augments::
 health
 damage

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpmdaunpn87qf"]
+
+[ext_resource type="Texture2D" uid="uid://dclvcdde86xty" path="res://images/weapons/shotgun.png" id="1_1tmer"]
+
+[node name="Shotgun_Image" type="Sprite2D"]
+z_index = 1
+texture = ExtResource("1_1tmer")

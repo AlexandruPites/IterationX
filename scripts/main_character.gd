@@ -182,4 +182,4 @@ func _on_regen_timer_timeout() -> void:
 	health += regen
 	if health > max_health:
 		health = max_health
-	
+    

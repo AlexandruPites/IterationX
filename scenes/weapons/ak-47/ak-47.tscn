@@ -23,5 +23,6 @@ offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
 texture = ExtResource("2_40pf1")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

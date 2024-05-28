@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmo3cb547j8mw"]
+
+[ext_resource type="Script" path="res://scripts/shotgun.gd" id="1_2dq0n"]
+[ext_resource type="Texture2D" uid="uid://cl1ry5jitqqkd" path="res://images/weapons/shotgun_pellet.png" id="2_n8gqw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0l0hy"]
+radius = 3.5
+
+[node name="shotgun" type="Area2D"]
+scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 6
+script = ExtResource("1_2dq0n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0l0hy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("2_n8gqw")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
