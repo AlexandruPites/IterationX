@@ -85,8 +85,5 @@ func _on_buy_pressed(powerup: String) -> void:
 	buy_btns_and_labels[powerup][0].text = "Rank %d / %d" % powerups_dict[powerup][0]
 	buy_btns_and_labels[powerup][2].text =  "Price: %d" % price
 	
-	save_utils.save_powerups(powerups_dict, currency)
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	save_utils.save_powerups(powerups_dict, int(currency))
+

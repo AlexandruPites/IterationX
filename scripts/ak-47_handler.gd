@@ -31,10 +31,10 @@ func _ready() -> void:
 	spawner = get_node("/root/Game/EnemySpawner")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if timer.is_stopped():
 		timer.start()
-		var target : Enemy = spawner.get_closest_enemy_to_point(player.position)
+		target = spawner.get_closest_enemy_to_point(player.position)
 		if target != null:
 			var instance : Projectile = resource.instantiate()
 			instance.velocity = velocity 

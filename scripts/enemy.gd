@@ -33,7 +33,7 @@ func _process(_delta : float) -> void:
 
 		velocity = diff.normalized() * speed + knockback
 		knockback = lerp(knockback, Vector2.ZERO, 0.07)
-		var has_collided: bool = move_and_slide()
+		move_and_slide()
 
 func take_damage(damage : float, knockback_strength : float) -> void:
 	if timer.is_stopped():

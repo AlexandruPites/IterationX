@@ -90,7 +90,6 @@ func _process(_delta : float) -> void:
 
 	velocity = direction * speed
 	if direction != Vector2.ZERO:
-		var dir : float = 1 if direction.x > 0 else -1
 		for i in ghosts.size():
 			var g : Sprite2D = ghosts[i]
 			g.visible = true
@@ -105,14 +104,14 @@ func _process(_delta : float) -> void:
 	elif direction.x > 0:
 		sprite_2d.flip_h = false
 	
-	var collision_info : bool = move_and_slide()
+	move_and_slide()
 	camera_2d.position = position
 	
 
 func is_left() -> bool:
 	return sprite_2d.flip_h
 
-func take_damage(damage : float, knockback : float = 0) -> void:
+func take_damage(damage : float, _knockback : float = 0) -> void:
 	if timer.is_stopped():
 		animation_player.play("take_damage")
 		timer.start() # timer is set to 0.3

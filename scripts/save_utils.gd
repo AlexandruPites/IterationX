@@ -38,6 +38,3 @@ static func save_currency(elapsed_time : float) -> void:
 	print("Added %s currency to save" % (elapsed_time * 0.2)) 
 	save_utils.save_powerups(save_dict["powerups"], save_dict["currency"])
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

@@ -25,7 +25,7 @@ func spawn_wall_vertical(player_pos: Vector2) -> void:
 	var roll: float = randf()
 	print(roll)
 	var hole_position : float = player_pos.x + hole_window * (roll - 0.5)
-	var spike_count: int = wall_size / projectile_size
+	var _spike_count: int = wall_size / projectile_size
 	var x_base : float = player_pos.x - wall_size / 2
 	for offset in range(0, wall_size, projectile_size):
 		if x_base + offset > hole_position - hole_size - projectile_size and x_base + offset < hole_position + hole_size + projectile_size:
@@ -40,7 +40,7 @@ func spawn_wall_horizontal(player_pos: Vector2) -> void:
 	var roll: float = randf()
 	print(roll)
 	var hole_position : float = player_pos.y + hole_window * (roll - 0.5)
-	var spike_count: int = wall_size / projectile_size
+	var _spike_count: int = wall_size / projectile_size
 	var y_base : float = player_pos.y - wall_size / 2
 	for offset in range(0, wall_size, projectile_size):
 		if y_base + offset > hole_position - hole_size - projectile_size and y_base + offset < hole_position + hole_size + projectile_size:
@@ -49,10 +49,6 @@ func spawn_wall_horizontal(player_pos: Vector2) -> void:
 		new_spike.velocity = Vector2(1, 0)
 		new_spike.position = Vector2(player_pos.x - wall_distance, y_base + offset)
 		add_child(new_spike)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_timer_timeout() -> void:

@@ -46,7 +46,7 @@ func _ready() -> void:
 	noise = noise_height_text.noise
 	generate_world(player.position)
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var min_dist : float = INF
 	var closest_center : Vector2
 	for pos in centers:

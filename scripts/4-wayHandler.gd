@@ -27,10 +27,9 @@ func _ready() -> void:
 	timer.wait_time = base_fire_rate
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if timer.is_stopped():
 		timer.start()
-		var instances : Array[Projectile]
 		var mult : Array[Vector2] = [Vector2(1, 0), Vector2(-1, 0), Vector2(0, -1), Vector2(0, 1),
 									 Vector2(0.707, -0.707), Vector2(0.707, 0.707), Vector2(-0.707, 0.707), Vector2(-0.707, -0.707)]
 		
