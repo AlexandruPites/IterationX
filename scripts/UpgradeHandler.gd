@@ -35,6 +35,7 @@ func _ready() -> void:
 	file.close()
 	
 	# DO NOT EVER DO THIS, THIS IS SO BAD
+	# incomplete representation but it works
 	var bullshitImplementation : RandomItem = RandomItem.new()
 	bullshitImplementation.item_name = '4-way'
 	# this could very well break in the future
