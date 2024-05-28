@@ -168,7 +168,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("pickupable"):
 		xp_pickup_sound.play()
 		xp += area.value
-		if xp >= xp_to_level:
+		while xp >= xp_to_level:
 			var diff : float = xp - xp_to_level
 			xp_to_level += 100
 			xp = diff
