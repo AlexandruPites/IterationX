@@ -16,6 +16,9 @@ var weapon_levels : Dictionary = {}
 var augment_levels : Dictionary = {}
 
 @onready var player: Player = $"../Player"
+@onready var weapons_list: InventoryUI = %WeaponList
+@onready var augment_list: InventoryUI = %AugmentList
+
 var game : Node
 
 func _ready() -> void:
@@ -82,7 +85,7 @@ func add_weapon(weapon_name : String) -> void:
 	temp.weapon_name = weapon_name
 	temp.handler = instance
 	inventory[weapon_name] = temp
-	get_node("/root/Game/Player/WeaponsList").add_weapon_to_list(weapon_name)
+	weapons_list.add_item(weapon_name, true)
 	add_child(temp.handler)
 	
 func add_augment(augment_name : String) -> void:
@@ -92,7 +95,7 @@ func add_augment(augment_name : String) -> void:
 	var resource : Resource = load(format_string % augment_name)
 	var instance : Augment = resource.instantiate()
 	augments[augment_name] = instance
-	get_node("/root/Game/Player/AugmentList").add_augment_to_list(augment_name)
+	augment_list.add_item(augment_name, false)
 	add_child(instance)
 	
 func choose_level_ups() -> Array[RandomItem]:
