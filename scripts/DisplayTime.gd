@@ -25,4 +25,5 @@ func _process(_delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	get_tree().reload_current_scene()
+	save_utils.save_currency(timer.wait_time - timer.time_left)
+	get_tree().change_scene_to_file("res://main_menu.tscn")
