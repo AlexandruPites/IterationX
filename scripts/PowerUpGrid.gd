@@ -22,7 +22,7 @@ func _ready() -> void:
 	currency = load_dict["currency"]
 	powerups_dict = load_dict["powerups"]
 	
-	currency_label.text = "Currency : %f" % currency
+	currency_label.text = "Currency : %s" % int(currency)
 	for powerup: String in powerups_dict:
 		var panel: Panel = Panel.new()
 		panel.set_custom_minimum_size(Vector2(150, 100))
