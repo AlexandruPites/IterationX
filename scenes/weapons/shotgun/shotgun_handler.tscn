@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciw1oy1axi23d"]
+
+[ext_resource type="Script" path="res://scripts/shotgun_handler.gd" id="1_vdedq"]
+[ext_resource type="AudioStream" uid="uid://b8r5vgo02vkjt" path="res://sound_effects/ssg_edit.wav" id="2_b7l08"]
+
+[node name="shotgunHandler" type="Node"]
+script = ExtResource("1_vdedq")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_b7l08")
+volume_db = -20.0
