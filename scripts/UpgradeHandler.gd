@@ -33,8 +33,13 @@ func _ready() -> void:
 		if line == "::augments::":
 			levels = augment_levels
 	file.close()
-	print(weapon_levels)
-	print(augment_levels)
+	
+	# DO NOT EVER DO THIS, THIS IS SO BAD
+	var bullshitImplementation : RandomItem = RandomItem.new()
+	bullshitImplementation.item_name = '4-way'
+	# this could very well break in the future
+	# call deferred is very important, otherwise it gets added before ui is _ready
+	update_weapon_level.call_deferred(bullshitImplementation)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
