@@ -97,18 +97,20 @@ func add_augment(augment_name : String) -> void:
 func choose_level_ups() -> Array[RandomItem]:
 	var choices : Array[RandomItem] = []
 	var copy_dict : Dictionary = {}
-	if nr_weapons < max_nr_weapons:
-		for elem : String in weapon_levels.keys():
-			if weapon_levels[elem] < MAX_LEVEL:
+	
+	for elem : String in weapon_levels.keys():
+		if weapon_levels[elem] < MAX_LEVEL:
+			if not (weapon_levels[elem] == 0 and nr_weapons >= max_nr_weapons):
 				copy_dict[elem] = weapon_levels[elem]
 			
-	if nr_augments < max_nr_augments:
-		for elem : String in augment_levels.keys():
-			if elem in augments:
-				if augment_levels[elem] < augments[elem].max_level:
+	for elem : String in augment_levels.keys():
+		if elem in augments:
+			if augment_levels[elem] < augments[elem].max_level:
+				if not (augment_levels[elem] == 0 and nr_augments >= max_nr_augments):
 					copy_dict[elem] = augment_levels[elem]
-			else:
-				if augment_levels[elem] < AUGMENT_MAX_LEVEL:
+		else:
+			if augment_levels[elem] < AUGMENT_MAX_LEVEL:
+				if not (augment_levels[elem] == 0 and nr_augments >= max_nr_augments):
 					copy_dict[elem] = augment_levels[elem]
 			
 	for i in range(3):
