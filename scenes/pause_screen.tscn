@@ -58,7 +58,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="ColorRect/Settings/CenterContainer"]
-custom_minimum_size = Vector2(256, 256)
+custom_minimum_size = Vector2(803.485, 256)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/Settings/CenterContainer/PanelContainer"]
