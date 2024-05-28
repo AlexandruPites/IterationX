@@ -1,13 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://xtrvr3oa2unr"]
 
-[ext_resource type="Texture2D" uid="uid://dj86sktvlr0bk" path="res://images/square.png" id="1_kgpwx"]
+[ext_resource type="Texture2D" uid="uid://dbhgt23li13bh" path="res://images/square-32.png" id="1_mh0f5"]
 [ext_resource type="Script" path="res://scripts/item_slot.gd" id="1_xp0st"]
 [ext_resource type="Texture2D" uid="uid://cdyp0vby7b832" path="res://images/augments/transparent.png" id="3_yv2wd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l63bl"]
-texture = ExtResource("1_kgpwx")
+texture = ExtResource("1_mh0f5")
 
 [node name="ItemSlot" type="PanelContainer"]
+texture_filter = 1
 offset_right = 64.0
 offset_bottom = 64.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_l63bl")
