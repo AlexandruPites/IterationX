@@ -14,6 +14,7 @@ config/name="IterationX"
 run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+config/windows_native_icon="res://images/icon-x.ico"
 
 [debug]
 

@@ -43,9 +43,7 @@ var player_viewport : Vector2
 var modifiers : StatIncrease = StatIncrease.new()
 var enemies_collided_list : Array[Node2D] = []
 
-
 var ghosts : Array[Sprite2D]
-
 
 func _ready() -> void:
 	player_viewport = get_viewport_rect().size / 2
