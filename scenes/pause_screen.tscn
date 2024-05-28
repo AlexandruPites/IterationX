@@ -194,7 +194,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_ct22q")
 theme_override_font_sizes/font_size = 48
-text = "Save"
+text = "Quit"
 
 [connection signal="pressed" from="ColorRect/Settings/CenterContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
 [connection signal="pressed" from="ColorRect/Panel/SettingsButton" to="." method="_on_settings_pressed"]
