@@ -1,11 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://ca3p3id8imxb"]
+[gd_scene load_steps=21 format=3 uid="uid://ca3p3id8imxb"]
 
 [ext_resource type="Script" path="res://scripts/main_character.gd" id="1_atlu0"]
-[ext_resource type="Texture2D" uid="uid://cjb3fpdjmw2q7" path="res://images/astronaut.png" id="2_uvg75"]
+[ext_resource type="Texture2D" uid="uid://b0cqqyemca5cu" path="res://images/player-animation/player_0.png" id="2_71876"]
+[ext_resource type="Texture2D" uid="uid://c33fh3pk5clmk" path="res://images/player-animation/player_1.png" id="3_cdscm"]
+[ext_resource type="Texture2D" uid="uid://bm3e73vcps82y" path="res://images/player-animation/player_2.png" id="4_61x5q"]
 [ext_resource type="AudioStream" uid="uid://lg173xgthbqb" path="res://sound_effects/Pickup_coin 1.wav" id="4_lm5oe"]
 [ext_resource type="AudioStream" uid="uid://cqkp21jm5gr74" path="res://sound_effects/levelup.mp3" id="5_8rfyj"]
 [ext_resource type="AudioStream" uid="uid://bry20nujlv2yj" path="res://sound_effects/ugh.wav" id="5_n8d1x"]
+[ext_resource type="Texture2D" uid="uid://5afj32jecdx7" path="res://images/player-animation/player_4.png" id="5_nk2qn"]
 [ext_resource type="Texture2D" uid="uid://h7xmdjebgtlg" path="res://images/background_hp_bar.png" id="6_enacg"]
+[ext_resource type="Texture2D" uid="uid://borshdxv826b" path="res://images/player-animation/player_3.png" id="6_uq0mi"]
 [ext_resource type="Texture2D" uid="uid://b7uf5ifhcylsi" path="res://images/progress_hp_bar.png" id="7_jxy56"]
 [ext_resource type="Script" path="res://scripts/HpBar.gd" id="8_2alc6"]
 
@@ -43,6 +47,27 @@ height = 48.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_m2514"]
 radius = 104.043
 
+[sub_resource type="Animation" id="Animation_xlncc"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_71876"), ExtResource("3_cdscm"), ExtResource("4_61x5q"), ExtResource("6_uq0mi"), ExtResource("5_nk2qn")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jt073"]
+_data = {
+"walk": SubResource("Animation_xlncc")
+}
+
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["damageable", "player"]]
 z_index = 1
 position = Vector2(-1, 0)
@@ -56,7 +81,7 @@ shape = SubResource("CapsuleShape2D_kwon2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_uvg75")
+texture = ExtResource("5_nk2qn")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
@@ -116,6 +141,11 @@ texture_progress = ExtResource("7_jxy56")
 script = ExtResource("8_2alc6")
 
 [node name="RegenTimer" type="Timer" parent="."]
+
+[node name="WalkPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jt073")
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

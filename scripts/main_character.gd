@@ -38,6 +38,9 @@ signal level_up
 @onready var regen_timer: Timer = $RegenTimer
 @onready var pickup_radius: Area2D = $PickupRadius
 @onready var prison_handler: Node2D = $"../PrisonHandler"
+@onready var walk_player: AnimationPlayer = $WalkPlayer
+@onready var base_texture : Resource = load("res://images/astronaut.png")
+
 
 var player_viewport : Vector2
 var modifiers : StatIncrease = StatIncrease.new()
@@ -50,7 +53,6 @@ func _ready() -> void:
 	
 	for i in range(3):
 		var ghost : Sprite2D = Sprite2D.new()
-		ghost.texture = load("res://images/astronaut.png")
 		ghost.z_index = -1
 		ghost.modulate = Color(1, 1, 1, 1 - 0.2 * (i + 1))
 		ghosts.append(ghost)
@@ -88,12 +90,19 @@ func _process(_delta : float) -> void:
 
 	velocity = direction * speed
 	if direction != Vector2.ZERO:
+		walk_player.play("walk")
 		for i in ghosts.size():
 			var g : Sprite2D = ghosts[i]
 			g.visible = true
+			g.texture = sprite_2d.texture
 			g.position = sprite_2d.position - Vector2(5 * (i + 1), 5 * ( i + 1)) * Vector2(direction.x, direction.y)
 			g.flip_h = sprite_2d.flip_h
+			g.hframes = sprite_2d.hframes
+			g.vframes = sprite_2d.vframes
+			g.frame = sprite_2d.frame
 	else:
+		walk_player.stop()
+		sprite_2d.texture = base_texture
 		for g in ghosts:
 			g.visible = false
 	
